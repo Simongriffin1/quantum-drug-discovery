@@ -116,8 +116,9 @@ def leakage_audit(
     test_clusters: dict[str, str] | None = None,
     train_sequences: dict[str, str] | None = None,
     test_sequences: dict[str, str] | None = None,
+    max_identity: float | None = None,
 ) -> tuple[bool, tuple[str, ...]]:
-    """Detect train/test identity leakage (IDs, clusters, identical sequences)."""
+    """Detect train/test identity leakage (IDs, clusters, sequences, optional identity)."""
     findings: list[str] = []
     train_set = set(train_ids)
     test_set = set(test_ids)
@@ -142,6 +143,25 @@ def leakage_audit(
         if leaked:
             findings.append(f"identical sequence leakage: {leaked[:10]}")
 
+        if max_identity is not None:
+            from peptideforge_benchmarks.splits import sequence_identity
+
+            close: list[str] = []
+            for tid in test_ids:
+                if tid not in test_sequences:
+                    continue
+                tseq = test_sequences[tid]
+                for sid in train_ids:
+                    if sid not in train_sequences:
+                        continue
+                    if sequence_identity(tseq, train_sequences[sid]) > max_identity:
+                        close.append(f"{tid}~{sid}")
+                        break
+            if close:
+                findings.append(
+                    f"sequence identity >{max_identity:.0%} leakage: {close[:10]}"
+                )
+
     return (len(findings) == 0, tuple(findings))
 
 
@@ -155,6 +175,7 @@ def run_red_team(
     train_sequences: dict[str, str] | None = None,
     test_sequences: dict[str, str] | None = None,
     baseline_predicted: Sequence[float] | None = None,
+    max_identity: float | None = None,
     seed: int = 0,
     thresholds: Thresholds = DEFAULT_THRESHOLDS,
 ) -> RedTeamReport:
@@ -172,6 +193,7 @@ def run_red_team(
             test_clusters=test_clusters,
             train_sequences=train_sequences,
             test_sequences=test_sequences,
+            max_identity=max_identity,
         )
     else:
         leak_ok, findings = True, ()

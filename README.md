@@ -32,11 +32,13 @@ make test
 make typecheck
 ```
 
-**Status:** M1–M5 scaffolding complete (**P0–P12**). Credibility report at
-`benchmarks/reports/benchmark_report.md` — oracle-validity **FAIL** (Spearman
-−0.30, MLflow-traced); synthetic surrogate ECE / acquisition HV / loop spend
-gates pass (plumbing only). Platform + agent available for simulation campaigns.
-
+**Status:** M1–M5 scaffolding complete (**P0–P12**). Expanded oracle-validity
+(Step 2) on experimental PepBench∩RCSB structures is **measurable and FAIL**:
+held-out N=31, Spearman **0.12** (95% CI −0.27–0.47), net_charge trivial
+baseline wins — binding campaigns remain unauthorized. Artifacts:
+`benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json` and
+`benchmarks/reports/benchmark_report.md`. Protocol sweep (Step 3) is in
+progress on train/dev only.
 Acceptance for benchmark report (P12): `make benchmark-report` regenerates
 Markdown/JSON from oracle JSON (+ optional MLflow) and seeded synthetic_*
 artifacts; every metric cites a file path or run ID.

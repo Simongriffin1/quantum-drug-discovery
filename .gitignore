@@ -39,11 +39,15 @@ credentials.json
 
 # Data / artifacts (never commit real physics trajectories casually)
 data/
+!benchmarks/peptide_affinity/data/
+benchmarks/peptide_affinity/data/raw/
+benchmarks/peptide_affinity/data/prepared/
+benchmarks/peptide_affinity/data/full_pdbs/
+benchmarks/peptide_affinity/data/*.db
 *.dcd
 *.xtc
 mlruns/
 .mlflow/
-
 # Poetry lock optional at scaffold; prefer committing locks later
 # poetry.lock
 
@@ -52,3 +56,5 @@ benchmarks/fixtures/structures/*_full.pdb
 benchmarks/fixtures/structures/oracle_validity_mlflow.db
 benchmarks/fixtures/structures/mlruns/
 benchmarks/fixtures/structures/synthetic_mini/
+benchmarks/peptide_affinity/data/pepbench_rcsb_map.json
+benchmarks/peptide_affinity/data/rcsb_probe.json

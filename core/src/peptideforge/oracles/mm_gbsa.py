@@ -157,9 +157,24 @@ class OpenMMPhysicsOracle:
         forcefield = app.ForceField(*self.config.forcefield_xml)
         residue_templates: dict[Any, str] = {}
         for residue in topology.residues():
-            # MHC interfaces often leave ambiguous Cys protonation after trim.
-            if residue.name == "CYS":
+            # Only force CYX when the residue is named CYX or clearly disulfide-bonded.
+            # Blindly mapping every CYS→CYX breaks free cysteines (template mismatch).
+            if residue.name == "CYX":
                 residue_templates[residue] = "CYX"
+            elif residue.name == "CYS":
+                sg = [a for a in residue.atoms() if a.name.strip() == "SG"]
+                if sg:
+                    # Disulfide: SG bonded to another SG
+                    bonded_sg = False
+                    for bond in topology.bonds():
+                        atoms = {bond.atom1, bond.atom2}
+                        if sg[0] in atoms:
+                            other = bond.atom2 if bond.atom1 == sg[0] else bond.atom1
+                            if other.name.strip() == "SG":
+                                bonded_sg = True
+                                break
+                    if bonded_sg:
+                        residue_templates[residue] = "CYX"
         system = forcefield.createSystem(
             topology,
             nonbondedMethod=app.CutoffNonPeriodic,

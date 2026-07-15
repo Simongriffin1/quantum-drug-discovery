@@ -11,11 +11,17 @@ Source of truth for stage gates: `CURSOR_PROJECT_CONTEXT.md` §8 / §9.
 
 | Metric | Dataset | Threshold | Notes |
 |---|---|---|---|
-| Spearman ρ (predicted vs experimental pK) | `pdbbind_peptide_affinity_v1_structures_openmm` (trimmed public MHC–peptide interfaces in `benchmarks/fixtures/structures/`) | **ρ ≥ 0.40** | Pre-registered for M2; report exact subset + N |
-| RMSE (same scale as predictions) | Same subset | Reported; no hard fail in M2 | Useful diagnostic |
+| Spearman ρ (predicted vs experimental pKd) | Held-out cold-start test of `peptide_affinity_v2_experimental_openmm` (experimental prepared structures; PepBench PpI_ba labels ∩ RCSB) | **ρ ≥ 0.40** with bootstrap 95% **CI lower bound > 0** | **N ≥ 30** required before PASS/FAIL is measurable |
+| Pearson r | Same held-out test | Reported with bootstrap 95% CI | Diagnostic |
+| RMSE | Same subset | Reported; no hard fail in M2 | Diagnostic |
+| Red-team | label_shuffle + trivial baselines (length, charge, contacts, SASA) + leakage (@30% ID) | **All must pass** | If a trivial baseline wins → halt; task/split flawed |
 
-Failure of the Spearman threshold **blocks** downstream campaigns — every surrogate
-and loop result is meaningless without a real oracle.
+Legacy diagnostic subset (N=5 MHC interfaces): `pdbbind_peptide_affinity_v1_structures_openmm`
+— statistically uninterpretable alone; kept for continuity.
+
+Failure of the Spearman / CI / red-team gate **blocks** downstream binding campaigns —
+every surrogate and loop result is meaningless without a real oracle. Point estimates
+without a CI **must not** be used to declare PASS/FAIL.
 
 ## Stability / ddG gate
 

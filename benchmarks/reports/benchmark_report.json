@@ -1,35 +1,35 @@
 {
   "title": "PeptideForge Benchmark Report",
-  "generated_at": "2026-07-15T21:35:51.455907+00:00",
-  "git_sha": null,
+  "generated_at": "2026-07-15T22:47:01.365681+00:00",
+  "git_sha": "894bf38c7522b568f520f8d8f4bd32586ebe73c7",
   "sections": [
     {
       "title": "Oracle validity (affinity)",
       "status": "FAIL",
-      "summary": "Subset `pdbbind_peptide_affinity_v1_structures_openmm` N=5: Spearman=-0.3000 (threshold ≥ 0.4). Gate FAILED — reported honestly.",
+      "summary": "Subset `peptide_affinity_v2_experimental_openmm` N=31 partition=test: Spearman=0.1153 CI95%=[-0.270,0.475] (threshold ≥ 0.4, require CI_low>0, N≥30, red-team). Gate FAILED — reported honestly.",
       "numbers": [
         {
           "name": "spearman",
-          "value": -0.29999999999999993,
+          "value": 0.1153225806451613,
           "unit": null,
-          "source": "file:benchmarks/fixtures/structures/oracle_validity_last_run.json; mlflow_run_id=1a1889d0aae54001b9026066f6bc2024",
-          "data_version": "pdbbind_peptide_affinity_v1_structures_openmm",
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
+          "data_version": "peptide_affinity_v2_experimental_openmm",
           "notes": null
         },
         {
           "name": "rmse",
-          "value": 23.344033217734218,
+          "value": 3301.3905714103544,
           "unit": null,
-          "source": "file:benchmarks/fixtures/structures/oracle_validity_last_run.json; mlflow_run_id=1a1889d0aae54001b9026066f6bc2024",
-          "data_version": "pdbbind_peptide_affinity_v1_structures_openmm",
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
+          "data_version": "peptide_affinity_v2_experimental_openmm",
           "notes": null
         },
         {
           "name": "n",
-          "value": 5.0,
+          "value": 31.0,
           "unit": "count",
-          "source": "file:benchmarks/fixtures/structures/oracle_validity_last_run.json; mlflow_run_id=1a1889d0aae54001b9026066f6bc2024",
-          "data_version": "pdbbind_peptide_affinity_v1_structures_openmm",
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
+          "data_version": "peptide_affinity_v2_experimental_openmm",
           "notes": null
         },
         {
@@ -44,35 +44,100 @@
           "name": "passed_threshold",
           "value": 0.0,
           "unit": null,
-          "source": "file:benchmarks/fixtures/structures/oracle_validity_last_run.json; mlflow_run_id=1a1889d0aae54001b9026066f6bc2024",
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
           "data_version": null,
+          "notes": null
+        },
+        {
+          "name": "spearman_ci_low",
+          "value": -0.2698220064724919,
+          "unit": null,
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
+          "data_version": "peptide_affinity_v2_experimental_openmm",
+          "notes": null
+        },
+        {
+          "name": "spearman_ci_high",
+          "value": 0.4748784440842787,
+          "unit": null,
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
+          "data_version": "peptide_affinity_v2_experimental_openmm",
+          "notes": null
+        },
+        {
+          "name": "pearson",
+          "value": -0.010384302130797145,
+          "unit": null,
+          "source": "file:benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json; mlflow_run_id=c89d92290ab84589ae60895542edbc07",
+          "data_version": "peptide_affinity_v2_experimental_openmm",
           "notes": null
         }
       ],
       "details": {
-        "subset_name": "pdbbind_peptide_affinity_v1_structures_openmm",
+        "subset_name": "peptide_affinity_v2_experimental_openmm",
         "protocol": {
-          "method": "OpenMM MM-GBSA (amber14 + OBC2), ΔG ≈ E_c − E_r − E_l after minimize",
-          "invert_sign": true,
+          "method": "OpenMM MM-GBSA on prepared experimental structures",
           "minimize_max_iterations": 0,
           "platform": "CPU",
           "seed": 0,
-          "manifest": "/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/fixtures/structures/structure_manifest_v1.tsv",
-          "structures": "trimmed public MHC–peptide interface PDBs (see REMARK headers)"
+          "n_bootstrap": 1000,
+          "catalog": "benchmarks/peptide_affinity/data/peptide_affinity_catalog_v2.tsv",
+          "prep_manifest": "benchmarks/peptide_affinity/data/prepared/prep_manifest_scoreable.tsv",
+          "splits": "benchmarks/peptide_affinity/data/splits_v2.json"
         },
         "mlflow": {
-          "run_id": "1a1889d0aae54001b9026066f6bc2024",
+          "run_id": "c89d92290ab84589ae60895542edbc07",
           "experiment_id": "1",
-          "tracking_uri": "sqlite:////Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/fixtures/structures/oracle_validity_mlflow.db"
+          "tracking_uri": "sqlite:////Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/peptide_affinity/data/oracle_validity_v2_mlflow.db"
         },
+        "red_team": {
+          "passed": false,
+          "label_shuffle_passed": true,
+          "label_shuffle_rho": -0.08830645161290322,
+          "trivial_baseline_passed": false,
+          "model_rho": 0.1153225806451613,
+          "baseline_rho": 0.06318261512929894,
+          "leakage_passed": true,
+          "leakage_findings": [
+            "trivial baseline(s) win or tie within Δρ: ['net_charge']; model_rho=0.1153 baselines={'peptide_length': 0.06318261512929894, 'net_charge': 0.4473853322373469}"
+          ],
+          "notes": "trivial baseline(s) win or tie within Δρ: ['net_charge']; model_rho=0.1153 baselines={'peptide_length': 0.06318261512929894, 'net_charge': 0.4473853322373469}"
+        },
+        "measurable": true,
         "record_ids": [
-          "PP001",
-          "PP003",
-          "PP005",
-          "PP009",
-          "PP011"
+          "PA_2LSK_B",
+          "PA_2KOH_B",
+          "PA_4U2W_B",
+          "PA_5LY3_B",
+          "PA_6TYT_C",
+          "PA_4A2A_C",
+          "PA_4ODN_B",
+          "PA_1BXL_B",
+          "PA_2LP8_B",
+          "PA_3ZQI_C",
+          "PA_2N1G_B",
+          "PA_2MPS_B",
+          "PA_1G1E_A",
+          "PA_4ESG_C",
+          "PA_2N3K_B",
+          "PA_4J2C_B",
+          "PA_3V30_B",
+          "PA_3KTR_B",
+          "PA_5I22_B",
+          "PA_4WJQ_B",
+          "PA_4LG6_B",
+          "PA_4TZQ_B",
+          "PA_1F47_A",
+          "PA_4KMD_B",
+          "PA_2N9X_B",
+          "PA_2NM1_B",
+          "PA_6GZL_B",
+          "PA_6HOL_C",
+          "PA_2K00_B",
+          "PA_4CY1_C",
+          "PA_6F55_B"
         ],
-        "artifact": "/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/fixtures/structures/oracle_validity_last_run.json"
+        "artifact": "/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/peptide_affinity/data/oracle_validity_v2_last_run.json"
       }
     },
     {

@@ -49,6 +49,15 @@ def _git_sha() -> str | None:
 
 
 def default_oracle_artifact() -> Path:
+    v2 = (
+        _repo_root()
+        / "benchmarks"
+        / "peptide_affinity"
+        / "data"
+        / "oracle_validity_v2_last_run.json"
+    )
+    if v2.is_file():
+        return v2
     return (
         _repo_root()
         / "benchmarks"
@@ -83,8 +92,15 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
     data = load_json_artifact(path)
     spearman = float(data["spearman"])
     threshold = float(data.get("spearman_threshold", DEFAULT_THRESHOLDS.oracle_affinity_spearman))
-    passed = bool(data.get("passed_threshold", spearman >= threshold))
+    # Prefer explicit gate boolean from v2 artifact (CI + min_n + red-team aware)
+    if "passed_threshold" in data:
+        passed = bool(data["passed_threshold"])
+    else:
+        passed = spearman >= threshold
     n = int(data["n"])
+    measurable = bool(data.get("measurable", n >= 30))
+    ci_lo = data.get("spearman_ci_low")
+    ci_hi = data.get("spearman_ci_high")
     mlflow = data.get("mlflow") or {}
     try:
         display_path = path.resolve().relative_to(_repo_root())
@@ -94,49 +110,83 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
         f"file:{display_path}"
         + (f"; mlflow_run_id={mlflow['run_id']}" if mlflow.get("run_id") else "")
     )
+    ci_txt = (
+        f" CI95%=[{float(ci_lo):.3f},{float(ci_hi):.3f}]"
+        if ci_lo is not None and ci_hi is not None
+        else " (no CI — insufficient for gate)"
+    )
+    status = "PASS" if passed else ("FAIL" if measurable else "NOT_MEASURABLE")
+    numbers = [
+        TraceableNumber(
+            name="spearman",
+            value=spearman,
+            source=source,
+            data_version=data.get("subset_name"),
+        ),
+        TraceableNumber(
+            name="rmse",
+            value=float(data["rmse"]),
+            source=source,
+            data_version=data.get("subset_name"),
+        ),
+        TraceableNumber(
+            name="n",
+            value=float(n),
+            unit="count",
+            source=source,
+            data_version=data.get("subset_name"),
+        ),
+        TraceableNumber(
+            name="spearman_threshold",
+            value=threshold,
+            source="ACCEPTANCE.md",
+        ),
+        TraceableNumber(
+            name="passed_threshold",
+            value=1.0 if passed else 0.0,
+            source=source,
+        ),
+    ]
+    if ci_lo is not None and ci_hi is not None:
+        numbers.extend(
+            [
+                TraceableNumber(
+                    name="spearman_ci_low",
+                    value=float(ci_lo),
+                    source=source,
+                    data_version=data.get("subset_name"),
+                ),
+                TraceableNumber(
+                    name="spearman_ci_high",
+                    value=float(ci_hi),
+                    source=source,
+                    data_version=data.get("subset_name"),
+                ),
+                TraceableNumber(
+                    name="pearson",
+                    value=float(data.get("pearson", float("nan"))),
+                    source=source,
+                    data_version=data.get("subset_name"),
+                ),
+            ]
+        )
     return ReportSection(
         title="Oracle validity (affinity)",
-        status="PASS" if passed else "FAIL",
+        status=status,
         summary=(
-            f"Subset `{data.get('subset_name', 'unknown')}` N={n}: "
-            f"Spearman={spearman:.4f} (threshold ≥ {threshold}). "
+            f"Subset `{data.get('subset_name', 'unknown')}` N={n} "
+            f"partition={data.get('partition', 'n/a')}: "
+            f"Spearman={spearman:.4f}{ci_txt} (threshold ≥ {threshold}, "
+            f"require CI_low>0, N≥30, red-team). "
             f"Gate {'PASSED' if passed else 'FAILED'} — reported honestly."
         ),
-        numbers=(
-            TraceableNumber(
-                name="spearman",
-                value=spearman,
-                source=source,
-                data_version=data.get("subset_name"),
-            ),
-            TraceableNumber(
-                name="rmse",
-                value=float(data["rmse"]),
-                source=source,
-                data_version=data.get("subset_name"),
-            ),
-            TraceableNumber(
-                name="n",
-                value=float(n),
-                unit="count",
-                source=source,
-                data_version=data.get("subset_name"),
-            ),
-            TraceableNumber(
-                name="spearman_threshold",
-                value=threshold,
-                source="ACCEPTANCE.md",
-            ),
-            TraceableNumber(
-                name="passed_threshold",
-                value=1.0 if passed else 0.0,
-                source=source,
-            ),
-        ),
+        numbers=tuple(numbers),
         details={
             "subset_name": data.get("subset_name"),
             "protocol": data.get("protocol"),
             "mlflow": mlflow,
+            "red_team": data.get("red_team"),
+            "measurable": measurable,
             "record_ids": [d.get("record_id") for d in data.get("details", [])],
             "artifact": str(path),
         },

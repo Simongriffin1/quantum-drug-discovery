@@ -1,0 +1,152 @@
+{
+  "$defs": {
+    "OracleTier": {
+      "description": "Physics oracle cost ladder (cheap \u2192 expensive). Default to cheapest.",
+      "enum": [
+        "docking",
+        "mm_gbsa",
+        "md",
+        "fep",
+        "qchem_classical",
+        "qchem_vqe",
+        "synthetic"
+      ],
+      "title": "OracleTier",
+      "type": "string"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "Traceability metadata attached to every stored result.\n\ngit_sha + data_version + tool_versions make every number auditable.\nMissing fields are allowed only for in-memory synthetic plumbing tests.",
+      "properties": {
+        "git_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Git Sha"
+        },
+        "data_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data Version"
+        },
+        "tool_versions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Tool Versions",
+          "type": "object"
+        },
+        "config_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Config Hash"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Single physics-oracle evaluation with cost and tier provenance.\n\nvalue is the primary scalar (e.g. \u0394G bind in kcal/mol). Classical baseline\nis REQUIRED when tier is qchem_vqe (quantum gate).",
+  "properties": {
+    "result_id": {
+      "format": "uuid",
+      "title": "Result Id",
+      "type": "string"
+    },
+    "candidate_id": {
+      "format": "uuid",
+      "title": "Candidate Id",
+      "type": "string"
+    },
+    "complex_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Complex Id"
+    },
+    "value": {
+      "title": "Value",
+      "type": "number"
+    },
+    "uncertainty": {
+      "minimum": 0.0,
+      "title": "Uncertainty",
+      "type": "number"
+    },
+    "cost_estimate": {
+      "minimum": 0.0,
+      "title": "Cost Estimate",
+      "type": "number"
+    },
+    "tier": {
+      "$ref": "#/$defs/OracleTier"
+    },
+    "unit": {
+      "default": "kcal/mol",
+      "title": "Unit",
+      "type": "string"
+    },
+    "classical_baseline": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Classical Baseline"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    }
+  },
+  "required": [
+    "candidate_id",
+    "value",
+    "uncertainty",
+    "cost_estimate",
+    "tier"
+  ],
+  "title": "OracleResult",
+  "type": "object"
+}

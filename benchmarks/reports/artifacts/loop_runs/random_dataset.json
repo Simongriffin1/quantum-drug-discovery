@@ -1,0 +1,1002 @@
+{
+  "data_version": "synthetic_v1",
+  "records": [
+    {
+      "candidate": {
+        "candidate_id": "8228af8c-01fc-4b5d-a454-b5a7e7608217",
+        "sequence": "NNQQKSRT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "b9013108-86be-484a-bd1a-252f3f95b84c",
+        "candidate_id": "8228af8c-01fc-4b5d-a454-b5a7e7608217",
+        "complex_id": "46d53124-b046-49a3-bd14-d3d203505e21",
+        "value": 3.8844822897251223,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097206Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "46d53124-b046-49a3-bd14-d3d203505e21",
+        "candidate_id": "8228af8c-01fc-4b5d-a454-b5a7e7608217",
+        "target_id": "synthetic_target",
+        "sequence": "NNQQKSRT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR NNQQKSRT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097112Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "f4117f36-44fc-45a4-aa7d-a38361ab1b65",
+        "sequence": "NNQQSWHT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "2e6e781a-08a8-4893-8e2a-fe00a392c566",
+        "candidate_id": "f4117f36-44fc-45a4-aa7d-a38361ab1b65",
+        "complex_id": "a23949ab-5703-4ba6-b610-127cb49acef5",
+        "value": 3.780780058215625,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097351Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "a23949ab-5703-4ba6-b610-127cb49acef5",
+        "candidate_id": "f4117f36-44fc-45a4-aa7d-a38361ab1b65",
+        "target_id": "synthetic_target",
+        "sequence": "NNQQSWHT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR NNQQSWHT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097262Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "5839fbd8-e7d7-47b4-85ef-de63c02b9055",
+        "sequence": "NNQQSHTW",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "d5ec19cf-47d8-4e53-9e65-b9feb6130871",
+        "candidate_id": "5839fbd8-e7d7-47b4-85ef-de63c02b9055",
+        "complex_id": "f278dace-45ba-492a-a079-a7a571adce4b",
+        "value": 3.6047169284173792,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097488Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "f278dace-45ba-492a-a079-a7a571adce4b",
+        "candidate_id": "5839fbd8-e7d7-47b4-85ef-de63c02b9055",
+        "target_id": "synthetic_target",
+        "sequence": "NNQQSHTW",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR NNQQSHTW\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097400Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "9ca285f4-d38d-4ed5-9be2-0faf8a3d5152",
+        "sequence": "NNQQSSTP",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "18c27a5a-0d45-481a-b0b8-38e6adaae6f6",
+        "candidate_id": "9ca285f4-d38d-4ed5-9be2-0faf8a3d5152",
+        "complex_id": "d23ea216-4ce3-407d-98c4-8741c78b647e",
+        "value": 3.3171309528693773,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097647Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "d23ea216-4ce3-407d-98c4-8741c78b647e",
+        "candidate_id": "9ca285f4-d38d-4ed5-9be2-0faf8a3d5152",
+        "target_id": "synthetic_target",
+        "sequence": "NNQQSSTP",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR NNQQSSTP\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097559Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "98f27fb3-7ef7-4503-b760-9e22be9c0645",
+        "sequence": "DNQQSSTT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "d0e60022-fdf1-4240-8a63-5315d62a7f62",
+        "candidate_id": "98f27fb3-7ef7-4503-b760-9e22be9c0645",
+        "complex_id": "66886004-e050-465e-93a9-7be0b5db4702",
+        "value": 2.8563283276289546,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097785Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "66886004-e050-465e-93a9-7be0b5db4702",
+        "candidate_id": "98f27fb3-7ef7-4503-b760-9e22be9c0645",
+        "target_id": "synthetic_target",
+        "sequence": "DNQQSSTT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR DNQQSSTT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097697Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "79a11230-6d58-4745-a811-0eda8f56a2da",
+        "sequence": "RRQQSSTT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "b991065a-36b5-47ea-a3cb-cceb9e576c93",
+        "candidate_id": "79a11230-6d58-4745-a811-0eda8f56a2da",
+        "complex_id": "ddfb280f-3de4-4192-a76c-2e09b85a903b",
+        "value": 2.85261363054979,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097922Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "ddfb280f-3de4-4192-a76c-2e09b85a903b",
+        "candidate_id": "79a11230-6d58-4745-a811-0eda8f56a2da",
+        "target_id": "synthetic_target",
+        "sequence": "RRQQSSTT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR RRQQSSTT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097833Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "e53c88e9-bea0-4163-92bd-3b512d7f044e",
+        "sequence": "NWQQYSTT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "7079cdf9-b0ea-4706-9db1-650186a0c37f",
+        "candidate_id": "e53c88e9-bea0-4163-92bd-3b512d7f044e",
+        "complex_id": "6245a913-8d09-4d57-bba6-1973e48acf2e",
+        "value": 2.8446678313054443,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.098060Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "6245a913-8d09-4d57-bba6-1973e48acf2e",
+        "candidate_id": "e53c88e9-bea0-4163-92bd-3b512d7f044e",
+        "target_id": "synthetic_target",
+        "sequence": "NWQQYSTT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR NWQQYSTT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.097972Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "d386939d-c9f0-4582-a201-f2bbb13e6afa",
+        "sequence": "NNPQSSTT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "c4708b35-8817-4c45-87bc-95e184644d2e",
+        "candidate_id": "d386939d-c9f0-4582-a201-f2bbb13e6afa",
+        "complex_id": "8e695cce-aa20-44ad-9e49-7a1d94eba5c1",
+        "value": 2.7971428771377016,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.098195Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "8e695cce-aa20-44ad-9e49-7a1d94eba5c1",
+        "candidate_id": "d386939d-c9f0-4582-a201-f2bbb13e6afa",
+        "target_id": "synthetic_target",
+        "sequence": "NNPQSSTT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR NNPQSSTT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.098109Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "5c696f33-8f45-4d87-afe9-e360e64fadb4",
+        "sequence": "PAAPKKYKK",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "AAAAKKKKK"
+        }
+      },
+      "oracle_result": {
+        "result_id": "83455348-3d6a-47bc-887d-fe4c486220ba",
+        "candidate_id": "5c696f33-8f45-4d87-afe9-e360e64fadb4",
+        "complex_id": "c8376fa3-d79d-45b1-98d9-b8aaf49e5a2c",
+        "value": 1.5817813155168676,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.170070Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "c8376fa3-d79d-45b1-98d9-b8aaf49e5a2c",
+        "candidate_id": "5c696f33-8f45-4d87-afe9-e360e64fadb4",
+        "target_id": "synthetic_target",
+        "sequence": "PAAPKKYKK",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR PAAPKKYKK\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.169909Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "153f7699-59a6-4261-b5d5-f7e788aec7eb",
+        "sequence": "YIPNFEKL",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "SIINFEKL"
+        }
+      },
+      "oracle_result": {
+        "result_id": "dcba4f97-fc3a-4473-858a-3891f6a23ccf",
+        "candidate_id": "153f7699-59a6-4261-b5d5-f7e788aec7eb",
+        "complex_id": "ace7556c-3663-4106-8866-c4d209502f79",
+        "value": 0.4385293295146447,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.170241Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "ace7556c-3663-4106-8866-c4d209502f79",
+        "candidate_id": "153f7699-59a6-4261-b5d5-f7e788aec7eb",
+        "target_id": "synthetic_target",
+        "sequence": "YIPNFEKL",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR YIPNFEKL\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.170138Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "74fa5d9a-0779-42e9-9563-1c771d270a89",
+        "sequence": "SYINFEKL",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "SIINFEKL"
+        }
+      },
+      "oracle_result": {
+        "result_id": "4ceb5b42-4f51-4abf-b18d-919536b982da",
+        "candidate_id": "74fa5d9a-0779-42e9-9563-1c771d270a89",
+        "complex_id": "ad7a72df-4a03-4f3a-bb2b-79e4191e2251",
+        "value": 0.3514182517231016,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.431757Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "ad7a72df-4a03-4f3a-bb2b-79e4191e2251",
+        "candidate_id": "74fa5d9a-0779-42e9-9563-1c771d270a89",
+        "target_id": "synthetic_target",
+        "sequence": "SYINFEKL",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR SYINFEKL\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.431530Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "0e5eb5c0-cf38-4e5c-9553-a7cb6278a477",
+        "sequence": "WNAQSSTT",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "NNQQSSTT"
+        }
+      },
+      "oracle_result": {
+        "result_id": "6a25d959-5441-4f5a-abfc-87a41b27cb26",
+        "candidate_id": "0e5eb5c0-cf38-4e5c-9553-a7cb6278a477",
+        "complex_id": "beab65a0-5f4d-4a8e-9def-e8a1feed84ee",
+        "value": 1.766374727571373,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.433293Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "beab65a0-5f4d-4a8e-9def-e8a1feed84ee",
+        "candidate_id": "0e5eb5c0-cf38-4e5c-9553-a7cb6278a477",
+        "target_id": "synthetic_target",
+        "sequence": "WNAQSSTT",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR WNAQSSTT\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.433064Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "bafa0690-2b9b-4da2-a9eb-5e183e529ee7",
+        "sequence": "AKAAKKKKA",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "AAAAKKKKK"
+        }
+      },
+      "oracle_result": {
+        "result_id": "c49437e2-557d-4ba2-9e96-6a697fd6901c",
+        "candidate_id": "bafa0690-2b9b-4da2-a9eb-5e183e529ee7",
+        "complex_id": "df8793d2-749b-41dc-b86e-268e934b852c",
+        "value": 0.5975314129316952,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.491304Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "df8793d2-749b-41dc-b86e-268e934b852c",
+        "candidate_id": "bafa0690-2b9b-4da2-a9eb-5e183e529ee7",
+        "target_id": "synthetic_target",
+        "sequence": "AKAAKKKKA",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR AKAAKKKKA\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.491174Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "0b1ef04f-0342-4c23-801c-1c2f4a7d5053",
+        "sequence": "QIINGEKL",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "SIINFEKL"
+        }
+      },
+      "oracle_result": {
+        "result_id": "ea358cf5-522e-4240-ab80-e888502d1363",
+        "candidate_id": "0b1ef04f-0342-4c23-801c-1c2f4a7d5053",
+        "complex_id": "35aa9c5e-6ed1-4648-81b8-f87a0bc40ce1",
+        "value": 0.3618441277901889,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.491413Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "35aa9c5e-6ed1-4648-81b8-f87a0bc40ce1",
+        "candidate_id": "0b1ef04f-0342-4c23-801c-1c2f4a7d5053",
+        "target_id": "synthetic_target",
+        "sequence": "QIINGEKL",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR QIINGEKL\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.491349Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "dd1151d8-8ecf-4d0e-b04b-9a0da4a1f2bf",
+        "sequence": "DCEEGISSS",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "DDEEGGSSS"
+        }
+      },
+      "oracle_result": {
+        "result_id": "0af271e9-22d4-436b-851e-fea6ea5ee3b7",
+        "candidate_id": "dd1151d8-8ecf-4d0e-b04b-9a0da4a1f2bf",
+        "complex_id": "1c8e3aa5-d3a5-475b-a77e-adb12bca795e",
+        "value": 0.18381770830238428,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.802914Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "1c8e3aa5-d3a5-475b-a77e-adb12bca795e",
+        "candidate_id": "dd1151d8-8ecf-4d0e-b04b-9a0da4a1f2bf",
+        "target_id": "synthetic_target",
+        "sequence": "DCEEGISSS",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR DCEEGISSS\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.802691Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "dd5a09c4-c290-48b0-ba64-88bb3f1e9736",
+        "sequence": "SISNWEPL",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "SIINFEKL"
+        }
+      },
+      "oracle_result": {
+        "result_id": "dad3350f-05fa-4535-a39c-7930a0d688d8",
+        "candidate_id": "dd5a09c4-c290-48b0-ba64-88bb3f1e9736",
+        "complex_id": "1a849c22-1d7c-49f8-8816-2fdc14bfc8b4",
+        "value": 0.21798620607646774,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.803305Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "1a849c22-1d7c-49f8-8816-2fdc14bfc8b4",
+        "candidate_id": "dd5a09c4-c290-48b0-ba64-88bb3f1e9736",
+        "target_id": "synthetic_target",
+        "sequence": "SISNWEPL",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR SISNWEPL\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:57.803059Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "6a0318c9-ce9e-4858-8742-21d4ba9a7ab8",
+        "sequence": "FLRVVFLIV",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "FLIVVFLIV"
+        }
+      },
+      "oracle_result": {
+        "result_id": "a0cc59a9-b979-4328-9163-c506e560a6d0",
+        "candidate_id": "6a0318c9-ce9e-4858-8742-21d4ba9a7ab8",
+        "complex_id": "9c28ac12-cb7b-49c7-bcd1-93a2db1b9212",
+        "value": -4.553916231220688,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:58.111780Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "9c28ac12-cb7b-49c7-bcd1-93a2db1b9212",
+        "candidate_id": "6a0318c9-ce9e-4858-8742-21d4ba9a7ab8",
+        "target_id": "synthetic_target",
+        "sequence": "FLRVVFLIV",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR FLRVVFLIV\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:58.111636Z"
+        }
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "38d7d36e-8b15-4f32-933c-07aa31529249",
+        "sequence": "FEIVVFWIF",
+        "parent_ids": [],
+        "generation_method": "synthetic_loop_pool",
+        "metadata": {
+          "parent_sequence": "FLIVVFLIV"
+        }
+      },
+      "oracle_result": {
+        "result_id": "d2e020aa-8197-4ccb-b7c3-3d72b34816db",
+        "candidate_id": "38d7d36e-8b15-4f32-933c-07aa31529249",
+        "complex_id": "b3e74b68-b72d-4dcc-8bda-90ca521ee442",
+        "value": -3.8654962652392126,
+        "uncertainty": 0.05,
+        "cost_estimate": 1.0,
+        "tier": "synthetic",
+        "unit": "synthetic_score",
+        "classical_baseline": null,
+        "metadata": {
+          "method": "synthetic_physics_label"
+        },
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "simulation_oracle": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:58.111945Z"
+        }
+      },
+      "complex_structure": {
+        "complex_id": "b3e74b68-b72d-4dcc-8bda-90ca521ee442",
+        "candidate_id": "38d7d36e-8b15-4f32-933c-07aa31529249",
+        "target_id": "synthetic_target",
+        "sequence": "FEIVVFWIF",
+        "pdb_path": null,
+        "pdb_text": "HEADER    SYNTHETIC PLUMBING STRUCTURE\nTITLE     SIMULATION FOLD FOR FEIVVFWIF\nATOM      1  CA  ALA A   1       0.000   0.000   0.000  1.00 50.00           C\nEND",
+        "confidence": 0.5,
+        "affinity_estimate": null,
+        "fold_method": "synthetic_fold",
+        "cache_key": null,
+        "provenance": {
+          "git_sha": null,
+          "data_version": "synthetic_v1",
+          "tool_versions": {
+            "synthetic_folder": "0.1.0"
+          },
+          "config_hash": null,
+          "created_at": "2026-07-15T21:34:58.111847Z"
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "git_sha": null,
+    "data_version": null,
+    "tool_versions": {},
+    "config_hash": null,
+    "created_at": "2026-07-15T21:34:57.097094Z"
+  }
+}

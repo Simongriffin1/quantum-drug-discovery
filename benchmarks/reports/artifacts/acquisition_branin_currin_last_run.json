@@ -1,0 +1,14 @@
+{
+  "n_pool": 60,
+  "n_init": 6,
+  "n_rounds": 5,
+  "batch_size": 2,
+  "hv_qnehvi": 2067.086873260446,
+  "hv_random": 1868.4345993347633,
+  "reference": [
+    -193.8906704566085,
+    -14.311968516995535
+  ],
+  "passed": true,
+  "notes": "synthetic_branin_currin_perfect_surrogate"
+}

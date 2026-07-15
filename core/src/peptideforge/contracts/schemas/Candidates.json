@@ -1,0 +1,79 @@
+{
+  "$defs": {
+    "PeptideCandidate": {
+      "additionalProperties": false,
+      "description": "A single peptide sequence proposal from a Generator.",
+      "properties": {
+        "candidate_id": {
+          "format": "uuid",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "sequence": {
+          "maxLength": 50,
+          "minLength": 5,
+          "title": "Sequence",
+          "type": "string"
+        },
+        "parent_ids": {
+          "default": [],
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Parent Ids",
+          "type": "array"
+        },
+        "generation_method": {
+          "minLength": 1,
+          "title": "Generation Method",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "title": "Metadata",
+          "type": "object"
+        }
+      },
+      "required": [
+        "sequence",
+        "generation_method"
+      ],
+      "title": "PeptideCandidate",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Batch of peptide candidates from Generator.propose.",
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "#/$defs/PeptideCandidate"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "batch_id": {
+      "format": "uuid",
+      "title": "Batch Id",
+      "type": "string"
+    },
+    "seed": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Seed"
+    }
+  },
+  "required": [
+    "items"
+  ],
+  "title": "Candidates",
+  "type": "object"
+}

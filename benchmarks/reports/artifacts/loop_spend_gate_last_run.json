@@ -1,0 +1,10 @@
+{
+  "mode": "synthetic_physics_label_shared_pool",
+  "oracle_calls_qnehvi": 12,
+  "oracle_calls_random": 18,
+  "best_qnehvi": -4.553916231220688,
+  "best_random": -4.553916231220688,
+  "target_value": -4.5,
+  "passed": true,
+  "notes": "simulation_mode_spend_gate_shared_pool"
+}

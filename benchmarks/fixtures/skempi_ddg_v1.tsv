@@ -1,0 +1,9 @@
+record_id	pdb_id	mutant	partner1	partner2	ddg_kcal_mol	temperature_K	cluster_id	wildtype_sequence	mutant_sequence	source	notes
+SK001	1A22	AI38A	A	B	0.80	298.15	c0	ACDEFGHIKLM	ACDEFGHIKLA	skempi	public_example_fixture
+SK002	1A22	AI38V	A	B	0.40	298.15	c0	ACDEFGHIKLM	ACDEFGHIKLV	skempi	same_complex_cluster
+SK003	1BRS	DI35A	A	B	1.20	298.15	c1	KLMNPQRSTVW	KLMNPQRSTVA	skempi	public_example_fixture
+SK004	1BRS	DI35N	A	B	0.90	298.15	c1	KLMNPQRSTVW	KLMNPQRSTVN	skempi	same_complex_cluster
+SK005	1CSE	EI20A	A	B	-0.30	298.15	c2	GHIJKLMNPQR	GHIJKLMNPQA	skempi	public_example_fixture
+SK006	1CSE	EI20Q	A	B	0.10	298.15	c2	GHIJKLMNPQR	GHIJKLMNPQQ	skempi	same_complex_cluster
+SK007	1F47	FI12A	A	B	2.10	298.15	c3	RSTVWYACDEF	RSTVWYACDEA	skempi	public_example_fixture
+SK008	1F47	FI12L	A	B	0.50	298.15	c3	RSTVWYACDEF	RSTVWYACDEL	skempi	same_complex_cluster

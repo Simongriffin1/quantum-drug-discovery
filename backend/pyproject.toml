@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "peptideforge-backend"
+version = "0.1.0"
+description = "PeptideForge FastAPI backend"
+authors = ["PeptideForge Contributors"]
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = { extras = ["standard"], version = "^0.30.0" }
+peptideforge = { path = "../core", develop = true }
+peptideforge-benchmarks = { path = "../benchmarks", develop = true }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+httpx = "^0.27.0"
+mypy = "^1.10.0"
+ruff = "^0.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

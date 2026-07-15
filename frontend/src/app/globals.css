@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0f1419;
+  --paper: #eef1f3;
+  --accent: #1a5f4a;
+  --muted: #5c6b73;
+  --panel: #ffffff;
+  --panel-inset: #f7f9fa;
+  --panel-border: #d5dde2;
+}
+
+body {
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(15, 20, 25, 0.03) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(rgba(15, 20, 25, 0.03) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(180deg, #e8ecf0 0%, var(--paper) 35%, #e4e9ed 100%);
+  min-height: 100vh;
+  font-family: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer components {
+  .panel {
+    @apply overflow-hidden rounded border border-panel-border bg-panel shadow-sm;
+  }
+  .panel-header {
+    @apply flex items-center justify-between border-b border-panel-border bg-panel-inset px-3 py-2;
+  }
+  .panel-header h2 {
+    @apply font-display text-sm font-semibold tracking-tight text-ink;
+  }
+  .panel-meta {
+    @apply font-mono text-[10px] uppercase tracking-wide text-muted;
+  }
+  .panel-footer {
+    @apply border-t border-panel-border px-3 py-1.5;
+  }
+}

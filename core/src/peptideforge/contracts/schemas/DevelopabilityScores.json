@@ -1,0 +1,141 @@
+{
+  "$defs": {
+    "DevelopabilityProperty": {
+      "description": "Multi-objective developability axes (no single-objective assumption).",
+      "enum": [
+        "aggregation",
+        "solubility",
+        "immunogenicity",
+        "synthesizability",
+        "half_life"
+      ],
+      "title": "DevelopabilityProperty",
+      "type": "string"
+    },
+    "PropertyScore": {
+      "additionalProperties": false,
+      "description": "One developability (or objective) score with optional uncertainty.",
+      "properties": {
+        "property_name": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DevelopabilityProperty"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Property Name"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "uncertainty": {
+          "default": 0.0,
+          "minimum": 0.0,
+          "title": "Uncertainty",
+          "type": "number"
+        },
+        "higher_is_better": {
+          "title": "Higher Is Better",
+          "type": "boolean"
+        },
+        "method": {
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "property_name",
+        "value",
+        "higher_is_better",
+        "method"
+      ],
+      "title": "PropertyScore",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "Traceability metadata attached to every stored result.\n\ngit_sha + data_version + tool_versions make every number auditable.\nMissing fields are allowed only for in-memory synthetic plumbing tests.",
+      "properties": {
+        "git_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Git Sha"
+        },
+        "data_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data Version"
+        },
+        "tool_versions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Tool Versions",
+          "type": "object"
+        },
+        "config_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Config Hash"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Per-property developability vector \u2014 never collapse to a single scalar here.",
+  "properties": {
+    "candidate_id": {
+      "format": "uuid",
+      "title": "Candidate Id",
+      "type": "string"
+    },
+    "scores": {
+      "items": {
+        "$ref": "#/$defs/PropertyScore"
+      },
+      "title": "Scores",
+      "type": "array"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    }
+  },
+  "required": [
+    "candidate_id",
+    "scores"
+  ],
+  "title": "DevelopabilityScores",
+  "type": "object"
+}

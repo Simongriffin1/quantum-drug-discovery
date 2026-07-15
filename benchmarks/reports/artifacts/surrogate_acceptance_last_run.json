@@ -1,0 +1,35 @@
+{
+  "calibration": {
+    "n": 16,
+    "coverage_target": 0.9,
+    "empirical_coverage": 0.9375,
+    "ece": 0.03749999999999998,
+    "ece_threshold": 0.1,
+    "passed": true,
+    "mean_interval_width": 0.6618544741348189,
+    "reliability_bins": [
+      {
+        "bin_index": 0,
+        "n": 16,
+        "predicted_coverage": 0.9,
+        "empirical_coverage": 0.9375,
+        "mean_interval_width": 0.661854474134819
+      }
+    ],
+    "notes": "synthetic_learnable_oracle_not_physics"
+  },
+  "red_team": {
+    "passed": true,
+    "label_shuffle_passed": true,
+    "label_shuffle_rho": 0.03529411764705882,
+    "trivial_baseline_passed": true,
+    "model_rho": 0.9794117647058823,
+    "baseline_rho": 0.0,
+    "leakage_passed": true,
+    "leakage_findings": [],
+    "notes": null
+  },
+  "accepted": true,
+  "data_version": "synthetic_surrogate_v1",
+  "notes": "synthetic_learnable_oracle_not_physics"
+}

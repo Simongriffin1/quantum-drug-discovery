@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "peptideforge-benchmarks"
+version = "0.1.0"
+description = "Public benchmark loaders for PeptideForge (PDBbind-derived, SKEMPI)"
+authors = ["PeptideForge Contributors"]
+packages = [{ include = "peptideforge_benchmarks" }]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.7.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+mypy = "^1.10.0"
+ruff = "^0.4.0"
+black = "^24.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q --strict-markers"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["peptideforge_benchmarks"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]

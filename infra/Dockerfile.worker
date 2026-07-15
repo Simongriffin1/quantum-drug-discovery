@@ -1,0 +1,15 @@
+# Placeholder image pin list for cloud GPU workers (P3+).
+# Prefer permissive-license toolchains; verify at build time.
+FROM python:3.11-slim-bookworm
+
+LABEL org.opencontainers.image.title="peptideforge-worker"
+LABEL org.opencontainers.image.description="Scaffold only — physics deps added in P3+"
+
+WORKDIR /app
+RUN pip install --no-cache-dir "poetry==1.8.3"
+COPY core/ /app/core/
+WORKDIR /app/core
+RUN poetry config virtualenvs.create false \
+    && poetry install --only main --no-interaction --no-ansi
+
+CMD ["python", "-c", "import peptideforge; print(peptideforge.__version__)"]

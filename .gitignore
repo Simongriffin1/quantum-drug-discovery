@@ -1,0 +1,54 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+.eggs/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Virtualenvs
+.venv/
+venv/
+core/.venv/
+backend/.venv/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+npm-debug.log*
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+credentials.json
+*.pem
+
+# Data / artifacts (never commit real physics trajectories casually)
+data/
+*.dcd
+*.xtc
+mlruns/
+.mlflow/
+
+# Poetry lock optional at scaffold; prefer committing locks later
+# poetry.lock
+
+# Ignore large full PDBs / local MLflow DBs in structures (interface PDBs are tracked)
+benchmarks/fixtures/structures/*_full.pdb
+benchmarks/fixtures/structures/oracle_validity_mlflow.db
+benchmarks/fixtures/structures/mlruns/
+benchmarks/fixtures/structures/synthetic_mini/

@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false,
+  "description": "Surrogate prediction with calibrated interval (conformal / ensemble).",
+  "properties": {
+    "candidate_id": {
+      "format": "uuid",
+      "title": "Candidate Id",
+      "type": "string"
+    },
+    "objective_name": {
+      "minLength": 1,
+      "title": "Objective Name",
+      "type": "string"
+    },
+    "mean": {
+      "title": "Mean",
+      "type": "number"
+    },
+    "lower": {
+      "title": "Lower",
+      "type": "number"
+    },
+    "upper": {
+      "title": "Upper",
+      "type": "number"
+    },
+    "epistemic_std": {
+      "minimum": 0.0,
+      "title": "Epistemic Std",
+      "type": "number"
+    },
+    "coverage_target": {
+      "default": 0.9,
+      "exclusiveMaximum": 1.0,
+      "exclusiveMinimum": 0.0,
+      "title": "Coverage Target",
+      "type": "number"
+    }
+  },
+  "required": [
+    "candidate_id",
+    "objective_name",
+    "mean",
+    "lower",
+    "upper",
+    "epistemic_std"
+  ],
+  "title": "CalibratedPrediction",
+  "type": "object"
+}

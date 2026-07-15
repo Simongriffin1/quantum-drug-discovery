@@ -1,0 +1,13 @@
+record_id	pdb_id	peptide_sequence	receptor_sequence	cluster_id	affinity_value	affinity_unit	pk	ligand_name	resolution_A	source	notes
+PP001	1A1N	GILGFVFTL		c0	1.0e-8	Kd	8.0	peptide	2.50	pdbbind_peptide_subset	public_example_fixture
+PP002	1A1M	GILGFVFTL		c0	5.0e-8	Kd	7.30103	peptide	2.60	pdbbind_peptide_subset	homolog_of_PP001
+PP003	1B17	LLFGYPVYV		c1	2.0e-7	Kd	6.69897	peptide	2.10	pdbbind_peptide_subset	public_example_fixture
+PP004	1BD2	LLFGYPVYV		c1	1.0e-6	Kd	6.0	peptide	2.40	pdbbind_peptide_subset	homolog_of_PP003
+PP005	1DUZ	NLVPMVATV		c2	3.16227766e-9	Kd	8.5	peptide	2.00	pdbbind_peptide_subset	public_example_fixture
+PP006	1EEY	NLVPMVATV		c2	1.0e-8	Kd	8.0	peptide	2.20	pdbbind_peptide_subset	homolog_of_PP005
+PP007	1HHG	TPQDLNTML		c3	1.0e-5	Kd	5.0	peptide	2.80	pdbbind_peptide_subset	public_example_fixture
+PP008	1HHK	TPQDLNTML		c3	5.01187234e-6	Kd	5.3	peptide	2.70	pdbbind_peptide_subset	homolog_of_PP007
+PP009	1I7U	SLLMWITQC		c4	1.0e-9	Kd	9.0	peptide	1.90	pdbbind_peptide_subset	public_example_fixture
+PP010	1I7W	SLLMWITQV		c4	2.0e-9	Kd	8.69897	peptide	2.00	pdbbind_peptide_subset	near_homolog_PP009
+PP011	2CLR	SIINFEKL		c5	1.0e-7	Kd	7.0	peptide	2.30	pdbbind_peptide_subset	public_example_fixture
+PP012	3PWP	SIINFEKL		c5	3.16227766e-7	Kd	6.5	peptide	2.50	pdbbind_peptide_subset	homolog_of_PP011

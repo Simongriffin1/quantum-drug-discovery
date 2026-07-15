@@ -1,0 +1,94 @@
+{
+  "$defs": {
+    "RankedCandidate": {
+      "additionalProperties": false,
+      "description": "Candidate ranked by an AcquisitionFunction.",
+      "properties": {
+        "candidate_id": {
+          "format": "uuid",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "acquisition_score": {
+          "title": "Acquisition Score",
+          "type": "number"
+        },
+        "rank": {
+          "minimum": 0,
+          "title": "Rank",
+          "type": "integer"
+        },
+        "constrained_out": {
+          "default": false,
+          "title": "Constrained Out",
+          "type": "boolean"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "acquisition_score",
+        "rank"
+      ],
+      "title": "RankedCandidate",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Next batch selected for folding / physics (respects budget + constraints).",
+  "properties": {
+    "ranked": {
+      "items": {
+        "$ref": "#/$defs/RankedCandidate"
+      },
+      "title": "Ranked",
+      "type": "array"
+    },
+    "batch_size": {
+      "minimum": 1,
+      "title": "Batch Size",
+      "type": "integer"
+    },
+    "budget_remaining": {
+      "minimum": 0.0,
+      "title": "Budget Remaining",
+      "type": "number"
+    },
+    "method": {
+      "minLength": 1,
+      "title": "Method",
+      "type": "string"
+    },
+    "seed": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Seed"
+    }
+  },
+  "required": [
+    "ranked",
+    "batch_size",
+    "budget_remaining",
+    "method"
+  ],
+  "title": "AcquisitionBatch",
+  "type": "object"
+}

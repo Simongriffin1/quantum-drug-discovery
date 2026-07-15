@@ -1,0 +1,70 @@
+{
+  "subset_name": "pdbbind_peptide_affinity_v1_structures_openmm",
+  "spearman": -0.29999999999999993,
+  "rmse": 23.344033217734218,
+  "n": 5,
+  "passed_threshold": false,
+  "spearman_threshold": 0.4,
+  "details": [
+    {
+      "record_id": "PP001",
+      "pdb_file": "PP001_2VLL_interface.pdb",
+      "experimental_pk": 8.0,
+      "mm_gbsa_kcal_mol": -26.93554129053939,
+      "predicted_neg_dG": 26.93554129053939,
+      "tier": "mm_gbsa",
+      "cost_estimate": 1.0
+    },
+    {
+      "record_id": "PP003",
+      "pdb_file": "PP003_1BD2_interface.pdb",
+      "experimental_pk": 6.69897,
+      "mm_gbsa_kcal_mol": -2.306020229420284,
+      "predicted_neg_dG": 2.306020229420284,
+      "tier": "mm_gbsa",
+      "cost_estimate": 1.0
+    },
+    {
+      "record_id": "PP005",
+      "pdb_file": "PP005_1DUZ_interface.pdb",
+      "experimental_pk": 8.5,
+      "mm_gbsa_kcal_mol": -32.182806554377976,
+      "predicted_neg_dG": 32.182806554377976,
+      "tier": "mm_gbsa",
+      "cost_estimate": 1.0
+    },
+    {
+      "record_id": "PP009",
+      "pdb_file": "PP009_1QSE_interface.pdb",
+      "experimental_pk": 9.0,
+      "mm_gbsa_kcal_mol": 10.288365947933269,
+      "predicted_neg_dG": -10.288365947933269,
+      "tier": "mm_gbsa",
+      "cost_estimate": 1.0
+    },
+    {
+      "record_id": "PP011",
+      "pdb_file": "PP011_2CLR_interface.pdb",
+      "experimental_pk": 7.0,
+      "mm_gbsa_kcal_mol": -44.60253070562345,
+      "predicted_neg_dG": 44.60253070562345,
+      "tier": "mm_gbsa",
+      "cost_estimate": 1.0
+    }
+  ],
+  "failures": [],
+  "protocol": {
+    "method": "OpenMM MM-GBSA (amber14 + OBC2), \u0394G \u2248 E_c \u2212 E_r \u2212 E_l after minimize",
+    "invert_sign": true,
+    "minimize_max_iterations": 0,
+    "platform": "CPU",
+    "seed": 0,
+    "manifest": "/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/fixtures/structures/structure_manifest_v1.tsv",
+    "structures": "trimmed public MHC\u2013peptide interface PDBs (see REMARK headers)"
+  },
+  "mlflow": {
+    "run_id": "1a1889d0aae54001b9026066f6bc2024",
+    "experiment_id": "1",
+    "tracking_uri": "sqlite:////Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/fixtures/structures/oracle_validity_mlflow.db"
+  }
+}

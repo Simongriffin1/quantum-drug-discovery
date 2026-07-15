@@ -1,0 +1,6 @@
+record_id	pdb_id	pdb_path	peptide_chain	receptor_chains	epitope	experimental_pk
+PP001	2VLL	PP001_2VLL_interface.pdb	C	A	GILGFVFTL	8.0
+PP003	1BD2	PP003_1BD2_interface.pdb	C	A	LLFGYPVYV	6.69897
+PP005	1DUZ	PP005_1DUZ_interface.pdb	C	A	NLVPMVATV	8.5
+PP009	1QSE	PP009_1QSE_interface.pdb	C	A	SLLMWITQC	9.0
+PP011	2CLR	PP011_2CLR_interface.pdb	C	A	SIINFEKL	7.0

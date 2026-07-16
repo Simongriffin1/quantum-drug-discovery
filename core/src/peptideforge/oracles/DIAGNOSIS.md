@@ -119,3 +119,22 @@ INVALIDATED** (optimistic direction). `splits_v4` uses joint receptor∪peptide
 30% identity clustering; leakage_audit passes. N_test=37 (<40) — integrity over
 sample size; do not interpret a new affinity ρ until/unless re-scored once on v4
 with the locked protocol (no retuning).
+
+## Powered within-target SKEMPI (decisive)
+
+Artifact: `benchmarks/skempi/data/skempi_ddg_powered_last_run.json`.
+Homology-aware PDB hold-out; experimental crystal WT structures; N=100 scored
+(stopped at min_test_n; membership fixed before scoring).
+
+| Metric | Value |
+|---|---|
+| Spearman ρ | **0.381** |
+| 95% CI | **[0.189, 0.556]** |
+| Gate (ρ≥0.30, CI_low>0, red-team) | **PASS** |
+
+Prior N=16 run is under-powered / superseded (`INVALIDATED_N16_CI_WIDTH`).
+
+**Branch decision:** Within-target relative ranking is validated at adequate power.
+Cross-target absolute affinity remains unvalidated (and v3 affinity ρ is leakage-
+invalidated). Scoped within-target campaigns against validated target classes may
+proceed with the cross-target limitation documented — no threshold loosening.

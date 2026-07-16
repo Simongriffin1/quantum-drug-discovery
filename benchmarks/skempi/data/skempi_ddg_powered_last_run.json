@@ -1,0 +1,538 @@
+{
+  "subset": "skempi_v2_within_target_heldout_powered",
+  "n": 100,
+  "spearman": 0.3806909215904269,
+  "spearman_ci_low": 0.18889322486716895,
+  "spearman_ci_high": 0.5556712698520563,
+  "pearson": -0.00835033235283851,
+  "gate_threshold": 0.3,
+  "min_test_n": 100,
+  "gate_pass": true,
+  "n_failures": 0,
+  "red_team": {
+    "passed": true,
+    "label_shuffle_passed": true,
+    "trivial_baseline_passed": true,
+    "leakage_passed": true,
+    "model_rho": 0.3806909215904269,
+    "baseline_rho": 0.0
+  },
+  "protocol": {
+    "gb_model": "gbn2",
+    "solute_dielectric": 1.0,
+    "salt_conc_M": 0.0,
+    "structures": "experimental_crystal_WT"
+  },
+  "split": {
+    "train": 480,
+    "test_assigned": 320,
+    "test_scored": 100,
+    "test_fraction": 0.4,
+    "clustering": "pdb_id_holdout"
+  },
+  "details": [
+    {
+      "record_id": "SK_3BT1_RU137A_274",
+      "predicted_ddg": -7.830425224616192,
+      "experimental_ddg": -0.2875
+    },
+    {
+      "record_id": "SK_3BT1_KU139A_275",
+      "predicted_ddg": -20.212680605240166,
+      "experimental_ddg": 0.6739
+    },
+    {
+      "record_id": "SK_3BT1_RU142A_276",
+      "predicted_ddg": 3.33562427337165,
+      "experimental_ddg": 0.363
+    },
+    {
+      "record_id": "SK_3BT1_HU143A_277",
+      "predicted_ddg": -21.762505906648585,
+      "experimental_ddg": 0.6613
+    },
+    {
+      "record_id": "SK_3BT1_RU145A_278",
+      "predicted_ddg": 6.079176041210303,
+      "experimental_ddg": 0.4201
+    },
+    {
+      "record_id": "SK_3BT1_LU1A_4317",
+      "predicted_ddg": 3.1253774672804866,
+      "experimental_ddg": 0.3366
+    },
+    {
+      "record_id": "SK_3BT1_RU2A_4318",
+      "predicted_ddg": -3.675423358232365,
+      "experimental_ddg": 0.0934
+    },
+    {
+      "record_id": "SK_3BT1_MU4A_4319",
+      "predicted_ddg": -12.262519872834673,
+      "experimental_ddg": 0.0368
+    },
+    {
+      "record_id": "SK_3BT1_QU5A_4320",
+      "predicted_ddg": 7.369509401600226,
+      "experimental_ddg": 0.0601
+    },
+    {
+      "record_id": "SK_3BT1_KU7A_4321",
+      "predicted_ddg": -10.466961522542988,
+      "experimental_ddg": 0.2689
+    },
+    {
+      "record_id": "SK_3BT1_TU8A_4322",
+      "predicted_ddg": -3.8172554645716446,
+      "experimental_ddg": 0.1738
+    },
+    {
+      "record_id": "SK_3BT1_NU9A_4323",
+      "predicted_ddg": -3.8361614892055513,
+      "experimental_ddg": 0.2999
+    },
+    {
+      "record_id": "SK_3BT1_GU10A_4324",
+      "predicted_ddg": 1.925426186513505,
+      "experimental_ddg": 0.2608
+    },
+    {
+      "record_id": "SK_3BT1_DU11A_4325",
+      "predicted_ddg": 298.45566790112935,
+      "experimental_ddg": -0.0259
+    },
+    {
+      "record_id": "SK_3BT1_RU13A_4326",
+      "predicted_ddg": 5.481366008869372,
+      "experimental_ddg": 0.2689
+    },
+    {
+      "record_id": "SK_3BT1_VU14A_4327",
+      "predicted_ddg": 7.954411034763325,
+      "experimental_ddg": 0.2768
+    },
+    {
+      "record_id": "SK_3BT1_EU15A_4328",
+      "predicted_ddg": 3.478993133408949,
+      "experimental_ddg": 0.1145
+    },
+    {
+      "record_id": "SK_3BT1_EU16A_4329",
+      "predicted_ddg": 16.681396893109195,
+      "experimental_ddg": 0.0825
+    },
+    {
+      "record_id": "SK_3BT1_AU18S_4330",
+      "predicted_ddg": -10.615590084387804,
+      "experimental_ddg": 0.0714
+    },
+    {
+      "record_id": "SK_3BT1_LU19A_4331",
+      "predicted_ddg": -2.8500819285109174,
+      "experimental_ddg": 0.1738
+    },
+    {
+      "record_id": "SK_1A22_MA14A_1425",
+      "predicted_ddg": 8.409828255797038,
+      "experimental_ddg": 0.0
+    },
+    {
+      "record_id": "SK_1A22_HA18A_1426",
+      "predicted_ddg": -8.128679743007524,
+      "experimental_ddg": -0.4861
+    },
+    {
+      "record_id": "SK_1A22_HA21A_1427",
+      "predicted_ddg": 48.267488893383415,
+      "experimental_ddg": 0.1554
+    },
+    {
+      "record_id": "SK_1A22_QA22A_1428",
+      "predicted_ddg": -2.403207938783453,
+      "experimental_ddg": -0.2197
+    },
+    {
+      "record_id": "SK_1A22_FA25A_1429",
+      "predicted_ddg": 8.862106790184043,
+      "experimental_ddg": -0.4471
+    },
+    {
+      "record_id": "SK_1A22_DA26A_1430",
+      "predicted_ddg": 12.131264432391617,
+      "experimental_ddg": -0.2112
+    },
+    {
+      "record_id": "SK_1A22_QA29A_1431",
+      "predicted_ddg": -0.5147274339979049,
+      "experimental_ddg": -0.5887
+    },
+    {
+      "record_id": "SK_1A22_YA42A_1432",
+      "predicted_ddg": 8.616037620784482,
+      "experimental_ddg": 0.1992
+    },
+    {
+      "record_id": "SK_1A22_LA45A_1433",
+      "predicted_ddg": 11.790125289538992,
+      "experimental_ddg": 1.2238
+    },
+    {
+      "record_id": "SK_1A22_QA46A_1434",
+      "predicted_ddg": 9.150379517450347,
+      "experimental_ddg": 0.108
+    },
+    {
+      "record_id": "SK_1A22_PA48A_1435",
+      "predicted_ddg": 5.351328266231576,
+      "experimental_ddg": 0.4104
+    },
+    {
+      "record_id": "SK_1A22_SA51A_1436",
+      "predicted_ddg": 8.018351794104092,
+      "experimental_ddg": 0.348
+    },
+    {
+      "record_id": "SK_1A22_EA56A_1437",
+      "predicted_ddg": 2.1911193091073073,
+      "experimental_ddg": 0.4104
+    },
+    {
+      "record_id": "SK_1A22_PA61A_1438",
+      "predicted_ddg": -0.7486518781224731,
+      "experimental_ddg": 1.2087
+    },
+    {
+      "record_id": "SK_1A22_SA62A_1439",
+      "predicted_ddg": -0.5414953749423148,
+      "experimental_ddg": 0.1554
+    },
+    {
+      "record_id": "SK_1A22_NA63A_1440",
+      "predicted_ddg": 3.8712186682387255,
+      "experimental_ddg": 0.3142
+    },
+    {
+      "record_id": "SK_1A22_RA64A_1441",
+      "predicted_ddg": 2.421313900355017,
+      "experimental_ddg": 1.6417
+    },
+    {
+      "record_id": "SK_1A22_EA65A_1442",
+      "predicted_ddg": 3.344046004523989,
+      "experimental_ddg": -0.4728
+    },
+    {
+      "record_id": "SK_1A22_QA68A_1443",
+      "predicted_ddg": 2.111779260681942,
+      "experimental_ddg": 0.5881
+    },
+    {
+      "record_id": "SK_1A22_YA164A_1444",
+      "predicted_ddg": -0.7872378929896513,
+      "experimental_ddg": 0.348
+    },
+    {
+      "record_id": "SK_1CHO_LI18G_2268",
+      "predicted_ddg": 13.557771026615626,
+      "experimental_ddg": 6.0004
+    },
+    {
+      "record_id": "SK_1CHO_LI18A_2269",
+      "predicted_ddg": 15.845948204424417,
+      "experimental_ddg": 4.6997
+    },
+    {
+      "record_id": "SK_1CHO_LI18S_2270",
+      "predicted_ddg": 6.672316579964956,
+      "experimental_ddg": 4.9172
+    },
+    {
+      "record_id": "SK_1CHO_LI18C_2271",
+      "predicted_ddg": 4.1648336837009765,
+      "experimental_ddg": 2.6055
+    },
+    {
+      "record_id": "SK_1CHO_LI18V_2272",
+      "predicted_ddg": 71.26568866703161,
+      "experimental_ddg": 4.2139
+    },
+    {
+      "record_id": "SK_1CHO_LI18T_2273",
+      "predicted_ddg": 103.78174757051448,
+      "experimental_ddg": 4.4222
+    },
+    {
+      "record_id": "SK_1CHO_LI18P_2274",
+      "predicted_ddg": 142.2345812541485,
+      "experimental_ddg": 8.679
+    },
+    {
+      "record_id": "SK_1CHO_LI18I_2275",
+      "predicted_ddg": 73.31565225278393,
+      "experimental_ddg": 4.4165
+    },
+    {
+      "record_id": "SK_1CHO_LI18M_2276",
+      "predicted_ddg": 0.322338692709252,
+      "experimental_ddg": 0.3753
+    },
+    {
+      "record_id": "SK_1CHO_LI18N_2277",
+      "predicted_ddg": 6.5845313248032085,
+      "experimental_ddg": 3.3101
+    },
+    {
+      "record_id": "SK_1CHO_LI18D_2278",
+      "predicted_ddg": 106.54267368620111,
+      "experimental_ddg": 7.1009
+    },
+    {
+      "record_id": "SK_1CHO_LI18K_2279",
+      "predicted_ddg": 13980.415583949773,
+      "experimental_ddg": 4.4107
+    },
+    {
+      "record_id": "SK_1CHO_LI18Q_2280",
+      "predicted_ddg": 330.55490824690435,
+      "experimental_ddg": 2.9121
+    },
+    {
+      "record_id": "SK_1CHO_LI18E_2281",
+      "predicted_ddg": 954.7355330541875,
+      "experimental_ddg": 6.5656
+    },
+    {
+      "record_id": "SK_1CHO_LI18H_2282",
+      "predicted_ddg": 410.1901630912386,
+      "experimental_ddg": 2.9588
+    },
+    {
+      "record_id": "SK_1CHO_LI18F_2283",
+      "predicted_ddg": 13177439.748525737,
+      "experimental_ddg": -1.4808
+    },
+    {
+      "record_id": "SK_1CHO_LI18R_2284",
+      "predicted_ddg": 27421100.29317097,
+      "experimental_ddg": 3.9507
+    },
+    {
+      "record_id": "SK_1CHO_LI18Y_2285",
+      "predicted_ddg": 34225.71503519491,
+      "experimental_ddg": -2.194
+    },
+    {
+      "record_id": "SK_1CHO_LI18W_2286",
+      "predicted_ddg": 1945137.76625794,
+      "experimental_ddg": -1.6673
+    },
+    {
+      "record_id": "SK_1CHO_AI15G_2344",
+      "predicted_ddg": 0.08427274254521677,
+      "experimental_ddg": 0.0651
+    },
+    {
+      "record_id": "SK_1R0R_LI18G_2306",
+      "predicted_ddg": -16.41806422379328,
+      "experimental_ddg": 2.32
+    },
+    {
+      "record_id": "SK_1R0R_LI18A_2307",
+      "predicted_ddg": -10.648149281341475,
+      "experimental_ddg": 0.3102
+    },
+    {
+      "record_id": "SK_1R0R_LI18S_2308",
+      "predicted_ddg": -13.048400528468946,
+      "experimental_ddg": 1.5493
+    },
+    {
+      "record_id": "SK_1R0R_LI18C_2309",
+      "predicted_ddg": -9.944585901182094,
+      "experimental_ddg": -1.3275
+    },
+    {
+      "record_id": "SK_1R0R_LI18V_2310",
+      "predicted_ddg": 20.211040301980645,
+      "experimental_ddg": 2.1265
+    },
+    {
+      "record_id": "SK_1R0R_LI18T_2311",
+      "predicted_ddg": 15.247748923991267,
+      "experimental_ddg": 0.1575
+    },
+    {
+      "record_id": "SK_1R0R_LI18P_2312",
+      "predicted_ddg": 50.7182683902288,
+      "experimental_ddg": 7.5804
+    },
+    {
+      "record_id": "SK_1R0R_LI18I_2313",
+      "predicted_ddg": 78.427447419856,
+      "experimental_ddg": 3.2086
+    },
+    {
+      "record_id": "SK_1R0R_LI18M_2314",
+      "predicted_ddg": 72.3422126200821,
+      "experimental_ddg": -0.5091
+    },
+    {
+      "record_id": "SK_1R0R_LI18N_2315",
+      "predicted_ddg": 82.9928765952741,
+      "experimental_ddg": 1.4794
+    },
+    {
+      "record_id": "SK_1R0R_LI18D_2316",
+      "predicted_ddg": 1949.6118760112133,
+      "experimental_ddg": 4.4759
+    },
+    {
+      "record_id": "SK_1R0R_LI18K_2317",
+      "predicted_ddg": 97.50347148319533,
+      "experimental_ddg": 3.2986
+    },
+    {
+      "record_id": "SK_1R0R_LI18Q_2318",
+      "predicted_ddg": 27700.865729547386,
+      "experimental_ddg": 0.5617
+    },
+    {
+      "record_id": "SK_1R0R_LI18E_2319",
+      "predicted_ddg": 610.435254604473,
+      "experimental_ddg": 2.147
+    },
+    {
+      "record_id": "SK_1R0R_LI18H_2320",
+      "predicted_ddg": 8030.33084614899,
+      "experimental_ddg": 0.5617
+    },
+    {
+      "record_id": "SK_1R0R_LI18F_2321",
+      "predicted_ddg": 30084.488079621504,
+      "experimental_ddg": 0.6084
+    },
+    {
+      "record_id": "SK_1R0R_LI18R_2322",
+      "predicted_ddg": 22784.45500591475,
+      "experimental_ddg": 2.8944
+    },
+    {
+      "record_id": "SK_1R0R_LI18Y_2323",
+      "predicted_ddg": 90579.30507217982,
+      "experimental_ddg": 0.4406
+    },
+    {
+      "record_id": "SK_1R0R_LI18W_2324",
+      "predicted_ddg": 25571630762.906414,
+      "experimental_ddg": 1.5027
+    },
+    {
+      "record_id": "SK_1R0R_AI15G_2382",
+      "predicted_ddg": -15.570480287611431,
+      "experimental_ddg": 1.0962
+    },
+    {
+      "record_id": "SK_3SGB_LI18G_2325",
+      "predicted_ddg": 8.261667763756435,
+      "experimental_ddg": 4.9336
+    },
+    {
+      "record_id": "SK_3SGB_LI18A_2326",
+      "predicted_ddg": -1.521264622823793,
+      "experimental_ddg": 2.9474
+    },
+    {
+      "record_id": "SK_3SGB_LI18S_2327",
+      "predicted_ddg": 6.785529581437203,
+      "experimental_ddg": 4.1002
+    },
+    {
+      "record_id": "SK_3SGB_LI18C_2328",
+      "predicted_ddg": 1.817299302448106,
+      "experimental_ddg": -0.0132
+    },
+    {
+      "record_id": "SK_3SGB_LI18V_2329",
+      "predicted_ddg": 11.967348953099616,
+      "experimental_ddg": 2.9919
+    },
+    {
+      "record_id": "SK_3SGB_LI18T_2330",
+      "predicted_ddg": 15.385144326725054,
+      "experimental_ddg": 3.16
+    },
+    {
+      "record_id": "SK_3SGB_LI18P_2331",
+      "predicted_ddg": 34.5984186360175,
+      "experimental_ddg": 8.3279
+    },
+    {
+      "record_id": "SK_3SGB_LI18I_2332",
+      "predicted_ddg": 29.16289776167835,
+      "experimental_ddg": 4.4187
+    },
+    {
+      "record_id": "SK_3SGB_LI18M_2333",
+      "predicted_ddg": 1.2676123680849685,
+      "experimental_ddg": 0.4242
+    },
+    {
+      "record_id": "SK_3SGB_LI18N_2334",
+      "predicted_ddg": 19.097358884829973,
+      "experimental_ddg": 3.3523
+    },
+    {
+      "record_id": "SK_3SGB_LI18D_2335",
+      "predicted_ddg": 355.9960430876059,
+      "experimental_ddg": 5.5895
+    },
+    {
+      "record_id": "SK_3SGB_LI18K_2336",
+      "predicted_ddg": 1402.735813202101,
+      "experimental_ddg": 3.1376
+    },
+    {
+      "record_id": "SK_3SGB_LI18Q_2337",
+      "predicted_ddg": 68.09778846017522,
+      "experimental_ddg": 2.5672
+    },
+    {
+      "record_id": "SK_3SGB_LI18E_2338",
+      "predicted_ddg": 406.21473062381995,
+      "experimental_ddg": 5.8992
+    },
+    {
+      "record_id": "SK_3SGB_LI18H_2339",
+      "predicted_ddg": 239.20457718894696,
+      "experimental_ddg": 1.6899
+    },
+    {
+      "record_id": "SK_3SGB_LI18F_2340",
+      "predicted_ddg": 497654.1795196041,
+      "experimental_ddg": 1.3548
+    },
+    {
+      "record_id": "SK_3SGB_LI18R_2341",
+      "predicted_ddg": 785721027.55084,
+      "experimental_ddg": 3.3199
+    },
+    {
+      "record_id": "SK_3SGB_LI18Y_2342",
+      "predicted_ddg": 12685.17532602954,
+      "experimental_ddg": 1.6526
+    },
+    {
+      "record_id": "SK_3SGB_LI18W_2343",
+      "predicted_ddg": 11734664.670771226,
+      "experimental_ddg": 1.8392
+    },
+    {
+      "record_id": "SK_3SGB_AI15G_2401",
+      "predicted_ddg": -0.6568884625149423,
+      "experimental_ddg": 2.4517
+    }
+  ],
+  "test_touched_affinity_set": false,
+  "prior_underpowered_run": "INVALIDATED_N16_CI_WIDTH",
+  "notes": "Side-chain strip to CB/backbone + PDBFixer rebuild; WT energies cached per complex. Experimental crystal WT structures only."
+}

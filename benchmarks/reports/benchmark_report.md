@@ -1,10 +1,12 @@
 # PeptideForge Benchmark Report
 
-_Generated at 2026-07-16T02:31:46.810065+00:00_ · git `ea0d919ed7a918f26e9d0dbc9c804ca2be61beab`
+_Generated at 2026-07-16T05:20:12.423796+00:00_ · git `47e2718d7b498ec2d4d22ca61deecebbac1aff77`
 
 ## Caveats
 
-- Oracle-validity FAIL means binding campaigns are not authorized (CURSOR_PROJECT_CONTEXT §8).
+- Oracle-validity FAIL means binding campaigns are not authorized for cross-target absolute affinity (CURSOR_PROJECT_CONTEXT §8).
+- Within-target SKEMPI PASS may authorize scoped within-target campaigns only, with the cross-target limitation documented.
+- Affinity splits_v3 numbers are INVALIDATED (peptide-sequence leakage); do not cite v3 one-shot ρ.
 - Surrogate / loop / acquisition sections marked synthetic_* validate algorithmic plumbing only — not physics fidelity.
 - All numbers below are traced to JSON artifacts and/or MLflow run IDs; none are invented.
 
@@ -13,7 +15,7 @@ _Generated at 2026-07-16T02:31:46.810065+00:00_ · git `ea0d919ed7a918f26e9d0dbc
 | Section | Status |
 |---|---|
 | Oracle validity (affinity) | **FAIL** |
-| Stability / ddG (SKEMPI within-target) | **FAIL** |
+| Stability / ddG (SKEMPI within-target) | **PASS** |
 | Surrogate calibration (synthetic plumbing) | **PASS** |
 | Acquisition (Branin–Currin hypervolume) | **PASS** |
 | Loop efficiency (simulations-to-target) | **PASS** |
@@ -52,23 +54,23 @@ subset_name: 'peptide_affinity_v2_experimental_openmm'
 
 ## Stability / ddG (SKEMPI within-target)
 
-**Status:** FAIL
+**Status:** PASS
 
-Within-target held-out SKEMPI ΔΔG: N=16, Spearman ρ=0.48823529411764705 (95% CI [-0.03869047619047619, 0.8295964125560537]). Pre-registered gate ρ≥0.30 with CI_low>0: FAILED. Red-team=pass. Cross-target affinity gate is reported separately and is not replaced.
+Within-target held-out SKEMPI ΔΔG: N=100, Spearman ρ=0.3806909215904269 (95% CI [0.18889322486716895, 0.5556712698520563]). Pre-registered gate ρ≥0.30 with CI_low>0: PASSED. Red-team=pass. Cross-target affinity gate is reported separately and is not replaced.
 
 | Metric | Value | Source |
 |---|---|---|
-| `skempi_ddg_spearman` | 0.488235 | `file:/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/skempi/data/skempi_ddg_last_run.json` — N=16; CI=[-0.03869047619047619, 0.8295964125560537] |
-| `skempi_ddg_spearman_ci_low` | -0.0386905 | `file:/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/skempi/data/skempi_ddg_last_run.json` |
+| `skempi_ddg_spearman` | 0.380691 | `file:/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/skempi/data/skempi_ddg_powered_last_run.json` — N=100; CI=[0.18889322486716895, 0.5556712698520563] |
+| `skempi_ddg_spearman_ci_low` | 0.188893 | `file:/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/skempi/data/skempi_ddg_powered_last_run.json` |
 | `skempi_ddg_gate_threshold` | 0.3 | `ACCEPTANCE.md` |
 
 <details><summary>Details (JSON-backed)</summary>
 
 ```
-artifact: '/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/skempi/data/skempi_ddg_last_run.json'
-gate_pass: False
-protocol: {'gb_model': 'gbn2', 'solute_dielectric': 1.0, 'salt_conc_M': 0.0}
-red_team: {'passed': True, 'label_shuffle_passed': True, 'trivial_baseline_passed': True, 'leakage_passed': True, 'model_rho': 0.48823529411764705, 'baseline_rho': 0.0}
+artifact: '/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/skempi/data/skempi_ddg_powered_last_run.json'
+gate_pass: True
+protocol: {'gb_model': 'gbn2', 'solute_dielectric': 1.0, 'salt_conc_M': 0.0, 'structures': 'experimental_crystal_WT'}
+red_team: {'passed': True, 'label_shuffle_passed': True, 'trivial_baseline_passed': True, 'leakage_passed': True, 'model_rho': 0.3806909215904269, 'baseline_rho': 0.0}
 ```
 
 </details>

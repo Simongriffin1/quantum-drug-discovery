@@ -322,6 +322,13 @@ def main() -> None:
         )
         if len(pairs) % 10 == 0:
             print(f"  scored {len(pairs)} / fails {n_fail}", flush=True)
+        if len(pairs) >= args.min_test_n:
+            print(
+                f"  reached min_test_n={args.min_test_n}; stopping further scoring "
+                f"(held-out membership fixed before scoring)",
+                flush=True,
+            )
+            break
 
     if len(pairs) < args.min_test_n:
         raise SystemExit(

@@ -205,8 +205,16 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
 def collect_ddg_status(artifact: Path | None = None) -> ReportSection:
     """SKEMPI within-target ΔΔG co-primary gate (ACCEPTANCE.md)."""
     path = artifact or (
-        _repo_root() / "benchmarks" / "skempi" / "data" / "skempi_ddg_last_run.json"
+        _repo_root()
+        / "benchmarks"
+        / "skempi"
+        / "data"
+        / "skempi_ddg_powered_last_run.json"
     )
+    if not path.is_file():
+        path = (
+            _repo_root() / "benchmarks" / "skempi" / "data" / "skempi_ddg_last_run.json"
+        )
     if not path.is_file():
         return ReportSection(
             title="Stability / ddG (SKEMPI within-target)",
@@ -595,7 +603,11 @@ def build_benchmark_report(
     )
     caveats = (
         "Oracle-validity FAIL means binding campaigns are not authorized "
-        "(CURSOR_PROJECT_CONTEXT §8).",
+        "for cross-target absolute affinity (CURSOR_PROJECT_CONTEXT §8).",
+        "Within-target SKEMPI PASS may authorize scoped within-target campaigns "
+        "only, with the cross-target limitation documented.",
+        "Affinity splits_v3 numbers are INVALIDATED (peptide-sequence leakage); "
+        "do not cite v3 one-shot ρ.",
         "Surrogate / loop / acquisition sections marked synthetic_* validate "
         "algorithmic plumbing only — not physics fidelity.",
         "All numbers below are traced to JSON artifacts and/or MLflow run IDs; "

@@ -583,5 +583,8 @@
     "run_id": "aeefc1bdfd1d4e289b923912c8639001",
     "experiment_id": "1",
     "tracking_uri": "sqlite:///benchmarks/peptide_affinity/data/oracle_validity_v3.db"
-  }
+  },
+  "invalidated": true,
+  "invalidation_reason": "splits_v3 peptide-sequence leakage; see splits_v4.json",
+  "do_not_cite": true
 }

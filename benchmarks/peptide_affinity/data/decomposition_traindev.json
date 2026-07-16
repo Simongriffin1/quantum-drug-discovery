@@ -1,0 +1,191 @@
+{
+  "method": "OpenMM force-group + charge/LJ scaling (not AmberTools MMPBSA.py)",
+  "partition": "train+val",
+  "n": 9,
+  "test_touched": false,
+  "correlations": {
+    "neg_total": {
+      "spearman": 0.3,
+      "spearman_ci_low": -0.5263157894736842,
+      "spearman_ci_high": 0.9304347826086956,
+      "pearson": 0.39348180410881795,
+      "pearson_ci_low": -0.2711540520793251,
+      "pearson_ci_high": 0.9060163882375344
+    },
+    "neg_vdw": {
+      "spearman": 0.31666666666666665,
+      "spearman_ci_low": -0.631578947368421,
+      "spearman_ci_high": 0.8918918918918919,
+      "pearson": 0.24350241435860567,
+      "pearson_ci_low": -0.6749531690382489,
+      "pearson_ci_high": 0.9350535203487179
+    },
+    "neg_elec": {
+      "spearman": -0.033333333333333326,
+      "spearman_ci_low": -0.7142857142857143,
+      "spearman_ci_high": 0.8793103448275861,
+      "pearson": -0.002678479623195726,
+      "pearson_ci_low": -0.7652079756142441,
+      "pearson_ci_high": 0.9570203819735521
+    },
+    "neg_polar_solv": {
+      "spearman": 0.0,
+      "spearman_ci_low": -0.9999999999999999,
+      "spearman_ci_high": 0.6545454545454545,
+      "pearson": 0.011943575192538679,
+      "pearson_ci_low": -0.8775436798442293,
+      "pearson_ci_high": 0.8267669307594481
+    },
+    "neg_nonpolar": {
+      "spearman": 0.36666666666666664,
+      "spearman_ci_low": -0.43119266055045874,
+      "spearman_ci_high": 0.8947368421052632,
+      "pearson": 0.2423157918404618,
+      "pearson_ci_low": -0.2559996532939391,
+      "pearson_ci_high": 0.7023102765035055
+    },
+    "neg_elec_plus_polar": {
+      "spearman": 0.09999999999999999,
+      "spearman_ci_low": -0.6923076923076922,
+      "spearman_ci_high": 0.9464285714285714,
+      "pearson": 0.05219477261541217,
+      "pearson_ci_low": -0.7238510001221959,
+      "pearson_ci_high": 0.8649313921970616
+    },
+    "neg_vdw_plus_nonpolar": {
+      "spearman": 0.31666666666666665,
+      "spearman_ci_low": -0.5963302752293578,
+      "spearman_ci_high": 0.9285714285714286,
+      "pearson": 0.24354084959435665,
+      "pearson_ci_low": -0.6442040972954872,
+      "pearson_ci_high": 0.9313672950021884
+    },
+    "net_charge": {
+      "spearman": -0.05085476277156078,
+      "spearman_ci_low": -0.8139214557636054,
+      "spearman_ci_high": 0.6842105263157895,
+      "pearson": 0.046943873082792215,
+      "pearson_ci_low": -0.5800019090097879,
+      "pearson_ci_high": 0.760912973976166
+    }
+  },
+  "rows": [
+    {
+      "record_id": "PA_1J19_B",
+      "total": -40.75351494052211,
+      "vdw": -74.40404762140497,
+      "elec": 39.40166836429762,
+      "polar_solv": -5.750794173476834,
+      "nonpolar": -0.00034150993562320764,
+      "elec_plus_polar": 33.65087419082079,
+      "vdw_plus_nonpolar": -74.4043891313406,
+      "bonded": -2.2737367544323206e-12,
+      "experimental_pkd": 7.785156,
+      "net_charge": 5.0
+    },
+    {
+      "record_id": "PA_3NFL_E",
+      "total": 0.01715853800487821,
+      "vdw": -0.009900208552153344,
+      "elec": 0.36914515563708505,
+      "polar_solv": -0.34194455986664707,
+      "nonpolar": -0.00014184921391446892,
+      "elec_plus_polar": 0.027200595770437985,
+      "vdw_plus_nonpolar": -0.010042057766067813,
+      "bonded": 4.547473508864641e-13,
+      "experimental_pkd": 4.376751,
+      "net_charge": 2.0
+    },
+    {
+      "record_id": "PA_3QN7_B",
+      "total": -17.384476231833105,
+      "vdw": -81.03586259488657,
+      "elec": -190.22835423568262,
+      "polar_solv": 253.89331377980943,
+      "nonpolar": -0.013573181080573704,
+      "elec_plus_polar": 63.664959544126816,
+      "vdw_plus_nonpolar": -81.04943577596714,
+      "bonded": 3.183231456205249e-12,
+      "experimental_pkd": 6.8041,
+      "net_charge": 1.0
+    },
+    {
+      "record_id": "PA_6A6W_B",
+      "total": -27.475032122006624,
+      "vdw": -58.529812266096016,
+      "elec": -211.59293449503392,
+      "polar_solv": 242.64803567918636,
+      "nonpolar": -0.0003210400634721111,
+      "elec_plus_polar": 31.05510118415245,
+      "vdw_plus_nonpolar": -58.530133306159485,
+      "bonded": 1.1368683772161603e-13,
+      "experimental_pkd": 5.431798,
+      "net_charge": -3.0
+    },
+    {
+      "record_id": "PA_4RRV_B",
+      "total": -53.94716245433665,
+      "vdw": -76.44044453880633,
+      "elec": -256.3391746596935,
+      "polar_solv": 278.8583737277978,
+      "nonpolar": -0.025916983665410953,
+      "elec_plus_polar": 22.519199068104285,
+      "vdw_plus_nonpolar": -76.46636152247174,
+      "bonded": 4.547473508864641e-13,
+      "experimental_pkd": 7.39794,
+      "net_charge": -5.0
+    },
+    {
+      "record_id": "PA_2KYM_B",
+      "total": 0.7493207832287965,
+      "vdw": -46.72111462355176,
+      "elec": -151.77211879145173,
+      "polar_solv": 199.242146325955,
+      "nonpolar": 0.0004078722769520482,
+      "elec_plus_polar": 47.47002753450326,
+      "vdw_plus_nonpolar": -46.72070675127481,
+      "bonded": 1.7053025658242404e-13,
+      "experimental_pkd": 6.69897,
+      "net_charge": 3.0
+    },
+    {
+      "record_id": "PA_5V6Y_E",
+      "total": 0.05785878747701645,
+      "vdw": -0.021628092974424362,
+      "elec": -2.9743226034917996,
+      "polar_solv": 3.0537150991934823,
+      "nonpolar": 9.438514454274127e-05,
+      "elec_plus_polar": 0.07939249570168272,
+      "vdw_plus_nonpolar": -0.02153370782988162,
+      "bonded": 0.0,
+      "experimental_pkd": 8.4698,
+      "net_charge": 0.0
+    },
+    {
+      "record_id": "PA_2M41_A",
+      "total": -0.22404931816449647,
+      "vdw": -49.834952029862706,
+      "elec": -65.74695186964058,
+      "polar_solv": 115.35752742844028,
+      "nonpolar": 0.00032715289834328587,
+      "elec_plus_polar": 49.610575558799695,
+      "vdw_plus_nonpolar": -49.83462487696436,
+      "bonded": 2.8421709430404007e-13,
+      "experimental_pkd": 5.09691,
+      "net_charge": 0.0
+    },
+    {
+      "record_id": "PA_4K0U_B",
+      "total": -49.49221983298794,
+      "vdw": -80.83270509813286,
+      "elec": -175.74551040539083,
+      "polar_solv": 207.08649842274576,
+      "nonpolar": -0.0005027522101528348,
+      "elec_plus_polar": 31.34098801735493,
+      "vdw_plus_nonpolar": -80.83320785034302,
+      "bonded": 6.821210263296962e-13,
+      "experimental_pkd": 7.259637,
+      "net_charge": 0.0
+    }
+  ]
+}

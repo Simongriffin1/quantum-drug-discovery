@@ -60,6 +60,10 @@ class OpenMMOracleConfig:
     receptor_chain_ids: tuple[str, ...] | None = None  # None → all non-peptide
     seed: int = 0
     nonbonded_cutoff_nm: float = 1.6
+    # Electrostatics / implicit-solvent levers (Chen et al. PCCP 2019)
+    solute_dielectric: float = 1.0
+    solvent_dielectric: float = 78.5
+    salt_conc_M: float = 0.0  # Debye screening; 0.15 ≈ physiological
 
 
 class OpenMMPhysicsOracle:
@@ -183,6 +187,9 @@ class OpenMMPhysicsOracle:
             # Interface trims create artificial termini; ignore dangling peptide bonds.
             ignoreExternalBonds=True,
             residueTemplates=residue_templates,
+            soluteDielectric=self.config.solute_dielectric,
+            solventDielectric=self.config.solvent_dielectric,
+            implicitSolventSaltConc=self.config.salt_conc_M,
         )
         integrator = openmm.LangevinMiddleIntegrator(
             self.config.temperature_K * unit.kelvin,

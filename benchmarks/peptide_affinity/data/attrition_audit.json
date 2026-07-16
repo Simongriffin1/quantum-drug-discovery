@@ -1,0 +1,101 @@
+{
+  "funnel": {
+    "pepbench_n": 1433,
+    "matched_n": 68,
+    "prep_ok_n": 45,
+    "scoreable_n": 40,
+    "retention_vs_pepbench": 0.027913468248429867
+  },
+  "drop_reasons": {
+    "pepbench_total": 1433,
+    "matched_catalog": 68,
+    "no_rcsb_exact_chain_match": 1365,
+    "prep_failed": 23,
+    "prep_ok": 45,
+    "scoreable": 40,
+    "prep_ok_not_scoreable": 5
+  },
+  "prep_fail_categories": {
+    "receptor empty after trim ": 13,
+    "no peptide atoms on chain P": 4,
+    "no peptide atoms on chain X": 2,
+    "no peptide atoms on chain R": 1,
+    "no peptide atoms on chain T": 1,
+    "no peptide atoms on chain C": 1,
+    "'NoneType' object has no attribute 'topology'": 1
+  },
+  "distributions": {
+    "pepbench_all": {
+      "net_charge": {
+        "n": 1433.0,
+        "mean": 0.46266573621772505,
+        "std": 3.1519095720436696,
+        "min": -13.0,
+        "p50": 0.0,
+        "max": 10.0
+      },
+      "peptide_len": {
+        "n": 1433.0,
+        "mean": 16.135380321004885,
+        "std": 9.519596673306788,
+        "min": 5.0,
+        "p50": 13.0,
+        "max": 50.0
+      },
+      "pKd": {
+        "n": 1433.0,
+        "mean": 5.872433299918593,
+        "std": 1.473982263527868,
+        "min": 2.455932,
+        "p50": 5.69897,
+        "max": 12.120331
+      }
+    },
+    "scoreable_survivors": {
+      "net_charge": {
+        "n": 40.0,
+        "mean": 0.325,
+        "std": 2.8857519128580864,
+        "min": -8.0,
+        "p50": 1.0,
+        "max": 5.0
+      },
+      "peptide_len": {
+        "n": 40.0,
+        "mean": 16.225,
+        "std": 0.7333624702836331,
+        "min": 15.0,
+        "p50": 16.0,
+        "max": 17.0
+      },
+      "pKd": {
+        "n": 40.0,
+        "mean": 6.094885325,
+        "std": 1.1485394300044705,
+        "min": 3.735182,
+        "p50": 6.39794,
+        "max": 8.4698
+      },
+      "resolution": {
+        "n": 26.0,
+        "mean": 1.8438461538461541,
+        "std": 0.4180725001535204,
+        "min": 1.0,
+        "p50": 1.8,
+        "max": 2.8
+      }
+    }
+  },
+  "homogeneous_neutralish_n": 20,
+  "charge_skew_detected": false,
+  "call": "oracle_genuinely_weak_vs_charge_baseline",
+  "narrative": "Survivor mean net_charge (0.33) is close to PepBench (0.46); net_charge winning is unlikely to be pure selection bias \u2014 treat as oracle electrostatic/solvation failure.",
+  "oracle_artifact_snapshot": {
+    "spearman": 0.1153225806451613,
+    "baseline_rhos": {
+      "peptide_length": 0.06318261512929894,
+      "net_charge": 0.4473853322373469
+    },
+    "n": 31
+  }
+}

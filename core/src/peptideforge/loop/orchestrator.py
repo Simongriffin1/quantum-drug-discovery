@@ -144,6 +144,31 @@ class ClosedLoopOrchestrator:
     def run(self) -> CampaignResult:
         """Run the full campaign until target or max_iterations."""
         cfg = self.config
+        if not cfg.simulation_mode:
+            from peptideforge.authorization import (
+                AuthorizationDenied,
+                InputType,
+                TaskType,
+                assert_campaign_authorized,
+                load_authorization_bundle,
+            )
+            from pathlib import Path
+
+            bundle = Path("benchmarks/authorization/authorization_bundle.json")
+            if not bundle.is_file():
+                raise AuthorizationDenied(
+                    f"Missing authorization bundle at {bundle}. "
+                    "Non-simulation campaigns are blocked until Step 4 authorization "
+                    "is built (ACCEPTANCE.md)."
+                )
+            records = load_authorization_bundle(bundle)
+            # Live loop folds with Boltz → predicted input
+            assert_campaign_authorized(
+                records,
+                task_type=TaskType.WITHIN_TARGET,
+                input_type=InputType.PREDICTED,
+                simulation_mode=False,
+            )
         generator = self.generator
         acquisition = self.acquisition
         if generator is None or acquisition is None:

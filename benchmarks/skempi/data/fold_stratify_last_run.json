@@ -1,0 +1,8 @@
+{
+  "status": "BLOCKED_BOLTZ_UNAVAILABLE",
+  "curve": [],
+  "stratified_authorization": {
+    "gate_pass": false,
+    "reason": "no predicted scores \u2014 Boltz unavailable or blocked"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "BLOCKED_BOLTZ_UNAVAILABLE",
+  "block_reason": "Boltz-2 CLI is required for structure prediction but `boltz` was not found on PATH. Install with: pip install boltz. Use FixtureStructurePredictor for CI without large model weights.",
+  "experimental_reference": {
+    "spearman": 0.3806909215904269,
+    "spearman_ci_low": 0.18889322486716895,
+    "spearman_ci_high": 0.5556712698520563,
+    "n": 100,
+    "structures": "experimental_crystal_WT",
+    "artifact": "benchmarks/skempi/data/skempi_ddg_powered_last_run.json"
+  },
+  "mode_a": {
+    "gate_pass": false,
+    "n": 0,
+    "note": "not scored"
+  },
+  "mode_b": {
+    "gate_pass": false,
+    "n": 0,
+    "note": "not scored"
+  },
+  "paired_delta_exp_minus_pred": null,
+  "pre_registration": "ACCEPTANCE.md predicted-fold rule (committed before verdict)",
+  "verdict": "Predicted-fold campaigns remain BLOCKED. Experimental within-target authorization (\u03c1=0.381) is unchanged and is NOT re-cited as predicted \u03c1."
+}

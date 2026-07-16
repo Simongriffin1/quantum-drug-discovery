@@ -1,6 +1,6 @@
 # PeptideForge Benchmark Report
 
-_Generated at 2026-07-16T05:20:44.038111+00:00_ · git `ee386d2adc267f7a0e657d922b71b7274dd28bdc`
+_Generated at 2026-07-16T05:54:36.445902+00:00_ · git `f07e881b33c259454b565b16cd889c56bc7956f7`
 
 ## Caveats
 
@@ -40,7 +40,7 @@ INVALIDATED — do not cite. splits_v3 peptide-sequence leakage; see splits_v4.j
 <details><summary>Details (JSON-backed)</summary>
 
 ```
-artifact: 'benchmarks/peptide_affinity/data/oracle_validity_v3_oneshot_test.json'
+artifact: '/Users/simongriffin/quantum-drug-discovery/quantum-drug-discovery/benchmarks/peptide_affinity/data/oracle_validity_v3_oneshot_test.json'
 invalidated: True
 invalidation_reason: 'splits_v3 peptide-sequence leakage; see splits_v4.json'
 measurable: True
@@ -161,3 +161,17 @@ Regenerate with:
 make benchmark-report
 # or: cd core && poetry run python -m peptideforge.reports.generate_benchmark_report
 ```
+
+
+## Fold→score degradation & authorization (Step 4)
+
+**Status:** Predicted-fold measurement **BLOCKED** (Boltz-2 unavailable).
+
+| Authorization | Result |
+|---|---|
+| Within-target × experimental | AUTHORIZED (SKEMPI ρ=0.381, N=100) |
+| Within-target × predicted (Boltz) | BLOCKED — degradation unmeasured |
+| Cross-target | BLOCKED |
+
+Pre-registration commit: `f07e881`. Bundle: `benchmarks/authorization/authorization_bundle.json`.
+Experimental reference ρ is never overwritten by a predicted number.

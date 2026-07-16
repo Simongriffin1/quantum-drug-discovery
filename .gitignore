@@ -64,3 +64,7 @@ benchmarks/peptide_affinity/data/rcsb_probe.json
 benchmarks/skempi/data/structures/
 benchmarks/skempi/data/*_raw.csv
 benchmarks/skempi/data/skempi_mutant_pdbs/
+
+# Authorization + fold degradation artifacts (keep JSON; ignore fold caches)
+!benchmarks/authorization/
+benchmarks/skempi/data/predicted_folds/cache/

@@ -47,18 +47,71 @@ class CampaignStore:
         self._campaigns: dict[UUID, CampaignRecord] = {}
 
     def create(self, request: StartCampaignRequest) -> CampaignRecord:
+        from peptideforge.authorization import (
+            AuthorizationDenied,
+            InputType,
+            TaskType,
+            assert_campaign_authorized,
+            load_authorization_bundle,
+        )
+        from pathlib import Path
+
+        # Simulation plumbing is always allowed; non-sim must pass authorization.
         if not request.simulation_mode:
-            raise ValueError(
-                "Only simulation_mode=True is supported in P11 until the "
-                "oracle-validity gate passes (see ACCEPTANCE.md)."
+            bundle_path = (
+                Path(__file__).resolve().parents[2]
+                / "benchmarks"
+                / "authorization"
+                / "authorization_bundle.json"
             )
+            # Fallback: repo-relative from CWD
+            if not bundle_path.is_file():
+                bundle_path = Path("benchmarks/authorization/authorization_bundle.json")
+            try:
+                records = load_authorization_bundle(bundle_path)
+            except FileNotFoundError as exc:
+                raise ValueError(
+                    "Non-simulation campaigns require an authorization bundle "
+                    f"({bundle_path}). Build with: python -m peptideforge.authorization_build. "
+                    "Until predicted-fold degradation is measured and PASSes, only "
+                    "simulation_mode=True or experimental within-target (if authorized) "
+                    "is allowed. See ACCEPTANCE.md Step 4."
+                ) from exc
+            # Live API campaigns today are predicted-fold within-target by default
+            task = TaskType.WITHIN_TARGET
+            input_type = InputType.PREDICTED
+            try:
+                auth = assert_campaign_authorized(
+                    records,
+                    task_type=task,
+                    input_type=input_type,
+                    simulation_mode=False,
+                )
+            except AuthorizationDenied as exc:
+                raise ValueError(str(exc)) from exc
+            auth_id = str(auth.record_id)
+        else:
+            auth_id = "simulation"
+
         campaign_id = uuid4()
-        data_version = "synthetic_v1"
+        data_version = "synthetic_v1" if request.simulation_mode else "live_v1"
         prov = campaign_provenance(data_version=data_version)
+        # Bind authorization record into provenance tool_versions
+        tools = dict(prov.tool_versions)
+        tools["authorization_record_id"] = auth_id
+        from peptideforge.contracts.models import Provenance
+
+        prov = Provenance(
+            git_sha=prov.git_sha,
+            data_version=prov.data_version,
+            tool_versions=tools,
+            config_hash=prov.config_hash,
+            created_at=prov.created_at,
+        )
 
         cfg = LoopConfig(
             seed=request.seed,
-            simulation_mode=True,
+            simulation_mode=True if request.simulation_mode else False,
             n_init=request.n_init,
             max_iterations=request.max_iterations,
             batch_size=request.batch_size,
@@ -67,6 +120,9 @@ class CampaignStore:
             acquisition="qnehvi",
             data_version=data_version,
         )
+        if not request.simulation_mode:
+            # Double-gate: orchestrator also checks authorization
+            cfg.simulation_mode = False
         result = ClosedLoopOrchestrator(config=cfg).run()
 
         agent_summary: str | None = None

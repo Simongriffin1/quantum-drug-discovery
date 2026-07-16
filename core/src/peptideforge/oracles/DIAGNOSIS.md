@@ -138,3 +138,23 @@ Prior N=16 run is under-powered / superseded (`INVALIDATED_N16_CI_WIDTH`).
 Cross-target absolute affinity remains unvalidated (and v3 affinity ρ is leakage-
 invalidated). Scoped within-target campaigns against validated target classes may
 proceed with the cross-target limitation documented — no threshold loosening.
+
+## Step 4 — Fold→score degradation & authorization (2026-07-16)
+
+**Pre-registration:** `f07e881` — predicted-fold campaigns require ρ≥0.30, CI_low>0
+(or stratified N≥30) on the matched SKEMPI hold-out; committed *before* verdict.
+
+**Measurement status:** `BLOCKED_BOLTZ_UNAVAILABLE`. Boltz-2 CLI/weights are not
+installed on this host. Per NON-NEGOTIABLES, no fabricated/fixture structure was
+substituted into a real degradation measurement.
+
+| Axis | Status |
+|---|---|
+| Experimental within-target (crystals) | **AUTHORIZED** (ρ=0.381, N=100) |
+| Predicted within-target (Boltz) | **BLOCKED** (degradation unmeasured) |
+| Cross-target | **BLOCKED** |
+
+Runtime enforcement: `peptideforge.authorization` + campaign/orchestrator gates
+quote the authorization record. Experimental ρ=0.381 is **not** re-cited as a
+predicted number. Next fork once Boltz is available: run MODE A mutate_in_place
+on `skempi_powered_holdout_v1`, then stratify by DockQ/ipTM.

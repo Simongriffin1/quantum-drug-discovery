@@ -25,3 +25,15 @@ PYTHONPATH=benchmarks:core/src python -m benchmarks.skempi.run_skempi_ddg \
 ```
 
 Or: `python benchmarks/skempi/run_skempi_ddg.py ...`
+
+## Step 4 — Fold→score degradation
+
+```bash
+# Requires Boltz-2 on PATH (fail loud otherwise — never fabricate)
+PYTHONPATH=benchmarks:core/src python benchmarks/skempi/predict_folds.py
+PYTHONPATH=benchmarks:core/src python benchmarks/skempi/run_fold_degradation.py
+PYTHONPATH=benchmarks:core/src python benchmarks/skempi/stratify.py
+PYTHONPATH=benchmarks:core/src python -m peptideforge.authorization_build
+```
+
+Matched hold-out: `data/skempi_powered_holdout_v1.json` (same N=100 as experimental PASS).

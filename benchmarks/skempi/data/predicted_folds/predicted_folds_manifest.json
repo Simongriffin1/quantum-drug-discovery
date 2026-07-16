@@ -1,0 +1,7 @@
+{
+  "status": "BLOCKED_BOLTZ_UNAVAILABLE",
+  "error": "Boltz-2 CLI is required for structure prediction but `boltz` was not found on PATH. Install with: pip install boltz. Use FixtureStructurePredictor for CI without large model weights.",
+  "holdout_path": "benchmarks/skempi/data/skempi_powered_holdout_v1.json",
+  "experimental_reference_untouched": true,
+  "note": "Predicted-fold degradation NOT measured. Per ACCEPTANCE.md 4A.5, live predicted-fold campaigns remain BLOCKED. Experimental SKEMPI \u03c1=0.381 reference is unchanged."
+}

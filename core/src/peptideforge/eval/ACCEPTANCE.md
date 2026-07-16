@@ -16,17 +16,33 @@ Source of truth for stage gates: `CURSOR_PROJECT_CONTEXT.md` §8 / §9.
 | RMSE | Same subset | Reported; no hard fail in M2 | Diagnostic |
 | Red-team | label_shuffle + trivial baselines (length, charge, contacts, SASA) + leakage (@30% ID) | **All must pass**; oracle must beat **net_charge** | If a trivial baseline wins → halt; task/split flawed |
 
-### Co-primary within-target gate (product-relevant) — pre-registered 2026-07-16
+### Predicted-fold within-target authorization — pre-registered 2026-07-16 (Step 4)
 
-| Metric | Dataset | Threshold | Notes |
-|---|---|---|---|
-| Spearman ρ (predicted vs experimental ΔΔG) | SKEMPI v2 homology-aware held-out split (usable WT crystal structures only) | **ρ ≥ 0.30** with bootstrap 95% **CI lower bound > 0** | Measures **within-target relative** ranking — the loop's actual task |
+**Committed before any predicted-fold scoring verdict.** Do not loosen after seeing numbers.
 
-**Rationale (committed before SKEMPI / re-test scoring):** The design loop ranks
-peptides against a *fixed* target. Cross-target absolute affinity remains the hard
-limit and is **still reported**; it is not dropped because it failed. Within-target
-SKEMPI is an *addition*, never a replacement. Thresholds below were written **before**
-running Phase 3D scoring.
+Live (predicted-fold) within-target campaigns are **authorized iff** predicted-fold
+Spearman ρ ≥ **0.30** with bootstrap 95% **CI_low > 0** on the **same** SKEMPI
+homology-aware hold-out used for the experimental PASS (`skempi_ddg_powered_last_run`,
+N=100 reference ρ=0.381 on crystals) — either:
+
+1. **Unconditionally** on all predicted folds in that hold-out, **or**
+2. **Restricted** to folds above a stated confidence threshold (ipTM / DockQ / interface-pLDDT)
+   with **surviving N ≥ 30** and the gate still holding on that stratum.
+
+Otherwise predicted-fold campaigns remain **BLOCKED**, even though experimental-structure
+scoring is validated. Cross-target absolute affinity remains **not authorized**.
+
+Primary measurement mode: **mutate_in_place** on a Boltz-2 predicted WT (denovo re-fold is
+comparison only). Experimental ρ=0.381 is the reference and must never be overwritten or
+re-cited as the predicted number.
+
+| Field | Value |
+|---|---|
+| Pre-registration commit intent | Step 4A.5 before Phase 4A.3/4A.4 verdict |
+| Experimental reference | ρ=0.381, CI [0.189, 0.556], N=100, crystals |
+| Predicted gate | ρ ≥ 0.30, CI_low > 0; if stratified, N_surviving ≥ 30 |
+
+
 
 Legacy diagnostic subset (N=5 MHC interfaces): `pdbbind_peptide_affinity_v1_structures_openmm`
 — statistically uninterpretable alone; kept for continuity.

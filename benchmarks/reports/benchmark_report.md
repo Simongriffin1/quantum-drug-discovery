@@ -1,6 +1,6 @@
 # PeptideForge Benchmark Report
 
-_Generated at 2026-07-16T05:20:12.423796+00:00_ · git `47e2718d7b498ec2d4d22ca61deecebbac1aff77`
+_Generated at 2026-07-16T05:20:44.038111+00:00_ · git `ee386d2adc267f7a0e657d922b71b7274dd28bdc`
 
 ## Caveats
 
@@ -14,7 +14,7 @@ _Generated at 2026-07-16T05:20:12.423796+00:00_ · git `47e2718d7b498ec2d4d22ca6
 
 | Section | Status |
 |---|---|
-| Oracle validity (affinity) | **FAIL** |
+| Oracle validity (affinity) | **INVALIDATED** |
 | Stability / ddG (SKEMPI within-target) | **PASS** |
 | Surrogate calibration (synthetic plumbing) | **PASS** |
 | Acquisition (Branin–Currin hypervolume) | **PASS** |
@@ -22,9 +22,9 @@ _Generated at 2026-07-16T05:20:12.423796+00:00_ · git `47e2718d7b498ec2d4d22ca6
 
 ## Oracle validity (affinity)
 
-**Status:** FAIL
+**Status:** INVALIDATED
 
-Subset `peptide_affinity_v2_experimental_openmm` N=40 partition=test: Spearman=0.1870 CI95%=[-0.160,0.514] (threshold ≥ 0.4, require CI_low>0, N≥30, red-team). Gate FAILED — reported honestly.
+INVALIDATED — do not cite. splits_v3 peptide-sequence leakage; see splits_v4.json. Archived point estimate only: Spearman=0.1870 CI95%=[-0.160,0.514]. Re-score once on splits_v4 if a corrected cross-target number is needed (no protocol retuning).
 
 | Metric | Value | Source |
 |---|---|---|
@@ -41,6 +41,8 @@ Subset `peptide_affinity_v2_experimental_openmm` N=40 partition=test: Spearman=0
 
 ```
 artifact: 'benchmarks/peptide_affinity/data/oracle_validity_v3_oneshot_test.json'
+invalidated: True
+invalidation_reason: 'splits_v3 peptide-sequence leakage; see splits_v4.json'
 measurable: True
 mlflow: {'run_id': 'aeefc1bdfd1d4e289b923912c8639001', 'experiment_id': '1', 'tracking_uri': 'sqlite:///benchmarks/peptide_affinity/data/oracle_validity_v3.db'}
 protocol: {'name': 'gbsa_gbn2_eps1_salt0_min0', 'gb_model': 'gbn2', 'solute_dielectric': 1.0, 'salt_conc_M': 0.0, 'minimize_max_iterations': 0, 'chosen_from': 'elec_sweep_traindev_v3 + entropy_waters_ab (no retune after test)', 'method': 'OpenMM MM-GBSA on prepared experimental structures', 'platform': 'CPU', 'seed': 0, 'n_bootstrap': 1000, 'catalog': 'benchmarks/peptide_affinity/data/peptide_affinity_catalog_v3.tsv', 'prep_manifest': 'benchmarks/peptide_affinity/data/prepared/prep_manifest_scoreable.tsv', 'splits': 'benchmarks/peptide_affinity/data/splits_v3.json', 'oneshot_test': True}

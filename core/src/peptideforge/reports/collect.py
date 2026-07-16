@@ -111,6 +111,7 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
     ci_lo = data.get("spearman_ci_low")
     ci_hi = data.get("spearman_ci_high")
     mlflow = data.get("mlflow") or {}
+    invalidated = bool(data.get("invalidated") or data.get("do_not_cite"))
     try:
         display_path = path.resolve().relative_to(_repo_root())
     except ValueError:
@@ -124,7 +125,10 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
         if ci_lo is not None and ci_hi is not None
         else " (no CI — insufficient for gate)"
     )
-    status = "PASS" if passed else ("FAIL" if measurable else "NOT_MEASURABLE")
+    if invalidated:
+        status = "INVALIDATED"
+    else:
+        status = "PASS" if passed else ("FAIL" if measurable else "NOT_MEASURABLE")
     numbers = [
         TraceableNumber(
             name="spearman",
@@ -179,16 +183,25 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
                 ),
             ]
         )
+    summary = (
+        f"Subset `{data.get('subset_name', 'unknown')}` N={n} "
+        f"partition={data.get('partition', 'n/a')}: "
+        f"Spearman={spearman:.4f}{ci_txt} (threshold ≥ {threshold}, "
+        f"require CI_low>0, N≥30, red-team). "
+        f"Gate {'PASSED' if passed else 'FAILED'} — reported honestly."
+    )
+    if invalidated:
+        summary = (
+            "INVALIDATED — do not cite. "
+            f"{data.get('invalidation_reason', 'split leakage')}. "
+            f"Archived point estimate only: Spearman={spearman:.4f}{ci_txt}. "
+            "Re-score once on splits_v4 if a corrected cross-target number is needed "
+            "(no protocol retuning)."
+        )
     return ReportSection(
         title="Oracle validity (affinity)",
         status=status,
-        summary=(
-            f"Subset `{data.get('subset_name', 'unknown')}` N={n} "
-            f"partition={data.get('partition', 'n/a')}: "
-            f"Spearman={spearman:.4f}{ci_txt} (threshold ≥ {threshold}, "
-            f"require CI_low>0, N≥30, red-team). "
-            f"Gate {'PASSED' if passed else 'FAILED'} — reported honestly."
-        ),
+        summary=summary,
         numbers=tuple(numbers),
         details={
             "subset_name": data.get("subset_name"),
@@ -196,6 +209,8 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
             "mlflow": mlflow,
             "red_team": data.get("red_team"),
             "measurable": measurable,
+            "invalidated": invalidated,
+            "invalidation_reason": data.get("invalidation_reason"),
             "record_ids": [d.get("record_id") for d in data.get("details", [])],
             "artifact": str(path),
         },

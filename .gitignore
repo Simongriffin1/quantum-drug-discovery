@@ -58,3 +58,9 @@ benchmarks/fixtures/structures/mlruns/
 benchmarks/fixtures/structures/synthetic_mini/
 benchmarks/peptide_affinity/data/pepbench_rcsb_map.json
 benchmarks/peptide_affinity/data/rcsb_probe.json
+
+# SKEMPI: keep converted TSV; ignore raw/structures
+!benchmarks/skempi/data/
+benchmarks/skempi/data/structures/
+benchmarks/skempi/data/*_raw.csv
+benchmarks/skempi/data/skempi_mutant_pdbs/

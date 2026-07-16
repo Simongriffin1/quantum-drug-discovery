@@ -143,11 +143,22 @@ def score_ddg_pair(
     mut_pdb: Path,
     peptide_chain: str,
     cfg: OpenMMOracleConfig,
-) -> float:
-    """Return predicted ΔΔG = ΔG_mut − ΔG_wt (kcal/mol)."""
+    wt_energy: float | None = None,
+    wt_prep_cache: dict[str, Path] | None = None,
+    wt_energy_cache: dict[str, float] | None = None,
+) -> tuple[float, float]:
+    """Return (predicted ΔΔG, wt_energy) = (ΔG_mut − ΔG_wt, ΔG_wt)."""
     oracle = OpenMMPhysicsOracle(cfg)
     prep_dir = mut_pdb.parent / "prepared"
-    wt_prep = _prepare_skempi_pdb(wt_pdb, prep_dir / f"{wt_pdb.stem}_prep.pdb")
+    cache_key = f"{wt_pdb.stem}::{peptide_chain}"
+
+    if wt_prep_cache is not None and cache_key in wt_prep_cache:
+        wt_prep = wt_prep_cache[cache_key]
+    else:
+        wt_prep = _prepare_skempi_pdb(wt_pdb, prep_dir / f"{wt_pdb.stem}_prep.pdb")
+        if wt_prep_cache is not None:
+            wt_prep_cache[cache_key] = wt_prep
+
     mut_prep = _prepare_skempi_pdb(mut_pdb, prep_dir / f"{mut_pdb.stem}_prep.pdb")
 
     def score(path: Path) -> float:
@@ -164,7 +175,16 @@ def score_ddg_pair(
         )
         return float(oracle.evaluate(cs, tier=OracleTier.MM_GBSA).value)
 
-    return score(mut_prep) - score(wt_prep)
+    if wt_energy is not None:
+        e_wt = wt_energy
+    elif wt_energy_cache is not None and cache_key in wt_energy_cache:
+        e_wt = wt_energy_cache[cache_key]
+    else:
+        e_wt = score(wt_prep)
+        if wt_energy_cache is not None:
+            wt_energy_cache[cache_key] = e_wt
+    e_mut = score(mut_prep)
+    return e_mut - e_wt, e_wt
 
 
 def main() -> None:
@@ -184,11 +204,17 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--platform", default="CPU")
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--test-fraction", type=float, default=0.3)
+    parser.add_argument("--test-fraction", type=float, default=0.35)
     parser.add_argument("--gb-model", default="gbn2", choices=("obc2", "gbn2", "obc1"))
     parser.add_argument("--solute-dielectric", type=float, default=1.0)
     parser.add_argument("--salt-conc", type=float, default=0.0)
-    parser.add_argument("--max-pairs", type=int, default=80)
+    parser.add_argument("--max-pairs", type=int, default=800)
+    parser.add_argument(
+        "--min-test-n",
+        type=int,
+        default=100,
+        help="Require ≥ this many successfully scored held-out pairs (powered gate).",
+    )
     args = parser.parse_args()
 
     if not args.skempi_tsv.is_file():
@@ -204,29 +230,35 @@ def main() -> None:
         )
 
     records = load_skempi_ddg(args.skempi_tsv)
-    # Keep entries with usable WT PDB on disk
-    usable = []
-    for rec in records:
-        wt = args.structure_dir / f"{rec.pdb_id}.pdb"
-        if wt.is_file():
-            usable.append(rec)
-    if len(usable) < 6:
+    usable = [r for r in records if (args.structure_dir / f"{r.pdb_id}.pdb").is_file()]
+    usable = usable[: args.max_pairs]
+    if len(usable) < args.min_test_n:
         raise SystemExit(
-            f"only {len(usable)} SKEMPI rows have WT PDBs in {args.structure_dir} "
-            f"(need ≥6). Download structures for the fixture PDB ids."
+            f"only {len(usable)} SKEMPI rows have WT PDBs (need ≥{args.min_test_n} "
+            "pool for a powered held-out test). Download more structures."
         )
 
-    # Cluster by pdb_id if cluster_id missing
-    clusters = {
-        r.record_id: (r.cluster_id or r.pdb_id) for r in usable[: args.max_pairs]
-    }
+    clusters = {r.record_id: (r.cluster_id or r.pdb_id) for r in usable}
     split = homology_aware_split(
         tuple(clusters),
         clusters,
         test_fraction=args.test_fraction,
         seed=args.seed,
+        split_name="skempi_homology_pdb_holdout",
     )
     test_ids = set(split.test_ids)
+    n_test_assigned = sum(1 for r in usable if r.record_id in test_ids)
+    print(
+        f"pool={len(usable)} pdbs={len({r.pdb_id for r in usable})} "
+        f"test_assigned={n_test_assigned} train={len(split.train_ids)}",
+        flush=True,
+    )
+    if n_test_assigned < args.min_test_n:
+        raise SystemExit(
+            f"test assignment has only {n_test_assigned} rows (need ≥{args.min_test_n}). "
+            "Increase --test-fraction or expand the mutation catalog."
+        )
+
     work_dir = args.out.parent / "skempi_mutant_pdbs"
     work_dir.mkdir(parents=True, exist_ok=True)
 
@@ -235,29 +267,23 @@ def main() -> None:
         "obc2": "implicit/obc2.xml",
         "gbn2": "implicit/gbn2.xml",
     }[args.gb_model]
-    cfg = OpenMMOracleConfig(
-        forcefield_xml=("amber14-all.xml", gb),
-        minimize_max_iterations=0,
-        platform=args.platform,
-        seed=args.seed,
-        solute_dielectric=args.solute_dielectric,
-        salt_conc_M=args.salt_conc,
-        peptide_chain_ids=("B", "P", "L", "C", "D", "E"),
-    )
 
     pairs: list[PredictionLabelPair] = []
     details: list[dict[str, Any]] = []
-    for rec in usable[: args.max_pairs]:
+    wt_prep_cache: dict[str, Path] = {}
+    wt_energy_cache: dict[str, float] = {}
+    n_fail = 0
+
+    for rec in usable:
         if rec.record_id not in test_ids:
             continue
         wt_pdb = args.structure_dir / f"{rec.pdb_id}.pdb"
         mut_pdb = work_dir / f"{rec.record_id}_mut.pdb"
+        pep = (rec.partner2 or "B")[0]
         try:
             _mutate_pdb_ca_proxy(wt_pdb, rec.mutant, mut_pdb)
-            # partner2 often peptide-like; use as peptide chain hint
-            pep = (rec.partner2 or "B")[0]
             cfg_i = OpenMMOracleConfig(
-                forcefield_xml=cfg.forcefield_xml,
+                forcefield_xml=("amber14-all.xml", gb),
                 minimize_max_iterations=0,
                 platform=args.platform,
                 seed=args.seed,
@@ -265,11 +291,19 @@ def main() -> None:
                 salt_conc_M=args.salt_conc,
                 peptide_chain_ids=(pep,),
             )
-            pred = score_ddg_pair(
-                wt_pdb=wt_pdb, mut_pdb=mut_pdb, peptide_chain=pep, cfg=cfg_i
+            pred, _ = score_ddg_pair(
+                wt_pdb=wt_pdb,
+                mut_pdb=mut_pdb,
+                peptide_chain=pep,
+                cfg=cfg_i,
+                wt_prep_cache=wt_prep_cache,
+                wt_energy_cache=wt_energy_cache,
             )
         except Exception as exc:  # noqa: BLE001
-            details.append({"record_id": rec.record_id, "error": str(exc)})
+            n_fail += 1
+            details.append({"record_id": rec.record_id, "error": str(exc)[:200]})
+            if n_fail <= 10 or n_fail % 25 == 0:
+                print(f"  fail {rec.record_id}: {exc}", flush=True)
             continue
         pairs.append(
             PredictionLabelPair(
@@ -286,38 +320,45 @@ def main() -> None:
                 "experimental_ddg": float(rec.ddg_kcal_mol),
             }
         )
+        if len(pairs) % 10 == 0:
+            print(f"  scored {len(pairs)} / fails {n_fail}", flush=True)
 
-    if len(pairs) < 3:
-        raise SystemExit(f"scored only {len(pairs)} held-out pairs — aborting")
+    if len(pairs) < args.min_test_n:
+        raise SystemExit(
+            f"scored only {len(pairs)} held-out pairs (need ≥{args.min_test_n}); "
+            f"failures={n_fail}. Expand structures or fix mutation parse — "
+            "refusing under-powered gate claim."
+        )
 
     red = run_red_team(
         pairs,
         train_ids=list(split.train_ids),
-        test_ids=list(split.test_ids),
+        test_ids=[p.record_id for p in pairs],
         train_clusters={i: clusters[i] for i in split.train_ids if i in clusters},
-        test_clusters={i: clusters[i] for i in split.test_ids if i in clusters},
+        test_clusters={p.record_id: clusters[p.record_id] for p in pairs},
         seed=args.seed,
     )
     report = evaluate_affinity_with_ci(
-        pairs, min_n=3, n_bootstrap=1000, seed=args.seed, red_team=red
+        pairs, min_n=args.min_test_n, n_bootstrap=1000, seed=args.seed, red_team=red
     )
-    # Within-target gate (ACCEPTANCE.md): ρ≥0.30 and CI_low>0 — separate from
-    # affinity min_n=40. Do not loosen after seeing results.
     gate_pass = bool(
         report.spearman >= 0.30
         and report.spearman_ci_low > 0.0
         and red.passed
+        and len(pairs) >= args.min_test_n
     )
 
     payload = {
-        "subset": "skempi_v2_within_target_heldout",
+        "subset": "skempi_v2_within_target_heldout_powered",
         "n": len(pairs),
         "spearman": report.spearman,
         "spearman_ci_low": report.spearman_ci_low,
         "spearman_ci_high": report.spearman_ci_high,
         "pearson": report.pearson,
         "gate_threshold": 0.30,
+        "min_test_n": args.min_test_n,
         "gate_pass": gate_pass,
+        "n_failures": n_fail,
         "red_team": {
             "passed": red.passed,
             "label_shuffle_passed": red.label_shuffle_passed,
@@ -330,21 +371,42 @@ def main() -> None:
             "gb_model": args.gb_model,
             "solute_dielectric": args.solute_dielectric,
             "salt_conc_M": args.salt_conc,
+            "structures": "experimental_crystal_WT",
         },
         "split": {
             "train": len(split.train_ids),
-            "test": len(split.test_ids),
+            "test_assigned": n_test_assigned,
+            "test_scored": len(pairs),
+            "test_fraction": args.test_fraction,
+            "clustering": "pdb_id_holdout",
         },
         "details": details,
         "test_touched_affinity_set": False,
+        "prior_underpowered_run": "INVALIDATED_N16_CI_WIDTH",
         "notes": (
-            "CA-proxy mutation (residue rename only) — documents structural "
-            "approximation; full side-chain rebuild is a follow-up."
+            "Side-chain strip to CB/backbone + PDBFixer rebuild; WT energies cached "
+            "per complex. Experimental crystal WT structures only."
         ),
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    print(json.dumps({k: payload[k] for k in ("n", "spearman", "spearman_ci_low", "spearman_ci_high", "gate_pass", "red_team")}, indent=2))
+    print(
+        json.dumps(
+            {
+                k: payload[k]
+                for k in (
+                    "n",
+                    "spearman",
+                    "spearman_ci_low",
+                    "spearman_ci_high",
+                    "gate_pass",
+                    "n_failures",
+                    "red_team",
+                )
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

@@ -28,14 +28,75 @@ def cluster_entries(
     *,
     identity_threshold: float = 0.30,
 ) -> dict[str, str]:
-    """Cluster by receptor first; peptides within a receptor cluster stay together.
+    """Union-find clusters on receptor OR peptide identity (≥ threshold).
 
-    Assignment key = record_id. Two records share a cluster if receptors are
-    ≥ identity_threshold identical OR (same peptide cluster AND receptor overlap).
-    Practical implementation: greedy cluster on receptor sequences at 30%.
+    Receptor-only clustering previously allowed peptide-sequence leakage across
+    the train/test cut (red-team stop-the-line). Two records share a cluster if
+    receptors OR peptides are ≥ ``identity_threshold`` identical (transitive).
     """
-    receptor_seqs = {e.record_id: e.receptor_seq for e in entries}
-    return greedy_identity_clusters(receptor_seqs, identity_threshold=identity_threshold)
+    ids = [e.record_id for e in entries]
+    parent = {i: i for i in ids}
+
+    def find(x: str) -> str:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: str, b: str) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[rb] = ra
+
+    by_id = {e.record_id: e for e in entries}
+    # Pairwise identity edges (N is small: O(N²) peptides/receptors is fine for ~100)
+    for i, a in enumerate(ids):
+        ea = by_id[a]
+        for b in ids[i + 1 :]:
+            eb = by_id[b]
+            if sequence_identity(ea.receptor_seq, eb.receptor_seq) >= identity_threshold:
+                union(a, b)
+            elif sequence_identity(ea.peptide_seq, eb.peptide_seq) >= identity_threshold:
+                union(a, b)
+
+    # Stable cluster labels
+    roots = {find(i) for i in ids}
+    root_to_cid = {r: f"j{k}" for k, r in enumerate(sorted(roots))}
+    return {i: root_to_cid[find(i)] for i in ids}
+
+
+def assert_no_sequence_leakage(
+    train_ids: tuple[str, ...],
+    test_ids: tuple[str, ...],
+    entries: tuple[PeptideAffinityEntry, ...],
+    *,
+    val_ids: tuple[str, ...] = (),
+    max_identity: float = 0.30,
+) -> None:
+    """Fail loud if any train/val peptide is ≥ max_identity to a test peptide."""
+    by_id = {e.record_id: e for e in entries}
+    train_pool = tuple(train_ids) + tuple(val_ids)
+    train_seqs = {i: by_id[i].peptide_seq for i in train_pool if i in by_id}
+    test_seqs = {i: by_id[i].peptide_seq for i in test_ids if i in by_id}
+    # identical
+    shared = set(train_seqs.values()) & set(test_seqs.values())
+    if shared:
+        raise AssertionError(
+            f"identical peptide sequence leakage across split ({len(shared)} sequences)"
+        )
+    close: list[str] = []
+    for tid, tseq in test_seqs.items():
+        for sid, sseq in train_seqs.items():
+            if sequence_identity(tseq, sseq) > max_identity:
+                close.append(f"{tid}~{sid}")
+                if len(close) >= 5:
+                    break
+        if len(close) >= 5:
+            break
+    if close:
+        raise AssertionError(
+            f"peptide identity >{max_identity:.0%} leakage: {close}"
+        )
 
 
 def peptide_clusters(
@@ -97,6 +158,13 @@ def cold_start_split(
         )
     assert_zero_cluster_overlap(
         split.train_ids, split.test_ids, cluster_of, val_ids=split.val_ids
+    )
+    assert_no_sequence_leakage(
+        split.train_ids,
+        split.test_ids,
+        entries,
+        val_ids=split.val_ids,
+        max_identity=identity_threshold,
     )
     return split, cluster_of
 

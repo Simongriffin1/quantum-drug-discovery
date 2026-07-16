@@ -101,3 +101,21 @@ entropy/water A/B, and data recovery. This is a **scientific finding**: single-s
 end-point MM-GBSA is insufficient for this peptide affinity target class as currently
 posed. Escalation options (document only): short-MD ensembles, explicit-solvent MM-PBSA,
 or a component re-scorer — **not** on ~40 points.
+
+## Structure provenance (clarification)
+
+All affinity oracle scores used **experimental RCSB crystal structures**
+(`fold_method=experimental_prepared`, PepBench labels ∩ deposited PDBs).
+**Not** Boltz / AlphaFold predicted complexes. Pose error is therefore **not**
+confounded with oracle error on this fork — the cross-target failure (even if
+optimistic under leakage) is an end-point physics / prep problem on experimental
+poses.
+
+## Leakage stop-the-line (splits_v3 → v4)
+
+`splits_v3` clustered on **receptor only**; red-team found peptide-sequence
+leakage (identical + >30% ID). **All affinity ρ from the v3 one-shot are
+INVALIDATED** (optimistic direction). `splits_v4` uses joint receptor∪peptide
+30% identity clustering; leakage_audit passes. N_test=37 (<40) — integrity over
+sample size; do not interpret a new affinity ρ until/unless re-scored once on v4
+with the locked protocol (no retuning).

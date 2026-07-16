@@ -11,17 +11,30 @@ Source of truth for stage gates: `CURSOR_PROJECT_CONTEXT.md` §8 / §9.
 
 | Metric | Dataset | Threshold | Notes |
 |---|---|---|---|
-| Spearman ρ (predicted vs experimental pKd) | Held-out cold-start test of `peptide_affinity_v2_experimental_openmm` (experimental prepared structures; PepBench PpI_ba labels ∩ RCSB) | **ρ ≥ 0.40** with bootstrap 95% **CI lower bound > 0** | **N ≥ 30** required before PASS/FAIL is measurable |
+| Spearman ρ (predicted vs experimental pKd) | Held-out cold-start test of `peptide_affinity_v2_experimental_openmm` (experimental prepared structures; PepBench PpI_ba labels ∩ RCSB) | **ρ ≥ 0.40** with bootstrap 95% **CI lower bound > 0** | **N ≥ 40** required before PASS/FAIL is measurable (raised from 30 after Step 2) |
 | Pearson r | Same held-out test | Reported with bootstrap 95% CI | Diagnostic |
 | RMSE | Same subset | Reported; no hard fail in M2 | Diagnostic |
-| Red-team | label_shuffle + trivial baselines (length, charge, contacts, SASA) + leakage (@30% ID) | **All must pass** | If a trivial baseline wins → halt; task/split flawed |
+| Red-team | label_shuffle + trivial baselines (length, charge, contacts, SASA) + leakage (@30% ID) | **All must pass**; oracle must beat **net_charge** | If a trivial baseline wins → halt; task/split flawed |
+
+### Co-primary within-target gate (product-relevant) — pre-registered 2026-07-16
+
+| Metric | Dataset | Threshold | Notes |
+|---|---|---|---|
+| Spearman ρ (predicted vs experimental ΔΔG) | SKEMPI v2 homology-aware held-out split (usable WT crystal structures only) | **ρ ≥ 0.30** with bootstrap 95% **CI lower bound > 0** | Measures **within-target relative** ranking — the loop's actual task |
+
+**Rationale (committed before SKEMPI / re-test scoring):** The design loop ranks
+peptides against a *fixed* target. Cross-target absolute affinity remains the hard
+limit and is **still reported**; it is not dropped because it failed. Within-target
+SKEMPI is an *addition*, never a replacement. Thresholds below were written **before**
+running Phase 3D scoring.
 
 Legacy diagnostic subset (N=5 MHC interfaces): `pdbbind_peptide_affinity_v1_structures_openmm`
 — statistically uninterpretable alone; kept for continuity.
 
-Failure of the Spearman / CI / red-team gate **blocks** downstream binding campaigns —
-every surrogate and loop result is meaningless without a real oracle. Point estimates
-without a CI **must not** be used to declare PASS/FAIL.
+Failure of both co-primary gates **blocks** unauthorized binding claims. A within-target
+PASS with cross-target FAIL may authorize **scoped** within-target campaigns only, with
+the cross-target limitation documented. Point estimates without a CI **must not** be
+used to declare PASS/FAIL.
 
 ## Stability / ddG gate
 

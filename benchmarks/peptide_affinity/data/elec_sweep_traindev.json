@@ -1,0 +1,799 @@
+{
+  "leaderboard": [
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.3,
+      "spearman_ci_low": -0.5263157894736842,
+      "spearman_ci_high": 0.9304347826086956,
+      "pearson": 0.39348068344890097,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.36666666666666664,
+      "spearman_ci_low": -0.4594594594594595,
+      "spearman_ci_high": 0.8165137614678899,
+      "pearson": 0.2579325385787767,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.1333333333333333,
+      "spearman_ci_low": -0.8956521739130435,
+      "spearman_ci_high": 0.8584070796460177,
+      "pearson": 0.17012649274844996,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.8620689655172413,
+      "spearman_ci_high": 0.8199999999999998,
+      "pearson": 0.092404208509939,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.21666666666666665,
+      "spearman_ci_low": -0.7368421052631579,
+      "spearman_ci_high": 0.9459459459459459,
+      "pearson": 0.18907275206268528,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.049999999999999996,
+      "spearman_ci_low": -0.8632478632478632,
+      "spearman_ci_high": 0.7345132743362832,
+      "pearson": 0.10231742010464133,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.12043419904270357,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.8620689655172413,
+      "spearman_ci_high": 0.8199999999999998,
+      "pearson": 0.06633289002614519,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.1250857437660463,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.8620689655172413,
+      "spearman_ci_high": 0.8199999999999998,
+      "pearson": 0.06879682545005876,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.1049779337613933,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.033333333333333326,
+      "spearman_ci_low": -0.9482758620689654,
+      "spearman_ci_high": 0.7636363636363637,
+      "pearson": 0.0581944398666336,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.10666568186666545,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.033333333333333326,
+      "spearman_ci_low": -0.9482758620689654,
+      "spearman_ci_high": 0.7636363636363637,
+      "pearson": 0.05907619282301139,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.09860251345419904,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.033333333333333326,
+      "spearman_ci_low": -0.9482758620689654,
+      "spearman_ci_high": 0.7636363636363637,
+      "pearson": 0.05480947932307965,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    }
+  ],
+  "ranked": [
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.36666666666666664,
+      "spearman_ci_low": -0.4594594594594595,
+      "spearman_ci_high": 0.8165137614678899,
+      "pearson": 0.2579325385787767,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.3,
+      "spearman_ci_low": -0.5263157894736842,
+      "spearman_ci_high": 0.9304347826086956,
+      "pearson": 0.39348068344890097,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.21666666666666665,
+      "spearman_ci_low": -0.7368421052631579,
+      "spearman_ci_high": 0.9459459459459459,
+      "pearson": 0.18907275206268528,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.1333333333333333,
+      "spearman_ci_low": -0.8956521739130435,
+      "spearman_ci_high": 0.8584070796460177,
+      "pearson": 0.17012649274844996,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.8620689655172413,
+      "spearman_ci_high": 0.8199999999999998,
+      "pearson": 0.092404208509939,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.8620689655172413,
+      "spearman_ci_high": 0.8199999999999998,
+      "pearson": 0.06633289002614519,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.8620689655172413,
+      "spearman_ci_high": 0.8199999999999998,
+      "pearson": 0.06879682545005876,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.12043419904270357,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.1250857437660463,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.1049779337613933,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.10666568186666545,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.06666666666666665,
+      "spearman_ci_low": -0.9444444444444444,
+      "spearman_ci_high": 0.8181818181818182,
+      "pearson": 0.09860251345419904,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.049999999999999996,
+      "spearman_ci_low": -0.8632478632478632,
+      "spearman_ci_high": 0.7345132743362832,
+      "pearson": 0.10231742010464133,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.033333333333333326,
+      "spearman_ci_low": -0.9482758620689654,
+      "spearman_ci_high": 0.7636363636363637,
+      "pearson": 0.0581944398666336,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.033333333333333326,
+      "spearman_ci_low": -0.9482758620689654,
+      "spearman_ci_high": 0.7636363636363637,
+      "pearson": 0.05907619282301139,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 9,
+      "spearman": 0.033333333333333326,
+      "spearman_ci_low": -0.9482758620689654,
+      "spearman_ci_high": 0.7636363636363637,
+      "pearson": 0.05480947932307965,
+      "beats_trivial": true,
+      "baseline_rhos": {
+        "peptide_length": -0.10690449676496974,
+        "net_charge": -0.05085476277156078
+      },
+      "baseline_msg": null,
+      "partition": "train+val",
+      "test_touched": false
+    }
+  ],
+  "best": {
+    "config": {
+      "name": "gbsa_gbn2_eps1_salt0_min0",
+      "gb_model": "gbn2",
+      "solute_dielectric": 1.0,
+      "salt_conc_M": 0.0,
+      "minimize_max_iterations": 0
+    },
+    "status": "OK",
+    "n": 9,
+    "spearman": 0.36666666666666664,
+    "spearman_ci_low": -0.4594594594594595,
+    "spearman_ci_high": 0.8165137614678899,
+    "pearson": 0.2579325385787767,
+    "beats_trivial": true,
+    "baseline_rhos": {
+      "peptide_length": -0.10690449676496974,
+      "net_charge": -0.05085476277156078
+    },
+    "baseline_msg": null,
+    "partition": "train+val",
+    "test_touched": false
+  },
+  "n_traindev": 9,
+  "test_ids_firewall": [
+    "PA_1BXL_B",
+    "PA_1F47_A",
+    "PA_1G1E_A",
+    "PA_2K00_B",
+    "PA_2KOH_B",
+    "PA_2LP8_B",
+    "PA_2LSK_B",
+    "PA_2MPS_B",
+    "PA_2N1G_B",
+    "PA_2N3K_B",
+    "PA_2N9X_B",
+    "PA_2NM1_B",
+    "PA_3KTR_B",
+    "PA_3V30_B",
+    "PA_3ZQI_C",
+    "PA_4A2A_C",
+    "PA_4CY1_C",
+    "PA_4ESG_C",
+    "PA_4J2C_B",
+    "PA_4KMD_B",
+    "PA_4LG6_B",
+    "PA_4ODN_B",
+    "PA_4TZQ_B",
+    "PA_4U2W_B",
+    "PA_4WJQ_B",
+    "PA_5I22_B",
+    "PA_5LY3_B",
+    "PA_6F55_B",
+    "PA_6GZL_B",
+    "PA_6HOL_C",
+    "PA_6TYT_C"
+  ]
+}

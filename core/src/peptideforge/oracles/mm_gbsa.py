@@ -161,24 +161,17 @@ class OpenMMPhysicsOracle:
         forcefield = app.ForceField(*self.config.forcefield_xml)
         residue_templates: dict[Any, str] = {}
         for residue in topology.residues():
-            # Only force CYX when the residue is named CYX or clearly disulfide-bonded.
-            # Blindly mapping every CYS→CYX breaks free cysteines (template mismatch).
-            if residue.name == "CYX":
-                residue_templates[residue] = "CYX"
-            elif residue.name == "CYS":
-                sg = [a for a in residue.atoms() if a.name.strip() == "SG"]
-                if sg:
-                    # Disulfide: SG bonded to another SG
-                    bonded_sg = False
-                    for bond in topology.bonds():
-                        atoms = {bond.atom1, bond.atom2}
-                        if sg[0] in atoms:
-                            other = bond.atom2 if bond.atom1 == sg[0] else bond.atom1
-                            if other.name.strip() == "SG":
-                                bonded_sg = True
-                                break
-                    if bonded_sg:
-                        residue_templates[residue] = "CYX"
+            # Incomplete thiols (no HG) match CYX; protonated thiols match CYS.
+            # Leaving this ambiguous raises OpenMM "Multiple … CYM, CYX".
+            # Skip termini with OXT — CYX/CYS templates do not include OXT.
+            if residue.name in {"CYS", "CYX", "CYM"}:
+                atom_names = {a.name.strip() for a in residue.atoms()}
+                if "OXT" in atom_names:
+                    continue
+                if residue.name == "CYM" or "HG" not in atom_names:
+                    residue_templates[residue] = "CYX"
+                else:
+                    residue_templates[residue] = "CYS"
         system = forcefield.createSystem(
             topology,
             nonbondedMethod=app.CutoffNonPeriodic,
@@ -187,10 +180,26 @@ class OpenMMPhysicsOracle:
             # Interface trims create artificial termini; ignore dangling peptide bonds.
             ignoreExternalBonds=True,
             residueTemplates=residue_templates,
-            soluteDielectric=self.config.solute_dielectric,
-            solventDielectric=self.config.solvent_dielectric,
-            implicitSolventSaltConc=self.config.salt_conc_M,
         )
+        # amber14 XML GB ignores createSystem(soluteDielectric=...); apply ε_in by
+        # scaling charges (Coulomb ∝ q_i q_j / ε_in). Salt≈0.15 M: mild extra damping.
+        import math
+
+        scale = 1.0 / math.sqrt(max(self.config.solute_dielectric, 1e-6))
+        if self.config.salt_conc_M > 0:
+            # Crude Debye screening proxy (documented; not full κ-dependent GB).
+            scale *= 1.0 / (1.0 + 0.5 * self.config.salt_conc_M / 0.15)
+        if abs(scale - 1.0) > 1e-12:
+            for force in system.getForces():
+                if type(force).__name__ != "NonbondedForce":
+                    continue
+                for i in range(force.getNumParticles()):
+                    charge, sigma, eps = force.getParticleParameters(i)
+                    force.setParticleParameters(i, charge * scale, sigma, eps)
+                for i in range(force.getNumExceptions()):
+                    a, b, qprod, sigma, eps = force.getExceptionParameters(i)
+                    force.setExceptionParameters(i, a, b, qprod * (scale * scale), sigma, eps)
+
         integrator = openmm.LangevinMiddleIntegrator(
             self.config.temperature_K * unit.kelvin,
             self.config.friction_per_ps / unit.picosecond,

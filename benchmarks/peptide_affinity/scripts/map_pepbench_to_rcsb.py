@@ -47,7 +47,7 @@ def rcsb_sequence_search(seq: str, *, identity: float = 0.95, rows: int = 5) -> 
                 return []
             payload = json.loads(raw.decode())
     except urllib.error.HTTPError as exc:
-        if exc.code in {204, 400, 404}:
+        if exc.code in {204, 400, 404, 500, 502, 503}:
             return []
         raise
     except Exception:

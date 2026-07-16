@@ -161,26 +161,41 @@ class OpenMMPhysicsOracle:
         forcefield = app.ForceField(*self.config.forcefield_xml)
         residue_templates: dict[Any, str] = {}
         for residue in topology.residues():
-            # Incomplete thiols (no HG) match CYX; protonated thiols match CYS.
-            # Leaving this ambiguous raises OpenMM "Multiple … CYM, CYX".
-            # Skip termini with OXT — CYX/CYS templates do not include OXT.
-            if residue.name in {"CYS", "CYX", "CYM"}:
-                atom_names = {a.name.strip() for a in residue.atoms()}
-                if "OXT" in atom_names:
-                    continue
-                if residue.name == "CYM" or "HG" not in atom_names:
-                    residue_templates[residue] = "CYX"
-                else:
-                    residue_templates[residue] = "CYS"
-        system = forcefield.createSystem(
-            topology,
-            nonbondedMethod=app.CutoffNonPeriodic,
-            nonbondedCutoff=self.config.nonbonded_cutoff_nm * unit.nanometers,
-            constraints=app.HBonds,
-            # Interface trims create artificial termini; ignore dangling peptide bonds.
-            ignoreExternalBonds=True,
-            residueTemplates=residue_templates,
-        )
+            # Incomplete thiols (no HG) → rename conceptually to CYX template.
+            # Skip chain termini: CYX/CYS templates lack OXT / N-terminal variants.
+            if residue.name not in {"CYS", "CYX", "CYM"}:
+                continue
+            atom_names = {a.name.strip() for a in residue.atoms()}
+            if "OXT" in atom_names or "H2" in atom_names or "H3" in atom_names:
+                continue
+            if residue.name == "CYM" or "HG" not in atom_names:
+                residue_templates[residue] = "CYX"
+            else:
+                residue_templates[residue] = "CYS"
+        try:
+            system = forcefield.createSystem(
+                topology,
+                nonbondedMethod=app.CutoffNonPeriodic,
+                nonbondedCutoff=self.config.nonbonded_cutoff_nm * unit.nanometers,
+                constraints=app.HBonds,
+                # Interface trims create artificial termini; ignore dangling peptide bonds.
+                ignoreExternalBonds=True,
+                residueTemplates=residue_templates,
+            )
+        except Exception:
+            # Retry with empty templates only if overrides themselves were the problem.
+            system = forcefield.createSystem(
+                topology,
+                nonbondedMethod=app.CutoffNonPeriodic,
+                nonbondedCutoff=self.config.nonbonded_cutoff_nm * unit.nanometers,
+                constraints=app.HBonds,
+                ignoreExternalBonds=True,
+                residueTemplates={
+                    r: t
+                    for r, t in residue_templates.items()
+                    if t == "CYS"  # only force unambiguous protonated Cys
+                },
+            )
         # amber14 XML GB ignores createSystem(soluteDielectric=...); apply ε_in by
         # scaling charges (Coulomb ∝ q_i q_j / ε_in). Salt≈0.15 M: mild extra damping.
         import math

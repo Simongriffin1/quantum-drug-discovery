@@ -1,0 +1,80 @@
+{
+  "leaderboard": [
+    {
+      "config": {
+        "name": "entropy_on",
+        "entropy": true,
+        "waters": false
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": 0.01799581589357565,
+      "spearman_ci_low": -0.40089197224975226,
+      "spearman_ci_high": 0.41953562249392956,
+      "pearson": -0.12762716909457783,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "baseline",
+        "entropy": false,
+        "waters": false
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.00887464893381813,
+      "spearman_ci_low": -0.4021441537074688,
+      "spearman_ci_high": 0.39417827728506455,
+      "pearson": -0.12763037212788966,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "waters_on",
+        "entropy": false,
+        "waters": true
+      },
+      "status": "OK",
+      "n": 12,
+      "spearman": -0.29422111670210543,
+      "spearman_ci_low": -0.8174904942965779,
+      "spearman_ci_high": 0.5827338129496404,
+      "pearson": -0.3471078152769665,
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "entropy_and_waters",
+        "entropy": true,
+        "waters": true
+      },
+      "status": "OK",
+      "n": 12,
+      "spearman": -0.29422111670210543,
+      "spearman_ci_low": -0.8174904942965779,
+      "spearman_ci_high": 0.5827338129496404,
+      "pearson": -0.3471075438051481,
+      "partition": "train+val",
+      "test_touched": false
+    }
+  ],
+  "chosen_hint": {
+    "config": {
+      "name": "entropy_on",
+      "entropy": true,
+      "waters": false
+    },
+    "status": "OK",
+    "n": 29,
+    "spearman": 0.01799581589357565,
+    "spearman_ci_low": -0.40089197224975226,
+    "spearman_ci_high": 0.41953562249392956,
+    "pearson": -0.12762716909457783,
+    "partition": "train+val",
+    "test_touched": false
+  },
+  "notes": "Entropy uses truncated-NMA proxy (not MD Interaction Entropy). Waters use prep-flagged interface waters merged into complex."
+}

@@ -180,6 +180,9 @@ def score_prepared_structures(
     minimize_max_iterations: int = 0,
     seed: int = 0,
     platform: str | None = "CPU",
+    forcefield_xml: tuple[str, ...] = ("amber14-all.xml", "implicit/gbn2.xml"),
+    solute_dielectric: float = 1.0,
+    salt_conc_M: float = 0.0,
 ) -> tuple[list[PredictionLabelPair], list[dict[str, Any]], list[dict[str, str]]]:
     """Run OpenMM MM-GBSA on prepared experimental complexes."""
     pairs: list[PredictionLabelPair] = []
@@ -215,12 +218,15 @@ def score_prepared_structures(
         try:
             oracle = OpenMMPhysicsOracle(
                 OpenMMOracleConfig(
+                    forcefield_xml=forcefield_xml,
                     minimize_max_iterations=minimize_max_iterations,
                     docking_minimize_iterations=0,
                     md_steps=200,
                     seed=seed,
                     platform=platform,
                     peptide_chain_ids=(peptide_chain, "P", "L", "C"),
+                    solute_dielectric=solute_dielectric,
+                    salt_conc_M=salt_conc_M,
                 )
             )
             result = oracle.evaluate(complex_structure, tier=OracleTier.MM_GBSA)

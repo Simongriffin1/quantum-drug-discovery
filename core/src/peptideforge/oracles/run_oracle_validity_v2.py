@@ -80,6 +80,9 @@ def main() -> None:
     parser.add_argument("--platform", default="CPU")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--n-bootstrap", type=int, default=1000)
+    parser.add_argument("--gb-model", default="gbn2", choices=("obc1", "obc2", "gbn2"))
+    parser.add_argument("--solute-dielectric", type=float, default=1.0)
+    parser.add_argument("--salt-conc", type=float, default=0.0)
     parser.add_argument("--mlflow", action="store_true")
     parser.add_argument("--mlflow-uri", type=str, default=None)
     args = parser.parse_args()
@@ -121,6 +124,20 @@ def main() -> None:
             f"only {len(manifest_rows)} prepared structures in partition={args.partition}"
         )
 
+    gb_xml = {
+        "obc1": "implicit/obc1.xml",
+        "obc2": "implicit/obc2.xml",
+        "gbn2": "implicit/gbn2.xml",
+    }[args.gb_model]
+    protocol = {
+        "name": f"gbsa_{args.gb_model}_eps{args.solute_dielectric:g}_salt{args.salt_conc:g}_min{args.minimize_max_iterations}",
+        "gb_model": args.gb_model,
+        "solute_dielectric": args.solute_dielectric,
+        "salt_conc_M": args.salt_conc,
+        "minimize_max_iterations": args.minimize_max_iterations,
+        "chosen_from": "elec_sweep_traindev_v3 + entropy_waters_ab (no retune after test)",
+    }
+
     pk_by_id = {r["record_id"]: float(r["experimental_pk"]) for r in manifest_rows}
     seq_by_id = {r["record_id"]: r["peptide_sequence"] for r in manifest_rows}
     pairs, details, failures = score_prepared_structures(
@@ -130,6 +147,9 @@ def main() -> None:
         minimize_max_iterations=args.minimize_max_iterations,
         seed=args.seed,
         platform=args.platform,
+        forcefield_xml=("amber14-all.xml", gb_xml),
+        solute_dielectric=args.solute_dielectric,
+        salt_conc_M=args.salt_conc,
     )
     if len(pairs) < 3:
         raise SystemExit(f"scoring failed for nearly all rows: {failures[:5]}")
@@ -201,14 +221,15 @@ def main() -> None:
         "details": details,
         "baseline_rhos": baseline_rhos,
         "protocol": {
+            **protocol,
             "method": "OpenMM MM-GBSA on prepared experimental structures",
-            "minimize_max_iterations": args.minimize_max_iterations,
             "platform": args.platform,
             "seed": args.seed,
             "n_bootstrap": args.n_bootstrap,
             "catalog": str(args.catalog),
             "prep_manifest": str(args.prep_manifest),
             "splits": str(args.splits),
+            "oneshot_test": args.partition == "test",
         },
     }
 

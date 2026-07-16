@@ -1,0 +1,808 @@
+{
+  "leaderboard": [
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.03500555968339373,
+      "spearman_ci_low": -0.43071281741772677,
+      "spearman_ci_high": 0.3703161386119856,
+      "pearson": -0.12763417915913045,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.0350 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.015530635634181725,
+      "spearman_ci_low": -0.4021441537074688,
+      "spearman_ci_high": 0.3832288806938127,
+      "pearson": -0.12763037044076836,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.0155 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.2553926748732106,
+      "spearman_ci_low": -0.6087816991526083,
+      "spearman_ci_high": 0.1658598691187219,
+      "pearson": -0.12802899197062256,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2554 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.24775061606908944,
+      "spearman_ci_low": -0.6099765990554289,
+      "spearman_ci_high": 0.16883938772564505,
+      "pearson": -0.1280251210906099,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2478 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.22704310189018048,
+      "spearman_ci_low": -0.5734075492221641,
+      "spearman_ci_high": 0.21502192613295384,
+      "pearson": -0.12793953475095365,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2270 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.24725758001721065,
+      "spearman_ci_low": -0.6161654850036374,
+      "spearman_ci_high": 0.1719658555780653,
+      "pearson": -0.12793568003396277,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2473 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.27043027445551354,
+      "spearman_ci_low": -0.6136536970746608,
+      "spearman_ci_high": 0.13749559222711294,
+      "pearson": -0.12819590610762313,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2704 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.25169490448411974,
+      "spearman_ci_low": -0.6035879370330617,
+      "spearman_ci_high": 0.1589076590359012,
+      "pearson": -0.12819200791507818,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2517 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.26993723840363476,
+      "spearman_ci_low": -0.6100540624400907,
+      "spearman_ci_high": 0.13749559222711294,
+      "pearson": -0.12815687286107158,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2699 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.25144838645818035,
+      "spearman_ci_low": -0.6089863773037156,
+      "spearman_ci_high": 0.17827452998090168,
+      "pearson": -0.12815298236671027,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2514 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.27708626115587714,
+      "spearman_ci_low": -0.6165201878471198,
+      "spearman_ci_high": 0.12255047701936918,
+      "pearson": -0.12821872476071228,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2771 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.268211612222059,
+      "spearman_ci_low": -0.6183906648275207,
+      "spearman_ci_high": 0.1489759303461574,
+      "pearson": -0.12821482098258938,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2682 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.27708626115587714,
+      "spearman_ci_low": -0.6165201878471198,
+      "spearman_ci_high": 0.12255047701936918,
+      "pearson": -0.12819912336886555,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2771 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.268211612222059,
+      "spearman_ci_low": -0.6183906648275207,
+      "spearman_ci_high": 0.1489759303461574,
+      "pearson": -0.12819522220746324,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2682 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.287686536271271,
+      "spearman_ci_low": -0.6274393969036388,
+      "spearman_ci_high": 0.11866736698520199,
+      "pearson": -0.12826008474303344,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2877 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.2778258152336953,
+      "spearman_ci_low": -0.6255109095452438,
+      "spearman_ci_high": 0.14474826473422922,
+      "pearson": -0.1282561790085747,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2778 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    }
+  ],
+  "ranked": [
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.015530635634181725,
+      "spearman_ci_low": -0.4021441537074688,
+      "spearman_ci_high": 0.3832288806938127,
+      "pearson": -0.12763037044076836,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.0155 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.03500555968339373,
+      "spearman_ci_low": -0.43071281741772677,
+      "spearman_ci_high": 0.3703161386119856,
+      "pearson": -0.12763417915913045,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.0350 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.22704310189018048,
+      "spearman_ci_low": -0.5734075492221641,
+      "spearman_ci_high": 0.21502192613295384,
+      "pearson": -0.12793953475095365,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2270 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.24725758001721065,
+      "spearman_ci_low": -0.6161654850036374,
+      "spearman_ci_high": 0.1719658555780653,
+      "pearson": -0.12793568003396277,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2473 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps1_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.24775061606908944,
+      "spearman_ci_low": -0.6099765990554289,
+      "spearman_ci_high": 0.16883938772564505,
+      "pearson": -0.1280251210906099,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2478 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.25144838645818035,
+      "spearman_ci_low": -0.6089863773037156,
+      "spearman_ci_high": 0.17827452998090168,
+      "pearson": -0.12815298236671027,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2514 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps2_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.25169490448411974,
+      "spearman_ci_low": -0.6035879370330617,
+      "spearman_ci_high": 0.1589076590359012,
+      "pearson": -0.12819200791507818,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2517 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps1_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 1.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.2553926748732106,
+      "spearman_ci_low": -0.6087816991526083,
+      "spearman_ci_high": 0.1658598691187219,
+      "pearson": -0.12802899197062256,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2554 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps4_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.268211612222059,
+      "spearman_ci_low": -0.6183906648275207,
+      "spearman_ci_high": 0.1489759303461574,
+      "pearson": -0.12821482098258938,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2682 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.268211612222059,
+      "spearman_ci_low": -0.6183906648275207,
+      "spearman_ci_high": 0.1489759303461574,
+      "pearson": -0.12819522220746324,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2682 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.26993723840363476,
+      "spearman_ci_low": -0.6100540624400907,
+      "spearman_ci_high": 0.13749559222711294,
+      "pearson": -0.12815687286107158,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2699 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps2_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 2.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.27043027445551354,
+      "spearman_ci_low": -0.6136536970746608,
+      "spearman_ci_high": 0.13749559222711294,
+      "pearson": -0.12819590610762313,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2704 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps4_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 4.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.27708626115587714,
+      "spearman_ci_low": -0.6165201878471198,
+      "spearman_ci_high": 0.12255047701936918,
+      "pearson": -0.12821872476071228,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2771 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.0,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.27708626115587714,
+      "spearman_ci_low": -0.6165201878471198,
+      "spearman_ci_high": 0.12255047701936918,
+      "pearson": -0.12819912336886555,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2771 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_gbn2_eps8_salt0.15_min0",
+        "gb_model": "gbn2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.2778258152336953,
+      "spearman_ci_low": -0.6255109095452438,
+      "spearman_ci_high": 0.14474826473422922,
+      "pearson": -0.1282561790085747,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2778 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    },
+    {
+      "config": {
+        "name": "gbsa_obc2_eps8_salt0.15_min0",
+        "gb_model": "obc2",
+        "solute_dielectric": 8.0,
+        "salt_conc_M": 0.15,
+        "minimize_max_iterations": 0
+      },
+      "status": "OK",
+      "n": 29,
+      "spearman": -0.287686536271271,
+      "spearman_ci_low": -0.6274393969036388,
+      "spearman_ci_high": 0.11866736698520199,
+      "pearson": -0.12826008474303344,
+      "beats_trivial": false,
+      "baseline_rhos": {
+        "peptide_length": -0.4795302041592252,
+        "net_charge": 0.2633897039622488
+      },
+      "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.2877 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+      "partition": "train+val",
+      "test_touched": false
+    }
+  ],
+  "best": {
+    "config": {
+      "name": "gbsa_gbn2_eps1_salt0_min0",
+      "gb_model": "gbn2",
+      "solute_dielectric": 1.0,
+      "salt_conc_M": 0.0,
+      "minimize_max_iterations": 0
+    },
+    "status": "OK",
+    "n": 29,
+    "spearman": -0.015530635634181725,
+    "spearman_ci_low": -0.4021441537074688,
+    "spearman_ci_high": 0.3832288806938127,
+    "pearson": -0.12763037044076836,
+    "beats_trivial": false,
+    "baseline_rhos": {
+      "peptide_length": -0.4795302041592252,
+      "net_charge": 0.2633897039622488
+    },
+    "baseline_msg": "trivial baseline(s) win or tie within \u0394\u03c1: ['net_charge']; model_rho=-0.0155 baselines={'peptide_length': -0.4795302041592252, 'net_charge': 0.2633897039622488}",
+    "partition": "train+val",
+    "test_touched": false
+  },
+  "n_traindev": 29,
+  "test_ids_firewall": [
+    "PA_1ABT_B",
+    "PA_1G1E_A",
+    "PA_1S5Q_A",
+    "PA_2K00_B",
+    "PA_2KOH_B",
+    "PA_2KYM_B",
+    "PA_2LOZ_B",
+    "PA_2M41_A",
+    "PA_2N3K_B",
+    "PA_2N9X_B",
+    "PA_2NM1_B",
+    "PA_3BU3_B",
+    "PA_3BU5_B",
+    "PA_3KTR_B",
+    "PA_3NFL_E",
+    "PA_3PKN_B",
+    "PA_3QN7_B",
+    "PA_4A2A_C",
+    "PA_4CY1_C",
+    "PA_4ESG_C",
+    "PA_4FI9_B",
+    "PA_4KMD_B",
+    "PA_4LG6_B",
+    "PA_4MNW_B",
+    "PA_4MNX_B",
+    "PA_4MNY_C",
+    "PA_4ODN_B",
+    "PA_4RRV_B",
+    "PA_4WJQ_B",
+    "PA_5CQX_C",
+    "PA_5CQY_C",
+    "PA_5H5S_B",
+    "PA_5I22_B",
+    "PA_5IY4_B",
+    "PA_5V6Y_E",
+    "PA_5WQD_H",
+    "PA_6E49_D",
+    "PA_6GZL_B",
+    "PA_6HOL_C",
+    "PA_6O21_B"
+  ]
+}

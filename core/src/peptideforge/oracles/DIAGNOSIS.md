@@ -59,3 +59,24 @@ poses, or protonation/structure prep still corrupts them. Phase 3C (entropy, int
 waters) and the pre-registered within-target SKEMPI gate proceed with the best
 electrostatics config found on enlarged train/dev; the cross-target gate remains the
 stated hard limit.
+
+## Electrostatics sweep (3B.2) — v3 N=29
+
+Artifact: `elec_sweep_traindev_v3.json`. **Best: `gbsa_gbn2_eps1_salt0_min0` ρ≈−0.016**
+(CI crosses 0). Raising ε_in / salt **monotonically hurt** ρ (down to ≈−0.28).
+Electrostatics tuning did **not** move train/dev toward the gate. Chosen protocol for
+one-shot test = this best-of-a-bad-grid config (GBn2, ε_in=1, salt=0, no minimize).
+
+## Entropy + interface waters (3C)
+
+Artifact: `entropy_waters_ab_traindev.json`. Truncated-NMA entropy ≈ noise (ρ 0.018 vs
+baseline −0.016). Interface waters: many OpenMM HOH template failures; scored subset
+n=12 with **worse** ρ. Flags off for the chosen protocol.
+
+## SKEMPI within-target (3D.2) — pre-registered, parallel
+
+Artifact: `benchmarks/skempi/data/skempi_ddg_last_run.json`. Held-out N=16, Spearman
+**ρ=0.488**, 95% CI **[−0.039, 0.830]** — point estimate above 0.30 but **CI_low ≤ 0 →
+FAIL** under pre-registered gate. Red-team passed. Mutation = side-chain strip + PDBFixer
+(not rename-only).
+

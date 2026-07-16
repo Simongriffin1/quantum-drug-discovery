@@ -24,17 +24,22 @@ from peptideforge_benchmarks.splits import homology_aware_split
 
 
 def _mutate_pdb_ca_proxy(pdb_path: Path, mutant_code: str, out_path: Path) -> None:
-    """Best-effort single-residue rename for end-point scoring.
+    """Mutate by stripping side chain beyond CB and renaming; hydrogens via PDBFixer.
 
-    SKEMPI mutant codes look like ``AI38A`` (chain A, Ile38→Ala). Without a full
-    side-chain rebuild we only rename the residue in the PDB and rely on OpenMM
-    hydrogens/templates — fail loud if residue not found.
+    SKEMPI codes: ``LI18G`` = Leu→Gly on chain I residue 18 (wt+chain+num+mut).
     """
-    # Parse: chain (1) + wt (1) + resnum + mut (1) — classic SKEMPI
+    try:
+        from openmm.app import PDBFile, Modeller
+        from pdbfixer import PDBFixer
+    except ImportError as exc:
+        raise ImportError(
+            "SKEMPI mutate requires openmm+pdbfixer. Fail loud — no silent skip."
+        ) from exc
+
     if len(mutant_code) < 4:
         raise ValueError(f"unparseable mutant code: {mutant_code}")
-    chain = mutant_code[0]
-    wt = mutant_code[1]
+    wt = mutant_code[0]
+    chain = mutant_code[1]
     mut = mutant_code[-1]
     num = mutant_code[2:-1]
     aa1to3 = {
@@ -63,21 +68,73 @@ def _mutate_pdb_ca_proxy(pdb_path: Path, mutant_code: str, out_path: Path) -> No
     if mut3 is None:
         raise ValueError(f"unknown mutant AA: {mut}")
 
-    text = pdb_path.read_text(encoding="utf-8", errors="replace")
-    found = False
-    lines: list[str] = []
-    for line in text.splitlines():
-        if line.startswith(("ATOM", "HETATM")) and len(line) >= 26:
-            cid = line[21]
-            resseq = line[22:26].strip()
-            if cid == chain and resseq == num:
-                found = True
-                line = line[:17] + f"{mut3:3s}" + line[20:]
-        lines.append(line)
-    if not found:
+    keep_backbone = {"N", "CA", "C", "O", "OXT", "H", "H1", "H2", "H3", "HA", "HA2", "HA3"}
+    # ALA keeps CB; Gly keeps none beyond backbone
+    keep_ala = keep_backbone | {"CB", "HB1", "HB2", "HB3"}
+
+    pdb = PDBFile(str(pdb_path))
+    modeller = Modeller(pdb.topology, pdb.positions)
+    target = None
+    for residue in modeller.topology.residues():
+        if residue.chain.id == chain and residue.id.strip() == num:
+            target = residue
+            break
+    if target is None:
         raise ValueError(f"residue {chain}:{wt}{num} not found in {pdb_path}")
+
+    keep = keep_backbone if mut3 == "GLY" else keep_ala
+    to_delete = [a for a in target.atoms() if a.name.strip() not in keep]
+    if to_delete:
+        modeller.delete(to_delete)
+    # Rename remaining residue
+    for residue in modeller.topology.residues():
+        if residue.chain.id == chain and residue.id.strip() == num:
+            residue.name = mut3
+            break
+
+    tmp = out_path.with_suffix(".tmp.pdb")
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    with tmp.open("w", encoding="utf-8") as handle:
+        PDBFile.writeFile(modeller.topology, modeller.positions, handle)
+
+    fixer = PDBFixer(filename=str(tmp))
+    fixer.findMissingResidues()
+    fixer.missingResidues = {}
+    fixer.findNonstandardResidues()
+    fixer.replaceNonstandardResidues()
+    fixer.findMissingAtoms()
+    fixer.addMissingAtoms()
+    fixer.addMissingHydrogens(7.4)
+    with out_path.open("w", encoding="utf-8") as handle:
+        handle.write(f"REMARK mutate {mutant_code} -> {mut3}\n")
+        PDBFile.writeFile(fixer.topology, fixer.positions, handle)
+    tmp.unlink(missing_ok=True)
+
+
+def _prepare_skempi_pdb(pdb_path: Path, out_path: Path, *, ph: float = 7.4) -> Path:
+    """PDBFixer missing atoms/hydrogens for SKEMPI WT/mutant PDBs."""
+    try:
+        from openmm.app import PDBFile
+        from pdbfixer import PDBFixer
+    except ImportError as exc:
+        raise ImportError(
+            "SKEMPI prep requires openmm+pdbfixer. Fail loud — no silent skip."
+        ) from exc
+    fixer = PDBFixer(filename=str(pdb_path))
+    fixer.findMissingResidues()
+    # Do not rebuild large missing loops — keep termini gaps as-is
+    fixer.missingResidues = {}
+    fixer.findNonstandardResidues()
+    fixer.replaceNonstandardResidues()
+    fixer.removeHeterogens(keepWater=False)
+    fixer.findMissingAtoms()
+    fixer.addMissingAtoms()
+    fixer.addMissingHydrogens(ph)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8") as handle:
+        handle.write(f"REMARK skempi_prep source={pdb_path.name} ph={ph}\n")
+        PDBFile.writeFile(fixer.topology, fixer.positions, handle)
+    return out_path
 
 
 def score_ddg_pair(
@@ -89,10 +146,13 @@ def score_ddg_pair(
 ) -> float:
     """Return predicted ΔΔG = ΔG_mut − ΔG_wt (kcal/mol)."""
     oracle = OpenMMPhysicsOracle(cfg)
+    prep_dir = mut_pdb.parent / "prepared"
+    wt_prep = _prepare_skempi_pdb(wt_pdb, prep_dir / f"{wt_pdb.stem}_prep.pdb")
+    mut_prep = _prepare_skempi_pdb(mut_pdb, prep_dir / f"{mut_pdb.stem}_prep.pdb")
 
     def score(path: Path) -> float:
         cand = PeptideCandidate(
-            candidate_id=uuid4(), sequence="X", generation_method="skempi"
+            candidate_id=uuid4(), sequence="AAAAA", generation_method="skempi"
         )
         cs = ComplexStructure(
             candidate_id=cand.candidate_id,
@@ -104,7 +164,7 @@ def score_ddg_pair(
         )
         return float(oracle.evaluate(cs, tier=OracleTier.MM_GBSA).value)
 
-    return score(mut_pdb) - score(wt_pdb)
+    return score(mut_prep) - score(wt_prep)
 
 
 def main() -> None:

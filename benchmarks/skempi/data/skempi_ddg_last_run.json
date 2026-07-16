@@ -1,0 +1,111 @@
+{
+  "subset": "skempi_v2_within_target_heldout",
+  "n": 16,
+  "spearman": 0.48823529411764705,
+  "spearman_ci_low": -0.03869047619047619,
+  "spearman_ci_high": 0.8295964125560537,
+  "pearson": 0.6684268474133195,
+  "gate_threshold": 0.3,
+  "gate_pass": false,
+  "red_team": {
+    "passed": true,
+    "label_shuffle_passed": true,
+    "trivial_baseline_passed": true,
+    "leakage_passed": true,
+    "model_rho": 0.48823529411764705,
+    "baseline_rho": 0.0
+  },
+  "protocol": {
+    "gb_model": "gbn2",
+    "solute_dielectric": 1.0,
+    "salt_conc_M": 0.0
+  },
+  "split": {
+    "train": 24,
+    "test": 16
+  },
+  "details": [
+    {
+      "record_id": "SK_1CHO_LI18G_2268",
+      "predicted_ddg": 5.5241318887565285,
+      "experimental_ddg": 6.0004
+    },
+    {
+      "record_id": "SK_1CHO_LI18A_2269",
+      "predicted_ddg": 6.781615553217719,
+      "experimental_ddg": 4.6997
+    },
+    {
+      "record_id": "SK_1CHO_LI18S_2270",
+      "predicted_ddg": 8.071886180347605,
+      "experimental_ddg": 4.9172
+    },
+    {
+      "record_id": "SK_1CHO_LI18C_2271",
+      "predicted_ddg": 3.091283641340226,
+      "experimental_ddg": 2.6055
+    },
+    {
+      "record_id": "SK_1CHO_LI18V_2272",
+      "predicted_ddg": 73.7616698588499,
+      "experimental_ddg": 4.2139
+    },
+    {
+      "record_id": "SK_1CHO_LI18T_2273",
+      "predicted_ddg": 103.96210702140354,
+      "experimental_ddg": 4.4222
+    },
+    {
+      "record_id": "SK_1CHO_LI18P_2274",
+      "predicted_ddg": 167.9446728961957,
+      "experimental_ddg": 8.679
+    },
+    {
+      "record_id": "SK_1CHO_LI18I_2275",
+      "predicted_ddg": 56.182273902762205,
+      "experimental_ddg": 4.4165
+    },
+    {
+      "record_id": "SK_1R0R_LI18G_2306",
+      "predicted_ddg": -12.031202271606432,
+      "experimental_ddg": 2.32
+    },
+    {
+      "record_id": "SK_1R0R_LI18A_2307",
+      "predicted_ddg": 9.775800005279194,
+      "experimental_ddg": 0.3102
+    },
+    {
+      "record_id": "SK_1R0R_LI18S_2308",
+      "predicted_ddg": -12.960285231170673,
+      "experimental_ddg": 1.5493
+    },
+    {
+      "record_id": "SK_1R0R_LI18C_2309",
+      "predicted_ddg": 4.792617028802695,
+      "experimental_ddg": -1.3275
+    },
+    {
+      "record_id": "SK_1R0R_LI18V_2310",
+      "predicted_ddg": 36.97542877166906,
+      "experimental_ddg": 2.1265
+    },
+    {
+      "record_id": "SK_1R0R_LI18T_2311",
+      "predicted_ddg": 16.416816449952016,
+      "experimental_ddg": 0.1575
+    },
+    {
+      "record_id": "SK_1R0R_LI18P_2312",
+      "predicted_ddg": 91.71410315315495,
+      "experimental_ddg": 7.5804
+    },
+    {
+      "record_id": "SK_1R0R_LI18I_2313",
+      "predicted_ddg": 49.03269479991138,
+      "experimental_ddg": 3.2086
+    }
+  ],
+  "test_touched_affinity_set": false,
+  "notes": "CA-proxy mutation (residue rename only) \u2014 documents structural approximation; full side-chain rebuild is a follow-up."
+}

@@ -66,19 +66,28 @@ def main() -> None:
             if not pdb_path or not Path(pdb_path).is_file():
                 continue
             if cfg["waters"]:
+                # Prep complex already retains flagged interface waters; scoreable strips them.
+                base = row.get("complex_path") or ""
                 water_src = row.get("interface_water_path") or None
-                merged = work / f"{rid}_with_waters.pdb"
-                # Prefer complex (may still have waters stripped in scoreable)
-                base = row.get("complex_path") or pdb_path
-                try:
-                    merge_waters_into_receptor_pdb(
-                        Path(base),
-                        Path(water_src) if water_src else None,
-                        merged,
-                    )
-                    pdb_path = str(merged)
-                except Exception as exc:  # noqa: BLE001
-                    print(f"  water merge fail {rid}: {exc}", flush=True)
+                if base and Path(base).is_file():
+                    pdb_path = base
+                if water_src and Path(water_src).is_file() and Path(water_src).stat().st_size > 200:
+                    merged = work / f"{rid}_with_waters.pdb"
+                    try:
+                        merge_waters_into_receptor_pdb(
+                            Path(pdb_path),
+                            Path(water_src),
+                            merged,
+                        )
+                        pdb_path = str(merged)
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"  water merge fail {rid}: {exc}", flush=True)
+                        # Fall back to complex (may already include interface waters)
+                        if not base or not Path(base).is_file():
+                            continue
+                        pdb_path = base
+                elif not base or not Path(base).is_file():
+                    print(f"  no water-bearing complex for {rid}", flush=True)
                     continue
             pep = entry.get("peptide_chain") or "C"
             cand = PeptideCandidate(

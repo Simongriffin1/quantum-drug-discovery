@@ -10,9 +10,11 @@ LICENSE: Boltz-2 is MIT-licensed (jwohlwend/boltz). AlphaFold3 weights are not u
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+from uuid import uuid4
 
 from peptideforge.contracts.models import ComplexStructure, PeptideCandidate, Provenance
 from peptideforge.structure.cache import FoldCache, FoldCacheKey
@@ -23,6 +25,22 @@ from peptideforge.structure.pdb_utils import (
     mean_plddt_from_pdb,
     read_pdb_text,
 )
+
+
+def boltz_pdb_template_chain_id(pdb_chain: str) -> str:
+    """Boltz subchain id for a parent PDB chain (``A`` → ``A1`` for simple PDBs)."""
+    return f"{pdb_chain}1"
+
+
+def _default_accelerator() -> str:
+    """Pick a Boltz accelerator that can actually run on this host.
+
+    Boltz defaults to ``gpu``; macOS / CPU-only boxes must pass ``cpu`` or the
+    CLI fails before any fold is written.
+    """
+    if shutil.which("nvidia-smi") is not None:
+        return "gpu"
+    return "cpu"
 
 
 class Boltz2StructurePredictor:
@@ -91,34 +109,14 @@ class Boltz2StructurePredictor:
                 template_pdb=target_path.resolve(),
                 receptor_template_chain=receptor_chain,
             )
-            cmd = [
+            pred_pdb, pred_text, confidence = _run_boltz_predict(
                 boltz_bin,
-                "predict",
-                str(yaml_path),
-                "--out_dir",
-                str(out_dir),
-            ]
-            if self.use_msa_server:
-                cmd.append("--use_msa_server")
-            if seed is not None:
-                cmd.extend(["--seed", str(seed)])
-            cmd.extend(self.boltz_extra_args)
-
-            proc = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                check=False,
+                yaml_path=yaml_path,
+                out_dir=out_dir,
+                use_msa_server=self.use_msa_server,
+                seed=seed,
+                boltz_extra_args=self.boltz_extra_args,
             )
-            if proc.returncode != 0:
-                raise RuntimeError(
-                    "Boltz-2 prediction failed "
-                    f"(exit {proc.returncode}). stderr:\n{proc.stderr[-4000:]}"
-                )
-
-            pred_pdb = _find_predicted_pdb(out_dir)
-            pred_text = read_pdb_text(pred_pdb)
-            confidence = _confidence_from_output(out_dir, pred_text)
 
         structure = ComplexStructure(
             candidate_id=candidate.candidate_id,
@@ -139,6 +137,120 @@ class Boltz2StructurePredictor:
         if self.cache is not None:
             self.cache.put(key, structure)
         return structure
+
+    def fold_multichain(
+        self,
+        *,
+        chain_sequences: list[tuple[str, str]],
+        target_id: str,
+        template_pdb: str | Path,
+        template_pdb_chains: list[str],
+        seed: int | None = None,
+    ) -> ComplexStructure:
+        """Fold a multi-chain complex (SKEMPI-style) with crystal templates."""
+        if len(chain_sequences) < 2:
+            raise ValueError("fold_multichain requires ≥2 chains")
+        if len(template_pdb_chains) != len(chain_sequences):
+            raise ValueError("template_pdb_chains must match chain_sequences")
+
+        template_path = Path(template_pdb)
+        if not template_path.is_file():
+            raise FileNotFoundError(f"template_pdb not found: {template_path}")
+
+        seq_blob = "|".join(f"{cid}:{seq}" for cid, seq in chain_sequences)
+        key = FoldCacheKey(
+            sequence=seq_blob,
+            target_id=target_id,
+            target_structure=str(template_path.resolve()),
+        )
+        if self.cache is not None:
+            hit = self.cache.get(key)
+            if hit is not None:
+                return hit
+
+        boltz_bin = require_boltz_cli()
+        with tempfile.TemporaryDirectory(prefix="peptideforge_boltz_") as tmp:
+            tmp_path = Path(tmp)
+            yaml_path = tmp_path / "input.yaml"
+            out_dir = tmp_path / "out"
+            _write_boltz_multichain_yaml(
+                yaml_path,
+                chain_sequences=chain_sequences,
+                template_pdb=template_path.resolve(),
+                template_pdb_chains=template_pdb_chains,
+            )
+            pred_pdb, pred_text, confidence = _run_boltz_predict(
+                boltz_bin,
+                yaml_path=yaml_path,
+                out_dir=out_dir,
+                use_msa_server=self.use_msa_server,
+                seed=seed,
+                boltz_extra_args=self.boltz_extra_args,
+            )
+
+        structure = ComplexStructure(
+            candidate_id=uuid4(),
+            target_id=target_id,
+            sequence=seq_blob,
+            pdb_path=str(pred_pdb),
+            pdb_text=pred_text,
+            confidence=confidence,
+            fold_method=self.fold_method,
+            cache_key=key.digest(),
+            provenance=Provenance(
+                tool_versions={
+                    "boltz_cli": boltz_bin,
+                    "chains": ",".join(cid for cid, _ in chain_sequences),
+                },
+            ),
+        )
+        if self.cache is not None:
+            self.cache.put(key, structure)
+        return structure
+
+
+def _run_boltz_predict(
+    boltz_bin: str,
+    *,
+    yaml_path: Path,
+    out_dir: Path,
+    use_msa_server: bool,
+    seed: int | None,
+    boltz_extra_args: tuple[str, ...],
+) -> tuple[Path, str, float]:
+    accelerator = _default_accelerator()
+    cmd = [
+        boltz_bin,
+        "predict",
+        str(yaml_path),
+        "--out_dir",
+        str(out_dir),
+        "--accelerator",
+        accelerator,
+        "--output_format",
+        "pdb",
+    ]
+    if use_msa_server:
+        cmd.append("--use_msa_server")
+    if seed is not None:
+        cmd.extend(["--seed", str(seed)])
+    cmd.extend(boltz_extra_args)
+
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
+    tail = (proc.stderr or "")[-4000:]
+    if proc.returncode != 0:
+        raise RuntimeError(
+            f"Boltz-2 prediction failed (exit {proc.returncode}). stderr:\n{tail}"
+        )
+    if "Failed to process" in (proc.stderr or "") or "Failed to process" in (
+        proc.stdout or ""
+    ):
+        raise RuntimeError(f"Boltz-2 skipped input. stderr:\n{tail}")
+
+    pred_pdb = _find_predicted_pdb(out_dir)
+    pred_text = read_pdb_text(pred_pdb)
+    confidence = _confidence_from_output(out_dir, pred_text)
+    return pred_pdb, pred_text, confidence
 
 
 def _write_boltz_yaml(
@@ -167,8 +279,40 @@ def _write_boltz_yaml(
         "    chain_id:",
         f"      - {receptor_id}",
         "    template_id:",
-        f"      - {receptor_template_chain}",
+        f"      - {boltz_pdb_template_chain_id(receptor_template_chain)}",
     ]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _write_boltz_multichain_yaml(
+    path: Path,
+    *,
+    chain_sequences: list[tuple[str, str]],
+    template_pdb: Path,
+    template_pdb_chains: list[str],
+) -> None:
+    lines = ["version: 1", "sequences:"]
+    for chain_id, seq in chain_sequences:
+        lines.extend(
+            [
+                "  - protein:",
+                f"      id: {chain_id}",
+                f"      sequence: {seq}",
+                "      msa: empty",
+            ]
+        )
+    lines.extend(
+        [
+            "templates:",
+            "  - pdb: " + str(template_pdb),
+            "    chain_id:",
+        ]
+    )
+    for chain_id, _ in chain_sequences:
+        lines.append(f"      - {chain_id}")
+    lines.append("    template_id:")
+    for pdb_chain in template_pdb_chains:
+        lines.append(f"      - {boltz_pdb_template_chain_id(pdb_chain)}")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

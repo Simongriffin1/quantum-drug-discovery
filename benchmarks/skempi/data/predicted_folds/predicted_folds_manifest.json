@@ -1,7 +1,46 @@
 {
-  "status": "BLOCKED_BOLTZ_UNAVAILABLE",
-  "error": "Boltz-2 CLI is required for structure prediction but `boltz` was not found on PATH. Install with: pip install boltz. Use FixtureStructurePredictor for CI without large model weights.",
   "holdout_path": "benchmarks/skempi/data/skempi_powered_holdout_v1.json",
-  "experimental_reference_untouched": true,
-  "note": "Predicted-fold degradation NOT measured. Per ACCEPTANCE.md 4A.5, live predicted-fold campaigns remain BLOCKED. Experimental SKEMPI \u03c1=0.381 reference is unchanged."
+  "split_id": "skempi_powered_holdout_v1",
+  "experimental_reference": {
+    "spearman": 0.3806909215904269,
+    "spearman_ci_low": 0.18889322486716895,
+    "spearman_ci_high": 0.5556712698520563,
+    "n": 100,
+    "gate_pass": true,
+    "structures": "experimental_crystal_WT"
+  },
+  "boltz_cli": "/Users/simongriffin/anaconda3/bin/boltz",
+  "n_requested": 1,
+  "n_mutate_in_place_ok": 0,
+  "provenance": [
+    {
+      "mode": "mutate_in_place",
+      "record_id": "SK_3BT1_RU137A_274",
+      "pdb_id": "3BT1",
+      "mutant": "RU137A",
+      "boltz_cli": "/Users/simongriffin/anaconda3/bin/boltz",
+      "sequence_hash": "",
+      "wt_fold_path": null,
+      "mutant_fold_path": null,
+      "confidence": null,
+      "iptm": null,
+      "interface_plddt": null,
+      "error": "Boltz-2 produced no PDB under /var/folders/6v/nnv4gg8s6h93rrb_59gt3b340000gn/T/peptideforge_boltz_oyf0jon8/out"
+    },
+    {
+      "mode": "denovo",
+      "record_id": "SK_3BT1_RU137A_274",
+      "pdb_id": "3BT1",
+      "mutant": "RU137A",
+      "boltz_cli": "/Users/simongriffin/anaconda3/bin/boltz",
+      "sequence_hash": "9c0fdb9d792357f8",
+      "wt_fold_path": null,
+      "mutant_fold_path": null,
+      "confidence": null,
+      "iptm": null,
+      "interface_plddt": null,
+      "error": "denovo mutant re-fold not yet implemented for multi-chain SKEMPI complexes in this pass \u2014 MODE A is primary"
+    }
+  ],
+  "status": "FAILED_NO_FOLDS"
 }

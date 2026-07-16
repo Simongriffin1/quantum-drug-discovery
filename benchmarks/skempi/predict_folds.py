@@ -67,9 +67,9 @@ def predict_holdout_folds(
 
     from peptideforge_benchmarks.skempi import load_skempi_ddg
     from skempi.run_skempi_ddg import _mutate_pdb_ca_proxy
+    from skempi.skempi_chains import skempi_chain_sequences
     from peptideforge.structure.boltz2 import Boltz2StructurePredictor
-    from peptideforge.contracts.models import PeptideCandidate
-    from uuid import uuid4
+    from peptideforge.structure.pdb_utils import read_pdb_text
 
     holdout = load_holdout(holdout_path)
     ids = list(holdout["holdout_record_ids"])
@@ -133,32 +133,14 @@ def predict_holdout_folds(
         if "mutate_in_place" in modes:
             try:
                 if rec.pdb_id not in wt_fold_by_pdb:
-                    # Fold WT: use crystal as template for receptor sequence extraction
-                    # Peptide sequence from partner2 chain length is unknown — use
-                    # crystal peptide chain sequence via Boltz predictor template path.
-                    from peptideforge.structure.pdb_utils import (
-                        extract_chain_sequence,
-                        list_protein_chains,
-                        read_pdb_text,
-                    )
-
                     text = read_pdb_text(wt_crystal)
-                    chains = list_protein_chains(text)
-                    pep_chain = (rec.partner2 or "B")[0]
-                    if pep_chain not in chains:
-                        pep_chain = chains[-1]
-                    pep_seq = extract_chain_sequence(text, pep_chain)
-                    if len(pep_seq) < 5:
-                        raise ValueError(f"peptide chain {pep_chain} too short")
-                    cand = PeptideCandidate(
-                        candidate_id=uuid4(),
-                        sequence=pep_seq[:50],
-                        generation_method="skempi_wt_fold",
-                    )
-                    folded = predictor.fold(
-                        cand,
+                    chain_seqs = skempi_chain_sequences(rec, text)
+                    pdb_chains = [c for c, _ in chain_seqs]
+                    folded = predictor.fold_multichain(
+                        chain_sequences=chain_seqs,
                         target_id=rec.pdb_id,
-                        target_structure=str(wt_crystal),
+                        template_pdb=wt_crystal,
+                        template_pdb_chains=pdb_chains,
                         seed=0,
                     )
                     wt_path = cache_dir / f"{rec.pdb_id}_boltz_wt.pdb"
@@ -253,14 +235,23 @@ def predict_holdout_folds(
                 )
             )
 
+    n_ok = sum(
+        1
+        for p in provenance
+        if p.get("mode") == "mutate_in_place"
+        and p.get("mutant_fold_path")
+        and not p.get("error")
+    )
+    status = "OK" if n_ok > 0 else "FAILED_NO_FOLDS"
     payload = {
         "holdout_path": str(holdout_path),
         "split_id": holdout.get("split_id"),
         "experimental_reference": holdout.get("experimental_reference"),
         "boltz_cli": boltz_cli,
         "n_requested": len(ids),
+        "n_mutate_in_place_ok": n_ok,
         "provenance": provenance,
-        "status": "OK",
+        "status": status,
     }
     out_path = out_dir / "predicted_folds_manifest.json"
     out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")

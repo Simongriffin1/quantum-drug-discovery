@@ -28,12 +28,30 @@ Or: `python benchmarks/skempi/run_skempi_ddg.py ...`
 
 ## Step 4 — Fold→score degradation
 
+**Run from the repo root** (not `~`). Paths like `benchmarks/skempi/...` are relative to
+`quantum-drug-discovery/`.
+
 ```bash
-# Requires Boltz-2 on PATH (fail loud otherwise — never fabricate)
-PYTHONPATH=benchmarks:core/src python benchmarks/skempi/predict_folds.py
-PYTHONPATH=benchmarks:core/src python benchmarks/skempi/run_fold_degradation.py
-PYTHONPATH=benchmarks:core/src python benchmarks/skempi/stratify.py
-PYTHONPATH=benchmarks:core/src python -m peptideforge.authorization_build
+cd /path/to/quantum-drug-discovery/quantum-drug-discovery
+
+# One env: Poetry python (OpenMM) + Anaconda boltz on PATH
+export PATH="$HOME/anaconda3/bin:$PATH"
+PY="$HOME/Library/Caches/pypoetry/virtualenvs/peptideforge-IqirF6bS-py3.11/bin/python"
+export PYTHONPATH=benchmarks:core/src
+
+# Smoke (1 hold-out row → 1 WT Boltz fold):
+"$PY" benchmarks/skempi/predict_folds.py --max-complexes 1
+
+# Full hold-out (5 unique PDBs × Boltz CPU — expect hours):
+"$PY" benchmarks/skempi/predict_folds.py
+"$PY" benchmarks/skempi/run_fold_degradation.py
+"$PY" benchmarks/skempi/stratify.py
+"$PY" -m peptideforge.authorization_build
 ```
+
+Or: `bash benchmarks/skempi/run_step4.sh` (optional `--max-complexes 1` forwarded to predict).
+
+If `boltz` fails on `import torch` with `libtorch_cpu.dylib` missing, reinstall:
+`pip install --force-reinstall 'torch>=2.2'` in the same env that owns `boltz`.
 
 Matched hold-out: `data/skempi_powered_holdout_v1.json` (same N=100 as experimental PASS).

@@ -1,0 +1,587 @@
+{
+  "subset_name": "peptide_affinity_v2_experimental_openmm",
+  "n": 40,
+  "spearman": 0.18698691370609252,
+  "spearman_ci_low": -0.15951094774487046,
+  "spearman_ci_high": 0.5138960739281986,
+  "pearson": -0.04370440419986606,
+  "pearson_ci_low": -0.5706268319634719,
+  "pearson_ci_high": 0.14849671407076406,
+  "rmse": 9462.177550051252,
+  "spearman_threshold": 0.4,
+  "min_n": 30,
+  "measurable": true,
+  "passed_threshold": false,
+  "git_sha": "ea0d919ed7a918f26e9d0dbc9c804ca2be61beab",
+  "data_version": "peptide_affinity_v2_experimental_openmm",
+  "notes": null,
+  "pairs": [
+    {
+      "record_id": "PA_3PKN_B",
+      "predicted": 12.343928961123027,
+      "experimental": 4.657577,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2LOZ_B",
+      "predicted": -104.68938227180195,
+      "experimental": 4.062984,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5H5S_B",
+      "predicted": 23.296699861458308,
+      "experimental": 5.086186,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4FI9_B",
+      "predicted": -108.19241138266617,
+      "experimental": 7.341035,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2M41_A",
+      "predicted": 4.994801429334146,
+      "experimental": 5.09691,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4RRV_B",
+      "predicted": 51.82547156421788,
+      "experimental": 7.39794,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_6HOL_C",
+      "predicted": -73.643787879677,
+      "experimental": 5.721246,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2K00_B",
+      "predicted": 4.01379998987386,
+      "experimental": 4.619789,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4CY1_C",
+      "predicted": 40.56051716953516,
+      "experimental": 6.742321,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5CQX_C",
+      "predicted": 20.427267173994494,
+      "experimental": 5.327902,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_3BU3_B",
+      "predicted": -2939.9377912062464,
+      "experimental": 5.886057,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4MNY_C",
+      "predicted": 0.0001471358418143609,
+      "experimental": 5.707744,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4MNX_B",
+      "predicted": -15.279257098603665,
+      "experimental": 4.751291,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4MNW_B",
+      "predicted": -25.577184182561496,
+      "experimental": 5.764472,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5WQD_H",
+      "predicted": 2.0933361611241708e-05,
+      "experimental": 4.769551,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2KOH_B",
+      "predicted": 39.28631658777795,
+      "experimental": 5.221849,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_3NFL_E",
+      "predicted": -0.003912291758524589,
+      "experimental": 4.376751,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2KYM_B",
+      "predicted": -4.492834865795032,
+      "experimental": 6.69897,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5V6Y_E",
+      "predicted": -0.04169898224972712,
+      "experimental": 8.4698,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5IY4_B",
+      "predicted": -3.346454262498355e-05,
+      "experimental": 4.80827,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4A2A_C",
+      "predicted": -9.234028546393802,
+      "experimental": 4.346787,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4ODN_B",
+      "predicted": 25.194070448866114,
+      "experimental": 6.737549,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_1G1E_A",
+      "predicted": -171.43725423210753,
+      "experimental": 6.410799,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_1ABT_B",
+      "predicted": 11.127500866823084,
+      "experimental": 5.853872,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4ESG_C",
+      "predicted": -57851.929499243866,
+      "experimental": 5.558776,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2N3K_B",
+      "predicted": 13.680214917270405,
+      "experimental": 6.798603,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_3KTR_B",
+      "predicted": 18.152296209264023,
+      "experimental": 6.154902,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5I22_B",
+      "predicted": 44.41514393537136,
+      "experimental": 7.619789,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4WJQ_B",
+      "predicted": -0.4331815345767893,
+      "experimental": 5.538896,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4LG6_B",
+      "predicted": 33.0743658023639,
+      "experimental": 6.744727,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_3QN7_B",
+      "predicted": -13.552818149230006,
+      "experimental": 6.8041,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_6E49_D",
+      "predicted": -2.8021670686939615e-05,
+      "experimental": 4.721246,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_4KMD_B",
+      "predicted": 7.025749466367415,
+      "experimental": 5.413413,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2N9X_B",
+      "predicted": 78.38558017564571,
+      "experimental": 6.39794,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_2NM1_B",
+      "predicted": 35.150960299487735,
+      "experimental": 7.468521,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_6GZL_B",
+      "predicted": 25.611555976069212,
+      "experimental": 5.136677,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_6O21_B",
+      "predicted": -14993.71409702301,
+      "experimental": 8.458421,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_5CQY_C",
+      "predicted": 9.063513751018263,
+      "experimental": 5.327902,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_3BU5_B",
+      "predicted": 23.95626167325571,
+      "experimental": 5.886057,
+      "unit": "pK_proxy_neg_dG"
+    },
+    {
+      "record_id": "PA_1S5Q_A",
+      "predicted": 28.715383484473705,
+      "experimental": 6.410799,
+      "unit": "pK_proxy_neg_dG"
+    }
+  ],
+  "red_team": {
+    "passed": false,
+    "label_shuffle_passed": true,
+    "label_shuffle_rho": -0.17113102388354878,
+    "trivial_baseline_passed": false,
+    "model_rho": 0.18698691370609252,
+    "baseline_rho": 0.20460044983108497,
+    "leakage_passed": false,
+    "leakage_findings": [
+      "identical sequence leakage: ['PA_2KYM_B']",
+      "sequence identity >30% leakage: ['PA_5H5S_B~PA_3V30_B', 'PA_4CY1_C~PA_3ZQI_C', 'PA_4MNY_C~PA_4U2W_B', 'PA_4MNW_B~PA_4U2W_B', 'PA_3NFL_E~PA_1YBO_C', 'PA_2KYM_B~PA_1YBO_C', 'PA_4LG6_B~PA_6MEW_B', 'PA_6O21_B~PA_4U2W_B']",
+      "trivial baseline(s) win or tie within \u0394\u03c1: ['peptide_length']; model_rho=0.1870 baselines={'peptide_length': 0.20460044983108497, 'net_charge': 0.13641841244700895}"
+    ],
+    "notes": "trivial baseline(s) win or tie within \u0394\u03c1: ['peptide_length']; model_rho=0.1870 baselines={'peptide_length': 0.20460044983108497, 'net_charge': 0.13641841244700895}"
+  },
+  "partition": "test",
+  "n_manifest": 40,
+  "n_success": 40,
+  "n_failed": 0,
+  "failures": [],
+  "details": [
+    {
+      "record_id": "PA_3PKN_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_3PKN_B_scoreable.pdb",
+      "experimental_pk": 4.657577,
+      "mm_gbsa_kcal_mol": -12.343928961123027,
+      "predicted_neg_dG": 12.343928961123027
+    },
+    {
+      "record_id": "PA_2LOZ_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2LOZ_B_scoreable.pdb",
+      "experimental_pk": 4.062984,
+      "mm_gbsa_kcal_mol": 104.68938227180195,
+      "predicted_neg_dG": -104.68938227180195
+    },
+    {
+      "record_id": "PA_5H5S_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5H5S_B_scoreable.pdb",
+      "experimental_pk": 5.086186,
+      "mm_gbsa_kcal_mol": -23.296699861458308,
+      "predicted_neg_dG": 23.296699861458308
+    },
+    {
+      "record_id": "PA_4FI9_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4FI9_B_scoreable.pdb",
+      "experimental_pk": 7.341035,
+      "mm_gbsa_kcal_mol": 108.19241138266617,
+      "predicted_neg_dG": -108.19241138266617
+    },
+    {
+      "record_id": "PA_2M41_A",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2M41_A_scoreable.pdb",
+      "experimental_pk": 5.09691,
+      "mm_gbsa_kcal_mol": -4.994801429334146,
+      "predicted_neg_dG": 4.994801429334146
+    },
+    {
+      "record_id": "PA_4RRV_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4RRV_B_scoreable.pdb",
+      "experimental_pk": 7.39794,
+      "mm_gbsa_kcal_mol": -51.82547156421788,
+      "predicted_neg_dG": 51.82547156421788
+    },
+    {
+      "record_id": "PA_6HOL_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_6HOL_C_scoreable.pdb",
+      "experimental_pk": 5.721246,
+      "mm_gbsa_kcal_mol": 73.643787879677,
+      "predicted_neg_dG": -73.643787879677
+    },
+    {
+      "record_id": "PA_2K00_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2K00_B_scoreable.pdb",
+      "experimental_pk": 4.619789,
+      "mm_gbsa_kcal_mol": -4.01379998987386,
+      "predicted_neg_dG": 4.01379998987386
+    },
+    {
+      "record_id": "PA_4CY1_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4CY1_C_scoreable.pdb",
+      "experimental_pk": 6.742321,
+      "mm_gbsa_kcal_mol": -40.56051716953516,
+      "predicted_neg_dG": 40.56051716953516
+    },
+    {
+      "record_id": "PA_5CQX_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5CQX_C_scoreable.pdb",
+      "experimental_pk": 5.327902,
+      "mm_gbsa_kcal_mol": -20.427267173994494,
+      "predicted_neg_dG": 20.427267173994494
+    },
+    {
+      "record_id": "PA_3BU3_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_3BU3_B_scoreable.pdb",
+      "experimental_pk": 5.886057,
+      "mm_gbsa_kcal_mol": 2939.9377912062464,
+      "predicted_neg_dG": -2939.9377912062464
+    },
+    {
+      "record_id": "PA_4MNY_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4MNY_C_scoreable.pdb",
+      "experimental_pk": 5.707744,
+      "mm_gbsa_kcal_mol": -0.0001471358418143609,
+      "predicted_neg_dG": 0.0001471358418143609
+    },
+    {
+      "record_id": "PA_4MNX_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4MNX_B_scoreable.pdb",
+      "experimental_pk": 4.751291,
+      "mm_gbsa_kcal_mol": 15.279257098603665,
+      "predicted_neg_dG": -15.279257098603665
+    },
+    {
+      "record_id": "PA_4MNW_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4MNW_B_scoreable.pdb",
+      "experimental_pk": 5.764472,
+      "mm_gbsa_kcal_mol": 25.577184182561496,
+      "predicted_neg_dG": -25.577184182561496
+    },
+    {
+      "record_id": "PA_5WQD_H",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5WQD_H_scoreable.pdb",
+      "experimental_pk": 4.769551,
+      "mm_gbsa_kcal_mol": -2.0933361611241708e-05,
+      "predicted_neg_dG": 2.0933361611241708e-05
+    },
+    {
+      "record_id": "PA_2KOH_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2KOH_B_scoreable.pdb",
+      "experimental_pk": 5.221849,
+      "mm_gbsa_kcal_mol": -39.28631658777795,
+      "predicted_neg_dG": 39.28631658777795
+    },
+    {
+      "record_id": "PA_3NFL_E",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_3NFL_E_scoreable.pdb",
+      "experimental_pk": 4.376751,
+      "mm_gbsa_kcal_mol": 0.003912291758524589,
+      "predicted_neg_dG": -0.003912291758524589
+    },
+    {
+      "record_id": "PA_2KYM_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2KYM_B_scoreable.pdb",
+      "experimental_pk": 6.69897,
+      "mm_gbsa_kcal_mol": 4.492834865795032,
+      "predicted_neg_dG": -4.492834865795032
+    },
+    {
+      "record_id": "PA_5V6Y_E",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5V6Y_E_scoreable.pdb",
+      "experimental_pk": 8.4698,
+      "mm_gbsa_kcal_mol": 0.04169898224972712,
+      "predicted_neg_dG": -0.04169898224972712
+    },
+    {
+      "record_id": "PA_5IY4_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5IY4_B_scoreable.pdb",
+      "experimental_pk": 4.80827,
+      "mm_gbsa_kcal_mol": 3.346454262498355e-05,
+      "predicted_neg_dG": -3.346454262498355e-05
+    },
+    {
+      "record_id": "PA_4A2A_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4A2A_C_scoreable.pdb",
+      "experimental_pk": 4.346787,
+      "mm_gbsa_kcal_mol": 9.234028546393802,
+      "predicted_neg_dG": -9.234028546393802
+    },
+    {
+      "record_id": "PA_4ODN_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4ODN_B_scoreable.pdb",
+      "experimental_pk": 6.737549,
+      "mm_gbsa_kcal_mol": -25.194070448866114,
+      "predicted_neg_dG": 25.194070448866114
+    },
+    {
+      "record_id": "PA_1G1E_A",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_1G1E_A_scoreable.pdb",
+      "experimental_pk": 6.410799,
+      "mm_gbsa_kcal_mol": 171.43725423210753,
+      "predicted_neg_dG": -171.43725423210753
+    },
+    {
+      "record_id": "PA_1ABT_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_1ABT_B_scoreable.pdb",
+      "experimental_pk": 5.853872,
+      "mm_gbsa_kcal_mol": -11.127500866823084,
+      "predicted_neg_dG": 11.127500866823084
+    },
+    {
+      "record_id": "PA_4ESG_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4ESG_C_scoreable.pdb",
+      "experimental_pk": 5.558776,
+      "mm_gbsa_kcal_mol": 57851.929499243866,
+      "predicted_neg_dG": -57851.929499243866
+    },
+    {
+      "record_id": "PA_2N3K_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2N3K_B_scoreable.pdb",
+      "experimental_pk": 6.798603,
+      "mm_gbsa_kcal_mol": -13.680214917270405,
+      "predicted_neg_dG": 13.680214917270405
+    },
+    {
+      "record_id": "PA_3KTR_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_3KTR_B_scoreable.pdb",
+      "experimental_pk": 6.154902,
+      "mm_gbsa_kcal_mol": -18.152296209264023,
+      "predicted_neg_dG": 18.152296209264023
+    },
+    {
+      "record_id": "PA_5I22_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5I22_B_scoreable.pdb",
+      "experimental_pk": 7.619789,
+      "mm_gbsa_kcal_mol": -44.41514393537136,
+      "predicted_neg_dG": 44.41514393537136
+    },
+    {
+      "record_id": "PA_4WJQ_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4WJQ_B_scoreable.pdb",
+      "experimental_pk": 5.538896,
+      "mm_gbsa_kcal_mol": 0.4331815345767893,
+      "predicted_neg_dG": -0.4331815345767893
+    },
+    {
+      "record_id": "PA_4LG6_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4LG6_B_scoreable.pdb",
+      "experimental_pk": 6.744727,
+      "mm_gbsa_kcal_mol": -33.0743658023639,
+      "predicted_neg_dG": 33.0743658023639
+    },
+    {
+      "record_id": "PA_3QN7_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_3QN7_B_scoreable.pdb",
+      "experimental_pk": 6.8041,
+      "mm_gbsa_kcal_mol": 13.552818149230006,
+      "predicted_neg_dG": -13.552818149230006
+    },
+    {
+      "record_id": "PA_6E49_D",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_6E49_D_scoreable.pdb",
+      "experimental_pk": 4.721246,
+      "mm_gbsa_kcal_mol": 2.8021670686939615e-05,
+      "predicted_neg_dG": -2.8021670686939615e-05
+    },
+    {
+      "record_id": "PA_4KMD_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_4KMD_B_scoreable.pdb",
+      "experimental_pk": 5.413413,
+      "mm_gbsa_kcal_mol": -7.025749466367415,
+      "predicted_neg_dG": 7.025749466367415
+    },
+    {
+      "record_id": "PA_2N9X_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2N9X_B_scoreable.pdb",
+      "experimental_pk": 6.39794,
+      "mm_gbsa_kcal_mol": -78.38558017564571,
+      "predicted_neg_dG": 78.38558017564571
+    },
+    {
+      "record_id": "PA_2NM1_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_2NM1_B_scoreable.pdb",
+      "experimental_pk": 7.468521,
+      "mm_gbsa_kcal_mol": -35.150960299487735,
+      "predicted_neg_dG": 35.150960299487735
+    },
+    {
+      "record_id": "PA_6GZL_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_6GZL_B_scoreable.pdb",
+      "experimental_pk": 5.136677,
+      "mm_gbsa_kcal_mol": -25.611555976069212,
+      "predicted_neg_dG": 25.611555976069212
+    },
+    {
+      "record_id": "PA_6O21_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_6O21_B_scoreable.pdb",
+      "experimental_pk": 8.458421,
+      "mm_gbsa_kcal_mol": 14993.71409702301,
+      "predicted_neg_dG": -14993.71409702301
+    },
+    {
+      "record_id": "PA_5CQY_C",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_5CQY_C_scoreable.pdb",
+      "experimental_pk": 5.327902,
+      "mm_gbsa_kcal_mol": -9.063513751018263,
+      "predicted_neg_dG": 9.063513751018263
+    },
+    {
+      "record_id": "PA_3BU5_B",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_3BU5_B_scoreable.pdb",
+      "experimental_pk": 5.886057,
+      "mm_gbsa_kcal_mol": -23.95626167325571,
+      "predicted_neg_dG": 23.95626167325571
+    },
+    {
+      "record_id": "PA_1S5Q_A",
+      "pdb_path": "benchmarks/peptide_affinity/data/prepared/PA_1S5Q_A_scoreable.pdb",
+      "experimental_pk": 6.410799,
+      "mm_gbsa_kcal_mol": -28.715383484473705,
+      "predicted_neg_dG": 28.715383484473705
+    }
+  ],
+  "baseline_rhos": {
+    "peptide_length": 0.20460044983108497,
+    "net_charge": 0.13641841244700895
+  },
+  "protocol": {
+    "name": "gbsa_gbn2_eps1_salt0_min0",
+    "gb_model": "gbn2",
+    "solute_dielectric": 1.0,
+    "salt_conc_M": 0.0,
+    "minimize_max_iterations": 0,
+    "chosen_from": "elec_sweep_traindev_v3 + entropy_waters_ab (no retune after test)",
+    "method": "OpenMM MM-GBSA on prepared experimental structures",
+    "platform": "CPU",
+    "seed": 0,
+    "n_bootstrap": 1000,
+    "catalog": "benchmarks/peptide_affinity/data/peptide_affinity_catalog_v3.tsv",
+    "prep_manifest": "benchmarks/peptide_affinity/data/prepared/prep_manifest_scoreable.tsv",
+    "splits": "benchmarks/peptide_affinity/data/splits_v3.json",
+    "oneshot_test": true
+  },
+  "mlflow": {
+    "run_id": "aeefc1bdfd1d4e289b923912c8639001",
+    "experiment_id": "1",
+    "tracking_uri": "sqlite:///benchmarks/peptide_affinity/data/oracle_validity_v3.db"
+  }
+}

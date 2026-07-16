@@ -80,3 +80,24 @@ Artifact: `benchmarks/skempi/data/skempi_ddg_last_run.json`. Held-out N=16, Spea
 FAIL** under pre-registered gate. Red-team passed. Mutation = side-chain strip + PDBFixer
 (not rename-only).
 
+
+## One-shot cross-target re-test (3D.3) — firewalled test, once
+
+Artifact: `oracle_validity_v3_oneshot_test.json` (MLflow `aeefc1bdfd1d4e289b923912c8639001`).
+Protocol locked from train/dev: `gbsa_gbn2_eps1_salt0_min0`.
+
+| Gate | Result |
+|---|---|
+| Cross-target affinity | **FAIL** — N=40, ρ=0.187, CI [−0.160, 0.514] (CI_low ≤ 0; ρ < 0.40) |
+| Within-target SKEMPI | **FAIL** — N=16, ρ=0.488, CI [−0.039, 0.830] (ρ≥0.30 but CI_low ≤ 0) |
+
+Trivial baselines on test: peptide_length ρ≈0.205 beats oracle; net_charge ρ≈0.136
+(no longer dominates as on the v2 N=31 set). Red-team also flags sequence-identity
+leakage across the v3 cold-start split — split hygiene must be tightened before any
+future re-test; thresholds were **not** loosened.
+
+**Verdict:** Both co-primary gates fail after diagnosis-led electrostatics tuning,
+entropy/water A/B, and data recovery. This is a **scientific finding**: single-structure
+end-point MM-GBSA is insufficient for this peptide affinity target class as currently
+posed. Escalation options (document only): short-MD ensembles, explicit-solvent MM-PBSA,
+or a component re-scorer — **not** on ~40 points.

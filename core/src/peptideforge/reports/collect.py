@@ -49,6 +49,15 @@ def _git_sha() -> str | None:
 
 
 def default_oracle_artifact() -> Path:
+    v3 = (
+        _repo_root()
+        / "benchmarks"
+        / "peptide_affinity"
+        / "data"
+        / "oracle_validity_v3_oneshot_test.json"
+    )
+    if v3.is_file():
+        return v3
     v2 = (
         _repo_root()
         / "benchmarks"
@@ -193,23 +202,71 @@ def collect_oracle_validity(artifact: Path | None = None) -> ReportSection:
     )
 
 
-def collect_ddg_status() -> ReportSection:
-    """SKEMPI ddG validity is pre-registered but not yet logged as a P3 artifact."""
-    return ReportSection(
-        title="Stability / ddG (SKEMPI)",
-        status="NOT_RUN",
-        summary=(
-            "No logged SKEMPI ΔΔG oracle-validity run. Threshold pre-registered in "
-            "ACCEPTANCE.md (Spearman ≥ 0.30). Refusing to invent a correlation."
-        ),
-        numbers=(
-            TraceableNumber(
-                name="ddg_spearman_threshold",
-                value=DEFAULT_THRESHOLDS.oracle_ddg_spearman,
-                source="ACCEPTANCE.md",
+def collect_ddg_status(artifact: Path | None = None) -> ReportSection:
+    """SKEMPI within-target ΔΔG co-primary gate (ACCEPTANCE.md)."""
+    path = artifact or (
+        _repo_root() / "benchmarks" / "skempi" / "data" / "skempi_ddg_last_run.json"
+    )
+    if not path.is_file():
+        return ReportSection(
+            title="Stability / ddG (SKEMPI within-target)",
+            status="NOT_RUN",
+            summary=(
+                "No logged SKEMPI ΔΔG run. Threshold pre-registered in ACCEPTANCE.md "
+                "(Spearman ≥ 0.30, CI_low > 0). Refusing to invent a correlation."
             ),
+            numbers=(
+                TraceableNumber(
+                    name="ddg_spearman_threshold",
+                    value=DEFAULT_THRESHOLDS.oracle_ddg_spearman,
+                    source="ACCEPTANCE.md",
+                ),
+            ),
+            details={"fixture": "benchmarks/fixtures/skempi_ddg_v1.tsv"},
+        )
+
+    data = load_json_artifact(path)
+    rho = data.get("spearman")
+    lo = data.get("spearman_ci_low")
+    hi = data.get("spearman_ci_high")
+    n = data.get("n")
+    gate_pass = bool(data.get("gate_pass"))
+    status = "PASS" if gate_pass else "FAIL"
+    numbers = [
+        TraceableNumber(
+            name="skempi_ddg_spearman",
+            value=float(rho) if rho is not None else None,
+            source=f"file:{path}",
+            notes=f"N={n}; CI=[{lo}, {hi}]",
         ),
-        details={"fixture": "benchmarks/fixtures/skempi_ddg_v1.tsv"},
+        TraceableNumber(
+            name="skempi_ddg_spearman_ci_low",
+            value=float(lo) if lo is not None else None,
+            source=f"file:{path}",
+        ),
+        TraceableNumber(
+            name="skempi_ddg_gate_threshold",
+            value=float(data.get("gate_threshold") or 0.30),
+            source="ACCEPTANCE.md",
+        ),
+    ]
+    return ReportSection(
+        title="Stability / ddG (SKEMPI within-target)",
+        status=status,
+        summary=(
+            f"Within-target held-out SKEMPI ΔΔG: N={n}, Spearman ρ={rho} "
+            f"(95% CI [{lo}, {hi}]). Pre-registered gate ρ≥0.30 with CI_low>0: "
+            f"{'PASSED' if gate_pass else 'FAILED'}. "
+            f"Red-team={'pass' if (data.get('red_team') or {}).get('passed') else 'fail'}. "
+            "Cross-target affinity gate is reported separately and is not replaced."
+        ),
+        numbers=tuple(numbers),
+        details={
+            "artifact": str(path),
+            "protocol": data.get("protocol"),
+            "red_team": data.get("red_team"),
+            "gate_pass": gate_pass,
+        },
     )
 
 
